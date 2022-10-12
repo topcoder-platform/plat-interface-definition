@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package topcoder.domain.challenge;
+
+message Challenge {
+    string id = 1;
+    string legacy_id = 2;
+    string name = 3;
+}
+

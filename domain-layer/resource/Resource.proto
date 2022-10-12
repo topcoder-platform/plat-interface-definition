@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package topcoder.domain.resource;
+
+message Resource {
+    string id = 1;
+    string challenge_id = 2;
+    int64 created = 3;
+    string created_by = 4;
+    optional int32 legacy_id = 5;
+    string member_handle = 6;
+    string member_id = 7;
+    string role_id = 8;
+    optional int64 updated = 9;
+    optional string updated_by = 10;
+}
+
+message CreateResourceInput {
+    string challenge_id = 1;
+    string member_handle = 2;
+    string member_id = 3;
+    string role_id = 4;
+}
+
+message ResourceList {
+    repeated Resource resources = 1;
+}
+

@@ -1,0 +1,187 @@
+syntax = "proto3";
+
+package topcoder.dal.partiql;
+
+import "google/protobuf/struct.proto";
+
+enum DataType {
+  BOOLEAN = 0;
+  BINARY = 1;
+  LIST = 2;
+  MAP = 3;
+  NULL = 4;
+  NUMBER = 5;
+  NUMBER_SET = 6;
+  STRING = 7;
+  STRING_SET = 8;
+}
+
+enum Operator {
+  EQUAL = 0;
+  NOT_EQUAL = 1;
+  GREATER_THAN = 2;
+  GREATER_THAN_OR_EQUAL = 3;
+  LESS_THAN = 4;
+  LESS_THAN_OR_EQUAL = 5;
+  AND = 6;
+  BETWEEN = 7;
+  IN = 8;
+  IS = 9;
+  NOT = 10;
+  OR = 11;
+}
+
+enum Error {
+  DATABASE_ERROR = 0;
+  INVALID_ARGUMENT = 1;
+  INVALID_QUERY = 2;
+  NOT_FOUND = 3;
+  UNAUTHENTICATED = 4;
+  UNAUTHORIZED = 5;
+  UNKNOWN = 6;
+}
+
+message StringSet {
+  repeated string values = 1;
+}
+
+message NumberSet {
+  repeated double values = 1;
+}
+
+message Value {
+  oneof kind {
+    bool boolean = 1;
+    bytes binary = 2;
+    google.protobuf.ListValue list_value = 3;
+    google.protobuf.Struct map_value = 4;
+    google.protobuf.NullValue null_value = 5;
+    double number_value = 6;
+    NumberSet number_set_value = 7;
+    string string_value = 8;
+    StringSet string_set_value = 9;
+  }
+}
+
+message Attribute {
+  string name = 1;
+  DataType type = 2;
+}
+
+message Filter {
+  string name = 1;
+  Operator operator = 2;
+  Value value = 3;
+}
+
+message SelectQuery {
+  string table = 1;
+  optional string index = 2;
+  repeated Attribute attributes = 3;
+  repeated Filter filters = 4;
+  optional string next_token = 5;
+}
+
+message InsertQuery {
+  string table = 1;
+  google.protobuf.Struct attributes = 2;
+}
+
+enum UpdateAction {
+  SET = 0;
+  REMOVE = 1;
+}
+
+enum UpdateType {
+  VALUE = 0;
+  SET_ADD = 1;
+  SET_DELETE = 2;
+  LIST_APPEND = 3;
+}
+
+enum ReturnValues {
+  ALL_NEW = 0;
+  MODIFIED_NEW = 1;
+  ALL_OLD = 2;
+  MODIFIED_OLD = 3;
+}
+
+message UpdateOperation {
+  UpdateAction action = 1;
+  string attribute = 2;
+  UpdateType type = 3;
+  Value value = 4;
+}
+
+message UpdateQuery {
+  string table = 1;
+  repeated UpdateOperation updates = 2;
+  repeated Filter filters = 3;
+  optional ReturnValues return_values = 4;
+}
+
+message DeleteQuery {
+  string table = 1;
+  repeated Filter filters = 2;
+  optional ReturnValues return_values = 3;
+}
+
+message ReadQuery {
+  repeated SelectQuery query = 1;
+}
+
+message WriteQuery {
+  oneof kind {
+    InsertQuery insert = 1;
+    UpdateQuery update = 2;
+    DeleteQuery delete = 3;
+  }
+}
+
+message BulkWriteQuery {
+  repeated WriteQuery queries = 1;
+}
+
+message BulkQuery {
+  oneof kind {
+    ReadQuery read = 1;
+    WriteQuery BulkWriteQuery = 2;
+  }
+}
+
+message Query {
+  oneof kind {
+    SelectQuery select = 1;
+    InsertQuery insert = 2;
+    UpdateQuery update = 3;
+    DeleteQuery delete = 4;
+  }
+}
+
+message Response {
+  repeated google.protobuf.Struct items = 1;
+  optional string next_token = 2;
+}
+
+message QueryRequest {
+  oneof kind {
+    Query query = 1;
+    BulkQuery queries = 2;
+  }
+}
+
+message ResponseError {
+  string message = 1;
+}
+
+message QueryResponse {
+  oneof kind {
+    Response response = 1;
+    ResponseError error = 2;
+  }
+}
+
+service PartiQLQuery {
+  rpc Query(QueryRequest) returns (QueryResponse);
+}
+

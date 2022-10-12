@@ -1,0 +1,144 @@
+syntax = "proto3";
+
+package topcoder.dal.rdb;
+
+option java_package = "com.topcoder.dal.rdb";
+option java_outer_classname = "RDBProtos";
+option java_multiple_files = true;
+
+message RawQuery {
+  string query = 1;
+}
+
+enum ColumnType {
+  STRING = 0;
+  INT = 1;
+  LONG = 2;
+  FLOAT = 3;
+  DOUBLE = 4;
+  BOOLEAN = 5;
+  DATE = 6;
+  DATETIME = 7;
+  BLOB = 8;
+}
+
+message Value {
+  oneof value {
+    string string_value = 3;
+    int32 int_value = 4;
+    int64 long_value = 5;
+    float float_value = 6;
+    double double_value = 7;
+    bool boolean_value = 8;
+    string date_value = 9;
+    string datetime_value = 10;
+    bytes blob_value = 11;
+  }
+}
+
+message Column {
+  string name = 1;
+  optional ColumnType type = 2;
+}
+
+enum Operator {
+  EQUAL = 0;
+  NOT_EQUAL = 1;
+  GREATER_THAN = 2;
+  GREATER_THAN_OR_EQUAL = 3;
+  LESS_THAN = 4;
+  LESS_THAN_OR_EQUAL = 5;
+  IN = 6;
+  NOT_IN = 7;
+  LIKE = 8;
+  NOT_LIKE = 9;
+  IS_NULL = 10;
+  IS_NOT_NULL = 11;
+}
+
+message WhereCriteria {
+  Operator operator = 1;
+  string key = 2;
+  Value value = 3;
+}
+
+
+message SelectQuery {
+  string table = 1;
+  repeated Column column = 2;
+  repeated WhereCriteria where = 3;
+  repeated string group_by = 4;
+  repeated string order_by = 5;
+  optional uint32 limit = 6;
+  optional uint32 offset = 7;
+}
+
+message ColumnValue {
+  string column = 1;
+  Value value = 2;
+}
+
+message InsertQuery {
+  string table = 1;
+  repeated ColumnValue column_value = 2;
+  optional string id_column = 3;
+  optional string id_sequence = 4;
+}
+
+message UpdateQuery {
+  string table = 1;
+  repeated ColumnValue column_value = 2;
+  repeated WhereCriteria where = 3;
+}
+
+message DeleteQuery {
+  string table = 1;
+  repeated WhereCriteria where = 2;
+}
+
+message Query {
+  oneof query {
+    RawQuery raw = 1;
+    SelectQuery select = 2;
+    InsertQuery insert = 3;
+    UpdateQuery update = 4;
+    DeleteQuery delete = 5;
+  }
+}
+
+message Row {
+  map<string, Value> values = 1;
+}
+
+message QueryRequest {
+  Query query = 1;
+}
+
+message SelectQueryResult {
+  repeated Row rows = 1;
+}
+
+message InsertQueryResult {
+  uint64 last_insert_id = 1;
+}
+
+message UpdateQueryResult {
+  uint64 affected_rows = 1;
+}
+
+message DeleteQueryResult {
+  uint64 affected_rows = 1;
+}
+
+message QueryResponse {
+  oneof result {
+    SelectQueryResult select_result = 1;
+    InsertQueryResult insert_result = 2;
+    UpdateQueryResult update_result = 3;
+    DeleteQueryResult delete_result = 4;
+  }
+}
+
+service QueryService {
+  rpc Query(QueryRequest) returns (QueryResponse);
+}
