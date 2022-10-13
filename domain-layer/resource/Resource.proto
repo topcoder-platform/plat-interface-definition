@@ -20,6 +20,7 @@ message CreateResourceInput {
     string member_handle = 2;
     string member_id = 3;
     string role_id = 4;
+    optional double payment_amount = 5;
 }
 
 message ResourceList {

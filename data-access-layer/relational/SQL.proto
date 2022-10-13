@@ -62,15 +62,14 @@ message WhereCriteria {
   Value value = 3;
 }
 
-
 message SelectQuery {
   string table = 1;
   repeated Column column = 2;
   repeated WhereCriteria where = 3;
   repeated string group_by = 4;
   repeated string order_by = 5;
-  optional uint32 limit = 6;
-  optional uint32 offset = 7;
+  uint32 limit = 6;
+  uint32 offset = 7;
 }
 
 message ColumnValue {
@@ -83,6 +82,7 @@ message InsertQuery {
   repeated ColumnValue column_value = 2;
   optional string id_column = 3;
   optional string id_sequence = 4;
+  optional string id_table = 5;
 }
 
 message UpdateQuery {
