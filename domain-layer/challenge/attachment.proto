@@ -24,7 +24,3 @@ message UpdateAttachmentInput {
 message DeleteAttachmentInput {
     string id = 1;
 }
-
-message GetAttachmentInput {
-    string id = 1;
-}
