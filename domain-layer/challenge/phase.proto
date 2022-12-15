@@ -12,16 +12,6 @@ message Phase {
     int64 duration = 5;
 }
 
-message SearchPhaseInput {
-    optional int32 page = 1;
-    optional int32 per_page = 2;
-    optional string name = 3;
-}
-
-message PhaseSearchResponse {
-    repeated Phase phase = 1;
-}
-
 message CreatePhaseInput {
     Phase phase = 1;
 }
@@ -31,9 +21,5 @@ message UpdatePhaseInput {
 }
 
 message DeletePhaseInput {
-    string id = 1;
-}
-
-message GetPhaseInput {
     string id = 1;
 }
