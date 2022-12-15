@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package topcoder.domain.service.challenge;
+
+// import "common/Common.proto";
+import "domain-layer/challenge/Challenge.proto";
+
+service Challenge {
+    rpc createChallenge(topcoder.domain.challenge.CreateChallengeInput) returns (topcoder.domain.challenge.Challenge);
+}

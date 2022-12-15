@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package topcoder.common;
+
+import "google/protobuf/struct.proto";
+
+enum Operator {
+  EQUAL = 0;
+  NOT_EQUAL = 1;
+  GREATER_THAN = 2;
+  GREATER_THAN_OR_EQUAL = 3;
+  LESS_THAN = 4;
+  LESS_THAN_OR_EQUAL = 5;
+  AND = 6;
+  BETWEEN = 7;
+  IN = 8;
+  IS = 9;
+  NOT = 10;
+  OR = 11;
+}
+
+enum Boolean {
+  UNDEFINED = 0;
+  TRUE = 1;
+  FALSE = 2;
+}
+
+enum Domain {
+  RESOURCE = 0;
+  RESOURCE_ROLE = 1;
+  RESOURCE_ROLE_PHASE_DEPENDENCY = 3;
+}
+
+message ScanCriteria {
+  string key = 1;
+  optional Operator operator = 2;
+  google.protobuf.Value value = 3;
+}
+
+message ScanRequest {
+  optional string next_token = 1;
+  repeated topcoder.common.ScanCriteria scan_criteria = 2;
+}
+
+message ScanResult {
+  optional string next_token = 1;
+  repeated google.protobuf.Struct items = 2;
+}
+
+message FilterValue {
+  oneof value {
+    string string_value = 1;
+    int64 number_value = 2;
+  }
+}
+
+message LookupCriteria {
+    string key = 1;
+    FilterValue value = 2;
+}
