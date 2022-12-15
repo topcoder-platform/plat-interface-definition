@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package topcoder.domain.phase;
+
+import "common/Common.proto";
+
+message Phase {
+    string id = 1;
+    string name = 2;
+    optional string description = 3;
+    topcoder.common.Boolean is_open = 4;
+    int64 duration = 5;
+}
+
+message SearchPhaseInput {
+    optional int32 page = 1;
+    optional int32 per_page = 2;
+    optional string name = 3;
+}
+
+message PhaseSearchResponse {
+    repeated Phase phase = 1;
+}
+
+message CreatePhaseInput {
+    Phase phase = 1;
+}
+
+message UpdatePhaseInput {
+    Phase phase = 1;
+}
+
+message DeletePhaseInput {
+    string id = 1;
+}
+
+message GetPhaseInput {
+    string id = 1;
+}
