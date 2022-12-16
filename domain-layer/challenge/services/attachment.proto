@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package topcoder.domain.service.attachment;
+
+import "domain-layer/challenge/attachment.proto";
+
+service Attachment {
+    rpc createAttachment(topcoder.domain.attachment.CreateAttachmentInput) returns (topcoder.domain.attachment.Attachment);
+    rpc updateAttachment(topcoder.domain.attachment.UpdateAttachmentInput) returns (topcoder.domain.attachment.Attachment);
+    rpc deleteAttachment(topcoder.domain.attachment.DeleteAttachmentInput) returns (topcoder.domain.attachment.Attachment);
+}
