@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package topcoder.domain.timeline_template;
 
+import "common/Common.proto";
+
 message TimelineTemplatePhase {
     string phaseId = 1;
     int64 default_duration = 2;

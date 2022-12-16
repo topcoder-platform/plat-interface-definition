@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package topcoder.domain.challenge_type;
 
+import "common/Common.proto";
+
 message ChallengeType {
     string id = 1;
     string name = 2;
