@@ -7,4 +7,6 @@ import "domain-layer/challenge/Challenge.proto";
 
 service Challenge {
     rpc createChallenge(topcoder.domain.challenge.CreateChallengeInput) returns (topcoder.domain.challenge.Challenge);
+    rpc update(topcoder.domain.challenge.UpdateChallengeInput) returns (topcoder.domain.challenge.Challenge);
+    rpc remove(topcoder.domain.challenge.RemoveChallengeInput) returns (topcoder.domain.challenge.Challenge);
 }
