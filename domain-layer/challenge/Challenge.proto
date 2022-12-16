@@ -178,3 +178,11 @@ message Challenge {
 message CreateChallengeInput {
     Challenge challenge = 1;
 }
+
+message UpdateChallengeInput {
+    Challenge challenge = 1;
+}
+
+message RemoveChallengeInput {
+    string id = 1;
+}
