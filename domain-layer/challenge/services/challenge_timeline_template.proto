@@ -5,7 +5,7 @@ package topcoder.domain.service.challenge_timeline_template;
 import "domain-layer/challenge/challenge_timeline_template.proto";
 
 service ChallengeTimelineTemplate {
-    rpc createChallenge(topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplateInput) returns (topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplate);
-    rpc UpdateChallenge(topcoder.domain.challenge_timeline_template.UpdateChallengeTimelineTemplateInput) returns (topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplate);
-    rpc DeleteChallenge(topcoder.domain.challenge_timeline_template.DeleteChallengeTimelineTemplateInput) returns (topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplate);
+    rpc create(topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplateInput) returns (topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplate);
+    rpc update(topcoder.domain.challenge_timeline_template.UpdateChallengeTimelineTemplateInput) returns (topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplate);
+    rpc remove(topcoder.domain.challenge_timeline_template.RemoveChallengeTimelineTemplateInput) returns (topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplate);
 }

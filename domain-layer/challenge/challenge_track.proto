@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package topcoder.domain.challenge_track;
+
+message ChallengeTrack {
+    string id = 1;
+    string name = 2;
+    optional string description = 3;
+    topcoder.common.Boolean is_active = 4;
+    string abbreviation = 5;
+}
+
+message CreateChallengeTrackInput {
+    ChallengeTrack challenge_track = 1;
+}
+
+message UpdateChallengeTrackInput {
+    ChallengeTrack challenge_track = 1;
+}
+
+message RemoveChallengeTrackInput {
+    string id = 1;
+}
