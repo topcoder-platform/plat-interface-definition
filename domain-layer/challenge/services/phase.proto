@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package topcoder.domain.service.phase;
+
+import "domain-layer/challenge/phase.proto";
+
+service Phase {
+    rpc createPhase(topcoder.domain.phase.CreatePhaseInput) returns (topcoder.domain.phase.Phase);
+    rpc updatePhase(topcoder.domain.phase.UpdatePhaseInput) returns (topcoder.domain.phase.Phase);
+    rpc deletePhase(topcoder.domain.phase.DeletePhaseInput) returns (topcoder.domain.phase.Phase);
+}
