@@ -20,6 +20,6 @@ message UpdateChallengeTimelineTemplateInput {
     ChallengeTimelineTemplate challenge_timeline_template = 1;
 }
 
-message DeleteChallengeTimelineTemplateInput {
+message RemoveChallengeTimelineTemplateInput {
     string id = 1;
 }

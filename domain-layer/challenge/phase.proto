@@ -20,6 +20,6 @@ message UpdatePhaseInput {
     Phase phase = 1;
 }
 
-message DeletePhaseInput {
+message RemovePhaseInput {
     string id = 1;
 }

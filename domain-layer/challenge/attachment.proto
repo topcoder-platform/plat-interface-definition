@@ -21,6 +21,6 @@ message UpdateAttachmentInput {
     Attachment attachment = 1;
 }
 
-message DeleteAttachmentInput {
+message RemoveAttachmentInput {
     string id = 1;
 }
