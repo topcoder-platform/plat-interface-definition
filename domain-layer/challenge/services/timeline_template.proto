@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package topcoder.domain.service.timeline_template;
+
+import "domain-layer/challenge/timeline_template.proto";
+
+service TimelineTemplate {
+    rpc create(topcoder.domain.timeline_template.CreateTimelineTemplateInput) returns (topcoder.domain.timeline_template.TimelineTemplate);
+    rpc update(topcoder.domain.timeline_template.UpdateTimelineTemplateInput) returns (topcoder.domain.timeline_template.TimelineTemplate);
+    rpc remove(topcoder.domain.timeline_template.RemoveTimelineTemplateInput) returns (topcoder.domain.timeline_template.TimelineTemplate);
+}
