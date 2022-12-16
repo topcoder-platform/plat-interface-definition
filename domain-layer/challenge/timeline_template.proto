@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package topcoder.domain.timeline_template;
+
+message TimelineTemplatePhase {
+    string phaseId = 1;
+    int64 defaultDuration = 2;
+    optional string predecessor = 3;
+}
+
+message TimelineTemplate {
+    string id = 1;
+    string name = 2;
+    optional string description = 3;
+    topcoder.common.Boolean is_active = 4;
+    repeated TimelineTemplatePhase phases = 5;
+}
+
+message CreateTimelineTemplateInput {
+    TimelineTemplate timeline_template = 1;
+}
+
+message UpdateTimelineTemplateInput {
+    TimelineTemplate timeline_template = 1;
+}
+
+message RemoveTimelineTemplateInput {
+    string id = 1;
+}
