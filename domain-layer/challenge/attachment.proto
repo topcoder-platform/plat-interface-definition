@@ -2,15 +2,13 @@ syntax = "proto3";
 
 package topcoder.domain.attachment;
 
-import "common/Common.proto";
-
 message Attachment {
     string id = 1;
     string url = 2;
     int64 file_size = 3;
     string name = 4;
     string challenge_id = 5;
-    optional string description = 5;
+    optional string description = 6;
 }
 
 message CreateAttachmentInput {
