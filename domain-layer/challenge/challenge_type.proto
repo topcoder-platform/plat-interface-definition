@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package topcoder.domain.challenge_type;
+
+message ChallengeType {
+    string id = 1;
+    string name = 2;
+    optional string description = 3;
+    topcoder.common.Boolean is_active = 4;
+    topcoder.common.Boolean is_task = 5;
+    string abbreviation = 6;
+}
+
+message CreateChallengeTypeInput {
+    ChallengeType challenge_type = 1;
+}
+
+message UpdateChallengeTypeInput {
+    ChallengeType challenge_type = 1;
+}
+
+message RemoveChallengeTypeInput {
+    string id = 1;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package topcoder.domain.service.challenge_type;
+
+// import "common/Common.proto";
+import "domain-layer/challenge/challenge_type.proto";
+
+service ChallengeType {
+    rpc create(topcoder.domain.challenge_type.CreateChallengeTypeInput) returns (topcoder.domain.challenge_type.ChallengeType);
+    rpc update(topcoder.domain.challenge_type.UpdateChallengeTypeInput) returns (topcoder.domain.challenge_type.ChallengeType);
+    rpc remove(topcoder.domain.challenge_type.RemoveChallengeTypeInput) returns (topcoder.domain.challenge_type.ChallengeType);
+}
