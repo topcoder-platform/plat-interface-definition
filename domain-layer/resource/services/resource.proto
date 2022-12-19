@@ -3,7 +3,7 @@ syntax = "proto3";
 package topcoder.domain.resource_service;
 
 import "common/common.proto";
-import "resource/Resource.proto";
+import "domain-layer/resource/resource.proto";
 
 message Payment {
   string resource_id = 1;
@@ -11,13 +11,16 @@ message Payment {
 }
 
 service Resource {
-  rpc Scan(topcoder.domain.common.ScanRequest)
-      returns (topcoder.domain.common.ScanResult);
-  rpc Lookup(topcoder.domain.common.LookupCriteria)
+  rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
+
+  rpc Lookup(topcoder.common.LookupCriteria)
       returns (topcoder.domain.resource.Resource);
+
   rpc Create(topcoder.domain.resource.CreateResourceInput)
       returns (topcoder.domain.resource.Resource);
-  rpc Delete(topcoder.domain.common.LookupCriteria)
+
+  rpc Delete(topcoder.common.LookupCriteria)
       returns (topcoder.domain.resource.ResourceList);
+
   // rpc addPayment(Payment) returns { boolean }
 }

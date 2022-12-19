@@ -77,7 +77,7 @@ message Challenge {
   optional int32 project_id = 19;
   optional google.protobuf.Timestamp start_date = 20;
   optional google.protobuf.Timestamp end_date = 21;
-  string status = 22;
+  ChallengeStatus status = 22;
   repeated string attachments = 23;
   repeated string groups = 24;
   repeated Winner winners = 25;
@@ -86,6 +86,25 @@ message Challenge {
   optional string updated_by = 28;
   google.protobuf.Timestamp created = 29;
   optional google.protobuf.Timestamp updated = 30;
+
+  enum ChallengeStatus {
+    CHALLENGE_STATUS_UNSPECIFIED = 0;
+    CHALLENGE_STATUS_NEW = 1;
+    CHALLENGE_STATUS_DRAFT = 2;
+    CHALLENGE_STATUS_ACTIVE = 3;
+    CHALLENGE_STATUS_COMPLETED = 4;
+    CHALLENGE_STATUS_CANCELLED = 5;
+    CHALLENGE_STATUS_DELETED = 6;
+    CHALLENGE_STATUS_APPROVED = 7;
+    CHALLENGE_STATUS_CANCELLED_FAILED_REVIEW = 8;
+    CHALLENGE_STATUS_CANCELLED_FAILED_SCREENING = 9;
+    CHALLENGE_STATUS_CANCELLED_ZERO_SUBMISSIONS = 10;
+    CHALLENGE_STATUS_CANCELLED_WINNER_UNRESPONSIVE = 11;
+    CHALLENGE_STATUS_CANCELLED_CLIENT_REQUEST = 12;
+    CHALLENGE_STATUS_CANCELLED_REQUIREMENTS_INFEASIBLE = 13;
+    CHALLENGE_STATUS_CANCELLED_ZERO_REGISTRATIONS = 14;
+    CHALLENGE_STATUS_CANCELLED_PAYMENT_FAILED = 15;
+  }
 
   message Legacy {
     Track track = 1;
@@ -177,7 +196,83 @@ message Challenge {
 }
 
 message CreateChallengeInput {
-  Challenge challenge = 1;
+  string type_id = 1;
+  string track_id = 2;
+  Legacy Legacy = 3;
+legacy:
+  Joi.object().keys({
+    reviewType:
+      Joi.string()
+          .valid(_.values(constants.reviewTypes))
+          .insensitive()
+          .default(constants.reviewTypes.Internal),
+      confidentialityType:
+          Joi.string().default(config.DEFAULT_CONFIDENTIALITY_TYPE),
+      forumId: Joi.number().integer(), directProjectId: Joi.number().integer(),
+      screeningScorecardId: Joi.number().integer(),
+      reviewScorecardId: Joi.number().integer(), isTask: Joi.boolean(),
+      useSchedulingAPI: Joi.boolean(), pureV5Task: Joi.boolean(),
+      pureV5: Joi.boolean(), selfService: Joi.boolean(),
+      selfServiceCopilot: Joi.string()
+  }),
+  billing: Joi.object()
+      .keys({
+        billingAccountId:
+          Joi.string(), markup: Joi.number().min(0).max(100)
+      })
+      .unknown(true),
+  task: Joi.object().keys({
+    isTask:
+      Joi.boolean().default(false), isAssigned: Joi.boolean().default(false),
+      memberId: Joi.string().allow(null)
+  }),
+  name: Joi.string().required(), description: Joi.string(),
+  privateDescription: Joi.string(), descriptionFormat: Joi.string(),
+  metadata: Joi.array()
+      .items(Joi.object().keys({
+        name:
+          Joi.string().required(), value: Joi.required()
+      }))
+      .unique((a, b) = > a.name == = b.name),
+  timelineTemplateId: Joi.string(),  // Joi.optionalId(),
+  phases: Joi.array().items(Joi.object().keys({
+    phaseId:
+      Joi.id(), duration: Joi.number().integer().min(0)
+  })),
+  events: Joi.array().items(Joi.object().keys({
+    id:
+      Joi.number().required(), name: Joi.string(), key: Joi.string()
+  })),
+  discussions: Joi.array().items(Joi.object().keys({
+    id:
+      Joi.optionalId(), name: Joi.string().required(),
+      type: Joi.string().required().valid(_.values(constants.DiscussionTypes)),
+      provider: Joi.string().required(), url: Joi.string(),
+      options: Joi.array().items(Joi.object())
+  })),
+  prizeSets: Joi.array().items(Joi.object().keys({
+    type:
+      Joi.string().valid(_.values(constants.prizeSetTypes)).required(),
+      description: Joi.string(),
+      prizes: Joi.array()
+          .items(Joi.object().keys({
+            description:
+              Joi.string(), type: Joi.string().required(),
+              value: Joi.number().min(0).required()
+          }))
+          .min(1)
+          .required()
+  })),
+  tags: Joi.array().items(Joi.string()),  // tag names
+  projectId: Joi.number().integer().positive(),
+  legacyId: Joi.number().integer().positive(), startDate: Joi.date(),
+  status: Joi.string().valid(_.values(constants.challengeStatuses)),
+  groups: Joi.array().items(Joi.optionalId()).unique(),
+      // gitRepoURLs: Joi.array().items(Joi.string().uri()),
+  terms: Joi.array().items(Joi.object().keys({
+    id:
+      Joi.id(), roleId: Joi.id()
+  }))
 }
 
 message UpdateChallengeInput {
