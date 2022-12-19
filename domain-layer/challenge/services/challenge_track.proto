@@ -2,11 +2,14 @@ syntax = "proto3";
 
 package topcoder.domain.service.challenge_track;
 
-// import "common/Common.proto";
+// import "common/common.proto";
 import "domain-layer/challenge/challenge_track.proto";
 
 service ChallengeTrack {
-    rpc create(topcoder.domain.challenge_track.CreateChallengeTrackInput) returns (topcoder.domain.challenge_track.ChallengeTrack);
-    rpc update(topcoder.domain.challenge_track.UpdateChallengeTrackInput) returns (topcoder.domain.challenge_track.ChallengeTrack);
-    rpc remove(topcoder.domain.challenge_track.RemoveChallengeTrackInput) returns (topcoder.domain.challenge_track.ChallengeTrack);
+  rpc Create(topcoder.domain.challenge_track.CreateChallengeTrackInput)
+      returns (topcoder.domain.challenge_track.ChallengeTrack);
+  rpc Update(topcoder.domain.challenge_track.UpdateChallengeTrackInput)
+      returns (topcoder.domain.challenge_track.ChallengeTrack);
+  rpc Remove(topcoder.domain.challenge_track.RemoveChallengeTrackInput)
+      returns (topcoder.domain.challenge_track.ChallengeTrack);
 }

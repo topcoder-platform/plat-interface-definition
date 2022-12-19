@@ -2,24 +2,24 @@ syntax = "proto3";
 
 package topcoder.domain.challenge_timeline_template;
 
-import "common/Common.proto";
+import "common/common.proto";
 
 message ChallengeTimelineTemplate {
-    string id = 1;
-    string track_id = 2;
-    string type_id = 3;
-    string timeline_template_id = 4;
-    optional topcoder.common.Boolean is_default = 5;
+  string id = 1;
+  string track_id = 2;
+  string type_id = 3;
+  string timeline_template_id = 4;
+  optional topcoder.common.Boolean is_default = 5;
 }
 
 message CreateChallengeTimelineTemplateInput {
-    ChallengeTimelineTemplate challenge_timeline_template = 1;
+  ChallengeTimelineTemplate challenge_timeline_template = 1;
 }
 
 message UpdateChallengeTimelineTemplateInput {
-    ChallengeTimelineTemplate challenge_timeline_template = 1;
+  ChallengeTimelineTemplate challenge_timeline_template = 1;
 }
 
 message RemoveChallengeTimelineTemplateInput {
-    string id = 1;
+  string id = 1;
 }

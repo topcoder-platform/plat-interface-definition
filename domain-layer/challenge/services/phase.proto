@@ -5,7 +5,10 @@ package topcoder.domain.service.phase;
 import "domain-layer/challenge/phase.proto";
 
 service Phase {
-    rpc create(topcoder.domain.phase.CreatePhaseInput) returns (topcoder.domain.phase.Phase);
-    rpc update(topcoder.domain.phase.UpdatePhaseInput) returns (topcoder.domain.phase.Phase);
-    rpc remove(topcoder.domain.phase.RemovePhaseInput) returns (topcoder.domain.phase.Phase);
+  rpc Create(topcoder.domain.phase.CreatePhaseInput)
+      returns (topcoder.domain.phase.Phase);
+  rpc Update(topcoder.domain.phase.UpdatePhaseInput)
+      returns (topcoder.domain.phase.Phase);
+  rpc Remove(topcoder.domain.phase.RemovePhaseInput)
+      returns (topcoder.domain.phase.Phase);
 }

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package topcoder.domain.resource_role_service;
+
+import "common/common.proto";
+import "resource/resource_role.proto";
+
+service ResourceRole {
+  rpc Scan(topcoder.domain.common.ScanRequest)
+      returns (topcoder.domain.common.ScanResult);
+  rpc Lookup(topcoder.domain.common.LookupCriteria)
+      returns (topcoder.domain.resource_role.ResourceRole);
+  rpc Create(topcoder.domain.resource_role.CreateResourceRoleInput)
+      returns (topcoder.domain.resource_role.ResourceRole);
+  rpc Update(topcoder.domain.resource_role.UpdateResourceRoleInput)
+      returns (topcoder.domain.resource_role.ResourceRoleList);
+  rpc Delete(topcoder.domain.common.LookupCriteria)
+      returns (topcoder.domain.resource_role.ResourceRoleList);
+}

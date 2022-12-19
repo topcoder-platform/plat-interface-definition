@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package topcoder.domain.resource_role_phase_dependency;
+
+message ResourceRolePhaseDependency {
+  string id = 1;
+  string phase_id = 2;
+  bool phase_state = 3;
+  string resource_role_id = 4;
+}
+
+message CreateResourceRolePhaseDependencyInput {
+  string phase_id = 1;
+  bool phase_state = 2;
+  string resource_role_id = 3;
+}
+
+message ResourceRolePhaseDependencyList {
+  repeated ResourceRolePhaseDependency resource_role_phase_dependencies = 1;
+}

@@ -5,30 +5,32 @@ package topcoder.common;
 import "google/protobuf/struct.proto";
 
 enum Operator {
-  EQUAL = 0;
-  NOT_EQUAL = 1;
-  GREATER_THAN = 2;
-  GREATER_THAN_OR_EQUAL = 3;
-  LESS_THAN = 4;
-  LESS_THAN_OR_EQUAL = 5;
-  AND = 6;
-  BETWEEN = 7;
-  IN = 8;
-  IS = 9;
-  NOT = 10;
-  OR = 11;
+  OPERATOR_UNSPECIFIED = 0;
+  OPERATOR_EQUAL = 1;
+  OPERATOR_NOT_EQUAL = 2;
+  OPERATOR_GREATER_THAN = 3;
+  OPERATOR_GREATER_THAN_OR_EQUAL = 4;
+  OPERATOR_LESS_THAN = 5;
+  OPERATOR_LESS_THAN_OR_EQUAL = 6;
+  OPERATOR_AND = 7;
+  OPERATOR_BETWEEN = 8;
+  OPERATOR_IN = 9;
+  OPERATOR_IS = 10;
+  OPERATOR_NOT = 11;
+  OPERATOR_OR = 12;
 }
 
 enum Boolean {
-  UNDEFINED = 0;
-  TRUE = 1;
-  FALSE = 2;
+  BOOLEAN_UNSPECIFIED = 0;
+  BOOLEAN_TRUE = 1;
+  BOOLEAN_FALSE = 2;
 }
 
 enum Domain {
-  RESOURCE = 0;
-  RESOURCE_ROLE = 1;
-  RESOURCE_ROLE_PHASE_DEPENDENCY = 3;
+  DOMAIN_UNSPECIFIED = 0;
+  DOMAIN_RESOURCE = 1;
+  DOMAIN_RESOURCE_ROLE = 2;
+  DOMAIN_RESOURCE_ROLE_PHASE_DEPENDENCY = 3;
 }
 
 message ScanCriteria {
@@ -55,6 +57,6 @@ message FilterValue {
 }
 
 message LookupCriteria {
-    string key = 1;
-    FilterValue value = 2;
+  string key = 1;
+  FilterValue value = 2;
 }
