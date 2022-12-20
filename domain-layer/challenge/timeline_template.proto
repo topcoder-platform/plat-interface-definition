@@ -17,15 +17,18 @@ message TimelineTemplate {
 }
 
 message CreateTimelineTemplateInput {
-  TimelineTemplate timeline_template = 1;
+  string name = 1;
+  optional string description = 2;
+  bool is_active = 3;
+  repeated TimelineTemplatePhase phases = 4;
 }
 
 message UpdateTimelineTemplateInput {
-  TimelineTemplate timeline_template = 1;
-}
-
-message RemoveTimelineTemplateInput {
   string id = 1;
+  string name = 2;
+  optional string description = 3;
+  bool is_active = 4;
+  repeated TimelineTemplatePhase phases = 5;
 }
 
 message TimelineTemplateList {
