@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package topcoder.domain.challenge;
 
-import "common/common.proto";
 import "google/protobuf/timestamp.proto";
 
 enum Track {
@@ -114,8 +113,8 @@ message Challenge {
     ReviewType review_type = 5;
     optional int32 review_scorecard_id = 6;
     optional int32 screening_scorecard_id = 7;
-    optional topcoder.common.Boolean pure_v5_task = 8;
-    optional topcoder.common.Boolean self_service = 9;
+    optional bool pure_v5_task = 8;
+    optional bool self_service = 9;
     optional string self_service_copilot = 10;
   }
 
@@ -162,7 +161,7 @@ message Challenge {
     PhaseName name = 6;
     string phase_id = 7;
     string id = 8;
-    topcoder.common.Boolean open = 9;
+    bool open = 9;
   }
 
   message Winner {
@@ -171,8 +170,8 @@ message Challenge {
   }
 
   message Task {
-    topcoder.common.Boolean is_task = 1;
-    topcoder.common.Boolean is_assigned = 2;
+    bool is_task = 1;
+    bool is_assigned = 2;
     optional int32 member_id = 3;
   }
 
