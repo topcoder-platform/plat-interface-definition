@@ -2,14 +2,12 @@ syntax = "proto3";
 
 package topcoder.domain.challenge_type;
 
-import "common/common.proto";
-
 message ChallengeType {
   string id = 1;
   string name = 2;
   optional string description = 3;
-  topcoder.common.Boolean is_active = 4;
-  topcoder.common.Boolean is_task = 5;
+  bool is_active = 4;
+  bool is_task = 5;
   string abbreviation = 6;
 }
 

@@ -2,13 +2,11 @@ syntax = "proto3";
 
 package topcoder.domain.challenge_track;
 
-import "common/common.proto";
-
 message ChallengeTrack {
   string id = 1;
   string name = 2;
   optional string description = 3;
-  topcoder.common.Boolean is_active = 4;
+  bool is_active = 4;
   string abbreviation = 5;
 }
 

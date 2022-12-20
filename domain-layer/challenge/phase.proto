@@ -8,7 +8,7 @@ message Phase {
   string id = 1;
   string name = 2;
   optional string description = 3;
-  topcoder.common.Boolean is_open = 4;
+  bool is_open = 4;
   int64 duration = 5;
 }
 

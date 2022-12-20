@@ -20,12 +20,6 @@ enum Operator {
   OPERATOR_OR = 12;
 }
 
-enum Boolean {
-  BOOLEAN_UNSPECIFIED = 0;
-  BOOLEAN_TRUE = 1;
-  BOOLEAN_FALSE = 2;
-}
-
 enum Domain {
   DOMAIN_UNSPECIFIED = 0;
   DOMAIN_RESOURCE = 1;
