@@ -11,13 +11,20 @@ message ChallengeTrack {
 }
 
 message CreateChallengeTrackInput {
-  ChallengeTrack challenge_track = 1;
+  string name = 1;
+  optional string description = 2;
+  bool is_active = 3;
+  string abbreviation = 4;
 }
 
 message UpdateChallengeTrackInput {
-  ChallengeTrack challenge_track = 1;
+  string id = 1;
+  string name = 2;
+  optional string description = 3;
+  bool is_active = 4;
+  string abbreviation = 5;
 }
 
-message RemoveChallengeTrackInput {
-  string id = 1;
+message ChallengeTrackList {
+  repeated ChallengeTrack challenge_tracks = 1;
 }
