@@ -9,7 +9,7 @@ message ChallengeTimelineTemplate {
   string track_id = 2;
   string type_id = 3;
   string timeline_template_id = 4;
-  optional topcoder.common.Boolean is_default = 5;
+  bool is_default = 5;
 }
 
 message CreateChallengeTimelineTemplateInput {
