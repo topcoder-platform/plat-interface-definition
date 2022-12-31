@@ -3,6 +3,7 @@ syntax = "proto3";
 package topcoder.common;
 
 import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
 
 enum Operator {
   OPERATOR_UNSPECIFIED = 0;
@@ -47,6 +48,7 @@ message FilterValue {
   oneof value {
     string string_value = 1;
     int64 number_value = 2;
+    google.protobuf.Timestamp date_value = 3;
   }
 }
 
