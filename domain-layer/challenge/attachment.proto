@@ -19,6 +19,6 @@ message UpdateAttachmentInput {
   Attachment attachment = 1;
 }
 
-message RemoveAttachmentInput {
-  string id = 1;
+message AttachmentList {
+  repeated Attachment challenge_timeline_templates = 1;
 }
