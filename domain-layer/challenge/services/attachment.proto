@@ -9,6 +9,6 @@ service Attachment {
       returns (topcoder.domain.attachment.Attachment);
   rpc Update(topcoder.domain.attachment.UpdateAttachmentInput)
       returns (topcoder.domain.attachment.Attachment);
-  rpc Remove(topcoder.domain.attachment.RemoveAttachmentInput)
+  rpc Delete(topcoder.domain.attachment.RemoveAttachmentInput)
       returns (topcoder.domain.attachment.Attachment);
 }

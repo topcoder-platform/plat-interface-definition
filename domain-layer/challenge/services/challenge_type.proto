@@ -6,17 +6,17 @@ import "common/common.proto";
 import "domain-layer/challenge/challenge_type.proto";
 
 service ChallengeType {
-    rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
+  rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
-    rpc Lookup(topcoder.common.LookupCriteria)
-        returns (topcoder.domain.challenge_type.ChallengeType);
-  
-    rpc Create(topcoder.domain.challenge_type.CreateChallengeTypeInput)
-        returns (topcoder.domain.challenge_type.ChallengeType);
-  
-    rpc Update(topcoder.domain.challenge_type.UpdateChallengeTypeInput)
-        returns (topcoder.domain.challenge_type.ChallengeTypeList);
-  
-    rpc Delete(topcoder.common.LookupCriteria)
-        returns (topcoder.domain.challenge_type.ChallengeTypeList);
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.challenge_type.ChallengeType);
+
+  rpc Create(topcoder.domain.challenge_type.CreateChallengeTypeInput)
+      returns (topcoder.domain.challenge_type.ChallengeType);
+
+  rpc Update(topcoder.domain.challenge_type.UpdateChallengeTypeInput)
+      returns (topcoder.domain.challenge_type.ChallengeTypeList);
+
+  rpc Delete(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.challenge_type.ChallengeTypeList);
 }
