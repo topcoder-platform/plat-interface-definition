@@ -10,6 +10,10 @@ message ChallengeTimelineTemplate {
   bool is_default = 5;
 }
 
+message ChallengeTimelineTemplateList {
+  repeated ChallengeTimelineTemplate challenge_timeline_templates = 1;
+}
+
 message CreateChallengeTimelineTemplateInput {
   string track_id = 1;
   string type_id = 2;
@@ -23,8 +27,4 @@ message UpdateChallengeTimelineTemplateInput {
   optional string type_id = 3;
   optional string timeline_template_id = 4;
   bool is_default = 5;
-}
-
-message ChallengeTimelineTemplateList {
-  repeated ChallengeTimelineTemplate challenge_timeline_templates = 1;
 }

@@ -11,14 +11,14 @@ message Attachment {
   optional string description = 6;
 }
 
+message AttachmentList {
+  repeated Attachment challenge_timeline_templates = 1;
+}
+
 message CreateAttachmentInput {
   Attachment attachment = 1;
 }
 
 message UpdateAttachmentInput {
   Attachment attachment = 1;
-}
-
-message AttachmentList {
-  repeated Attachment challenge_timeline_templates = 1;
 }

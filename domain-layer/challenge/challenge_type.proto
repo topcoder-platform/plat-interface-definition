@@ -11,6 +11,10 @@ message ChallengeType {
   string abbreviation = 6;
 }
 
+message ChallengeTypeList {
+  repeated ChallengeType challenge_types = 1;
+}
+
 message CreateChallengeTypeInput {
   string name = 1;
   optional string description = 2;
@@ -26,8 +30,4 @@ message UpdateChallengeTypeInput {
   bool is_active = 4;
   bool is_task = 5;
   string abbreviation = 6;
-}
-
-message ChallengeTypeList {
-  repeated ChallengeType challenge_types = 1;
 }

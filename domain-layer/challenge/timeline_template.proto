@@ -16,6 +16,10 @@ message TimelineTemplate {
   repeated TimelineTemplatePhase phases = 5;
 }
 
+message TimelineTemplateList {
+  repeated TimelineTemplate timeline_templates = 1;
+}
+
 message CreateTimelineTemplateInput {
   string name = 1;
   optional string description = 2;
@@ -29,8 +33,4 @@ message UpdateTimelineTemplateInput {
   optional string description = 3;
   bool is_active = 4;
   repeated TimelineTemplatePhase phases = 5;
-}
-
-message TimelineTemplateList {
-  repeated TimelineTemplate timeline_templates = 1;
 }

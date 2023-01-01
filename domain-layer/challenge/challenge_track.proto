@@ -10,6 +10,10 @@ message ChallengeTrack {
   string abbreviation = 5;
 }
 
+message ChallengeTrackList {
+  repeated ChallengeTrack challenge_tracks = 1;
+}
+
 message CreateChallengeTrackInput {
   string name = 1;
   optional string description = 2;
@@ -23,8 +27,4 @@ message UpdateChallengeTrackInput {
   optional string description = 3;
   bool is_active = 4;
   string abbreviation = 5;
-}
-
-message ChallengeTrackList {
-  repeated ChallengeTrack challenge_tracks = 1;
 }
