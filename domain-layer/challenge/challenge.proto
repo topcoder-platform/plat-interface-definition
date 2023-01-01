@@ -1,0 +1,284 @@
+syntax = "proto3";
+
+package topcoder.domain.challenge;
+
+import "google/protobuf/timestamp.proto";
+
+enum Track {
+  TRACK_UNSPECIFIED = 0;
+  TRACK_DEVELOP = 1;
+  TRACK_DESIGN = 2;
+  TRACK_DATA_SCIENCE = 3;
+  TRACK_QA = 4;
+}
+
+enum SubTrack {
+  SUB_TRACK_UNSPECIFIED = 0;
+  SUB_TRACK_FIRST_2_FINISH = 1;
+  SUB_TRACK_CODE = 2;
+  SUB_TRACK_DESIGN_FIRST_2_FINISH = 3;
+  SUB_TRACK_ASSEMBLY_COMPETITION = 4 [deprecated = true];
+  SUB_TRACK_UI_PROTOTYPE_COMPETITION = 5 [deprecated = true];
+  SUB_TRACK_ARCHITECTURE = 6 [deprecated = true];
+  SUB_TRACK_BUG_HUNT = 7;
+  SUB_TRACK_MARATHON_MATCH = 8;
+  SUB_TRACK_SPECIFICATION = 9 [deprecated = true];
+  SUB_TRACK_WEB_DESIGNS = 10;
+  SUB_TRACK_TEST_SCENARIOS = 11 [deprecated = true];
+  SUB_TRACK_TEST_SUITES = 12 [deprecated = true];
+}
+
+enum ReviewType {
+  REVIEW_TYPE_UNSPECIFIED = 0;
+  REVIEW_TYPE_COMMUNITY = 1;
+  REVIEW_TYPE_INTERNAL = 2;
+}
+
+enum ConfidentialityType {
+  CONFIDENTIALITY_TYPE_UNSPECIFIED = 0;
+  CONFIDENTIALITY_TYPE_PUBLIC = 1;
+  CONFIDENTIALITY_TYPE_PRIVATE = 2;
+}
+
+enum PhaseName {
+  PHASE_NAME_UNSPECIFIED = 0;
+  PHASE_NAME_REGISTRATION = 1;
+  PHASE_NAME_SUBMISSION = 2;
+  PHASE_NAME_SCREENING = 3;
+  PHASE_NAME_REVIEW = 4;
+  PHASE_NAME_APPEALS = 5;
+  PHASE_NAME_APPEALS_RESPONSE = 6;
+  PHASE_NAME_AGGREGATION = 7;
+  PHASE_NAME_FINAL_FIX = 8;
+  PHASE_NAME_POST_MORTEM = 9;
+  PHASE_NAME_ITERATIVE_REVIEW = 10;
+}
+
+message Challenge {
+  string id = 1;
+  optional int32 legacy_id = 2;
+  string name = 3;
+  string type_id = 4;
+  string track_id = 5;
+  optional Legacy legacy = 6;
+  optional Billing billing = 7;
+  string description = 8;
+  optional string private_description = 9;
+  optional string description_format = 10;
+  repeated Metadata metadata = 11;
+  optional Task task = 12;
+  optional string timeline_template_id = 13;
+  repeated Phase phases = 14;
+  repeated Event events = 15;
+  repeated Term terms = 16;
+  repeated PrizeSet prize_sets = 17;
+  repeated string tags = 18;
+  optional int32 project_id = 19;
+  optional google.protobuf.Timestamp start_date = 20;
+  optional google.protobuf.Timestamp end_date = 21;
+  ChallengeStatus status = 22;
+  repeated string attachments = 23;
+  repeated string groups = 24;
+  repeated Winner winners = 25;
+  repeated Discussion discussions = 26;
+  string created_by = 27;
+  optional string updated_by = 28;
+  google.protobuf.Timestamp created = 29;
+  optional google.protobuf.Timestamp updated = 30;
+
+  enum ChallengeStatus {
+    CHALLENGE_STATUS_UNSPECIFIED = 0;
+    CHALLENGE_STATUS_NEW = 1;
+    CHALLENGE_STATUS_DRAFT = 2;
+    CHALLENGE_STATUS_ACTIVE = 3;
+    CHALLENGE_STATUS_COMPLETED = 4;
+    CHALLENGE_STATUS_CANCELLED = 5;
+    CHALLENGE_STATUS_DELETED = 6;
+    CHALLENGE_STATUS_APPROVED = 7;
+    CHALLENGE_STATUS_CANCELLED_FAILED_REVIEW = 8;
+    CHALLENGE_STATUS_CANCELLED_FAILED_SCREENING = 9;
+    CHALLENGE_STATUS_CANCELLED_ZERO_SUBMISSIONS = 10;
+    CHALLENGE_STATUS_CANCELLED_WINNER_UNRESPONSIVE = 11;
+    CHALLENGE_STATUS_CANCELLED_CLIENT_REQUEST = 12;
+    CHALLENGE_STATUS_CANCELLED_REQUIREMENTS_INFEASIBLE = 13;
+    CHALLENGE_STATUS_CANCELLED_ZERO_REGISTRATIONS = 14;
+    CHALLENGE_STATUS_CANCELLED_PAYMENT_FAILED = 15;
+  }
+
+  message Legacy {
+    Track track = 1;
+    SubTrack sub_track = 2;
+    int32 forum_id = 3;
+    int32 direct_project_id = 4;
+    ReviewType review_type = 5;
+    optional int32 review_scorecard_id = 6;
+    optional int32 screening_scorecard_id = 7;
+    optional bool pure_v5_task = 8;
+    optional bool self_service = 9;
+    optional string self_service_copilot = 10;
+  }
+
+  message Billing {
+    int32 billing_account_id = 1;
+    float markup = 2;
+  }
+
+  message Event {
+    int32 id = 1;
+    string name = 2;
+    string key = 3;
+  }
+
+  message Term {
+    string id = 1;
+    string role_id = 2;
+  }
+
+  message Metadata {
+    string name = 1;
+    string value = 2;
+  }
+
+  message Discussion {
+    optional string id = 1;
+    string name = 2;
+    DiscussionType type = 3;
+    string provider = 4;
+    string url = 5;
+
+    enum DiscussionType {
+      DISCUSSION_TYPE_UNSPECIFIED = 0;
+      DISCUSSION_TYPE_CHALLENGE = 1;
+    }
+  }
+
+  message Phase {
+    int32 duration = 1;
+    optional google.protobuf.Timestamp scheduled_start_date = 2;
+    optional google.protobuf.Timestamp scheduled_end_date = 3;
+    optional google.protobuf.Timestamp actual_start_date = 4;
+    optional google.protobuf.Timestamp actual_end_date = 5;
+    PhaseName name = 6;
+    string phase_id = 7;
+    string id = 8;
+    bool open = 9;
+  }
+
+  message Winner {
+    string handle = 1;
+    int32 placement = 2;
+  }
+
+  message Task {
+    bool is_task = 1;
+    bool is_assigned = 2;
+    optional int32 member_id = 3;
+  }
+
+  message PrizeSet {
+    message Prize {
+      float value = 1;
+      string type = 2;
+    }
+
+    enum PrizeType {
+      PRIZE_TYPE_UNSPECIFIED = 0;
+      PRIZE_TYPE_PLACEMENT = 1;
+      PRIZE_TYPE_COPILOT = 2;
+      PRIZE_TYPE_REVIEWER_PRIZE = 3;
+    }
+
+    PrizeType type = 1;
+    string description = 2;
+    repeated Prize prizes = 3;
+  }
+}
+
+message ChallengeList {
+  repeated Challenge challenges = 1;
+}
+
+message CreateChallengeInput {
+  string type_id = 1;
+  string track_id = 2;
+  // Legacy Legacy = 3;
+  // legacy:
+  //   Joi.object().keys({
+  //     reviewType:
+  //       Joi.string()
+  //           .valid(_.values(constants.reviewTypes))
+  //           .insensitive()
+  //           .default(constants.reviewTypes.Internal),
+  //       confidentialityType:
+  //           Joi.string().default(config.DEFAULT_CONFIDENTIALITY_TYPE),
+  //       forumId: Joi.number().integer(), directProjectId:
+  //       Joi.number().integer(), screeningScorecardId: Joi.number().integer(),
+  //       reviewScorecardId: Joi.number().integer(), isTask: Joi.boolean(),
+  //       useSchedulingAPI: Joi.boolean(), pureV5Task: Joi.boolean(),
+  //       pureV5: Joi.boolean(), selfService: Joi.boolean(),
+  //       selfServiceCopilot: Joi.string()
+  //   }),
+  //   billing: Joi.object()
+  //       .keys({
+  //         billingAccountId:
+  //           Joi.string(), markup: Joi.number().min(0).max(100)
+  //       })
+  //       .unknown(true),
+  //   task: Joi.object().keys({
+  //     isTask:
+  //       Joi.boolean().default(false), isAssigned:
+  //       Joi.boolean().default(false), memberId: Joi.string().allow(null)
+  //   }),
+  //   name: Joi.string().required(), description: Joi.string(),
+  //   privateDescription: Joi.string(), descriptionFormat: Joi.string(),
+  //   metadata: Joi.array()
+  //       .items(Joi.object().keys({
+  //         name:
+  //           Joi.string().required(), value: Joi.required()
+  //       }))
+  //       .unique((a, b) = > a.name == = b.name),
+  //   timelineTemplateId: Joi.string(),  // Joi.optionalId(),
+  //   phases: Joi.array().items(Joi.object().keys({
+  //     phaseId:
+  //       Joi.id(), duration: Joi.number().integer().min(0)
+  //   })),
+  //   events: Joi.array().items(Joi.object().keys({
+  //     id:
+  //       Joi.number().required(), name: Joi.string(), key: Joi.string()
+  //   })),
+  //   discussions: Joi.array().items(Joi.object().keys({
+  //     id:
+  //       Joi.optionalId(), name: Joi.string().required(),
+  //       type:
+  //       Joi.string().required().valid(_.values(constants.DiscussionTypes)),
+  //       provider: Joi.string().required(), url: Joi.string(),
+  //       options: Joi.array().items(Joi.object())
+  //   })),
+  //   prizeSets: Joi.array().items(Joi.object().keys({
+  //     type:
+  //       Joi.string().valid(_.values(constants.prizeSetTypes)).required(),
+  //       description: Joi.string(),
+  //       prizes: Joi.array()
+  //           .items(Joi.object().keys({
+  //             description:
+  //               Joi.string(), type: Joi.string().required(),
+  //               value: Joi.number().min(0).required()
+  //           }))
+  //           .min(1)
+  //           .required()
+  //   })),
+  //   tags: Joi.array().items(Joi.string()),  // tag names
+  //   projectId: Joi.number().integer().positive(),
+  //   legacyId: Joi.number().integer().positive(), startDate: Joi.date(),
+  //   status: Joi.string().valid(_.values(constants.challengeStatuses)),
+  //   groups: Joi.array().items(Joi.optionalId()).unique(),
+  //       // gitRepoURLs: Joi.array().items(Joi.string().uri()),
+  //   terms: Joi.array().items(Joi.object().keys({
+  //     id:
+  //       Joi.id(), roleId: Joi.id()
+  //   }))
+}
+
+message UpdateChallengeInput {
+  Challenge challenge = 1;
+}

@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package topcoder.common;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+
+enum Operator {
+  OPERATOR_UNSPECIFIED = 0;
+  OPERATOR_EQUAL = 1;
+  OPERATOR_NOT_EQUAL = 2;
+  OPERATOR_GREATER_THAN = 3;
+  OPERATOR_GREATER_THAN_OR_EQUAL = 4;
+  OPERATOR_LESS_THAN = 5;
+  OPERATOR_LESS_THAN_OR_EQUAL = 6;
+  OPERATOR_AND = 7;
+  OPERATOR_BETWEEN = 8;
+  OPERATOR_IN = 9;
+  OPERATOR_IS = 10;
+  OPERATOR_NOT = 11;
+  OPERATOR_OR = 12;
+}
+
+enum Domain {
+  DOMAIN_UNSPECIFIED = 0;
+  DOMAIN_RESOURCE = 1;
+  DOMAIN_RESOURCE_ROLE = 2;
+  DOMAIN_RESOURCE_ROLE_PHASE_DEPENDENCY = 3;
+  DOMAIN_CHALLENGE = 4;
+  DOMAIN_CHALLENGE_TYPE = 5;
+  DOMAIN_CHALLENG_TIMELINE_TEMPLATE = 6;
+  DOMAIN_CHALLENGE_TRACK = 7;
+  DOMAIN_CHALLENGE_PHASE = 8;
+  DOMAIN_CHALLENGE_TIMELINE_TEMPLATE = 9;
+}
+
+message ScanCriteria {
+  string key = 1;
+  optional Operator operator = 2;
+  google.protobuf.Value value = 3;
+}
+
+message ScanRequest {
+  optional string next_token = 1;
+  repeated topcoder.common.ScanCriteria scan_criteria = 2;
+}
+
+message ScanResult {
+  optional string next_token = 1;
+  repeated google.protobuf.Struct items = 2;
+}
+
+message LookupCriteria {
+  string key = 1;
+  google.protobuf.Value value = 3;
+}
+
+message GoogleProtobufTypesPlaceholder {
+  google.protobuf.Timestamp timestamp = 1;
+}

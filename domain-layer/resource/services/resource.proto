@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package topcoder.domain.resource_service;
+
+import "common/common.proto";
+import "domain-layer/resource/resource.proto";
+
+message Payment {
+  string resource_id = 1;
+  double amount = 2;
+}
+
+service Resource {
+  rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
+
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.resource.Resource);
+
+  rpc Create(topcoder.domain.resource.CreateResourceInput)
+      returns (topcoder.domain.resource.Resource);
+
+  rpc Delete(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.resource.ResourceList);
+
+  // rpc addPayment(Payment) returns { boolean }
+}

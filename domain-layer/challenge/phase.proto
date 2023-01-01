@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package topcoder.domain.phase;
+
+message Phase {
+  string id = 1;
+  string name = 2;
+  optional string description = 3;
+  bool is_open = 4;
+  int64 duration = 5;
+}
+
+message PhaseList {
+  repeated Phase phases = 1;
+}
+
+message CreatePhaseInput {
+  string name = 1;
+  optional string description = 2;
+  bool is_open = 3;
+  int64 duration = 4;
+}
+
+message UpdatePhaseInput {
+  string id = 1;
+  string name = 2;
+  optional string description = 3;
+  bool is_open = 4;
+  int64 duration = 5;
+}

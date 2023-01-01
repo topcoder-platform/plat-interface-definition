@@ -1,7 +1,5 @@
 {
-    "protoc": {
-        "options": [
-            "--proto_path=${workspaceRoot}/**/*.proto"
-        ]
-    }
+    "clang-format.style": "google",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "xaver.clang-format"
 }

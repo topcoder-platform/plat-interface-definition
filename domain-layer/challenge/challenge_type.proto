@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package topcoder.domain.challenge_type;
+
+message ChallengeType {
+  string id = 1;
+  string name = 2;
+  optional string description = 3;
+  bool is_active = 4;
+  bool is_task = 5;
+  string abbreviation = 6;
+}
+
+message ChallengeTypeList {
+  repeated ChallengeType challenge_types = 1;
+}
+
+message CreateChallengeTypeInput {
+  string name = 1;
+  optional string description = 2;
+  bool is_active = 3;
+  bool is_task = 4;
+  string abbreviation = 5;
+}
+
+message UpdateChallengeTypeInput {
+  string id = 1;
+  string name = 2;
+  optional string description = 3;
+  bool is_active = 4;
+  bool is_task = 5;
+  string abbreviation = 6;
+}

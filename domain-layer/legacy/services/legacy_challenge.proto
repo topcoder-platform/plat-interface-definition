@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package topcoder.domain.legacy_challenge_service;
+
+import "common/common.proto";
+import "legacy/legacy_challenge.proto";
+
+option java_package = "com.topcoder.domain.legacy_challenge_service";
+
+message CheckChallengeExistsResponse {
+  bool exists = 1;
+}
+
+service LegacyChallenge {
+  rpc CheckChallengeExists(topcoder.domain.legacy_challenge.LegacyChallengeId)
+      returns (CheckChallengeExistsResponse) {}
+  rpc Lookup(topcoder.domain.common.LookupCriteria)
+      returns (topcoder.domain.legacy_challenge.LegacyChallengeList) {}
+}
