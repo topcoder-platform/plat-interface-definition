@@ -5,40 +5,43 @@ package topcoder.dal.partiql;
 import "google/protobuf/struct.proto";
 
 enum DataType {
-  BOOLEAN = 0;
-  BINARY = 1;
-  LIST = 2;
-  MAP = 3;
-  NULL = 4;
-  NUMBER = 5;
-  NUMBER_SET = 6;
-  STRING = 7;
-  STRING_SET = 8;
+  DATA_TYPE_UNSPECIFIED = 0;
+  DATA_TYPE_BOOLEAN = 1;
+  DATA_TYPE_BINARY = 2;
+  DATA_TYPE_LIST = 3;
+  DATA_TYPE_MAP = 4;
+  DATA_TYPE_NULL = 5;
+  DATA_TYPE_NUMBER = 6;
+  DATA_TYPE_NUMBER_SET = 7;
+  DATA_TYPE_STRING = 8;
+  DATA_TYPE_STRING_SET = 9;
 }
 
 enum Operator {
-  EQUAL = 0;
-  NOT_EQUAL = 1;
-  GREATER_THAN = 2;
-  GREATER_THAN_OR_EQUAL = 3;
-  LESS_THAN = 4;
-  LESS_THAN_OR_EQUAL = 5;
-  AND = 6;
-  BETWEEN = 7;
-  IN = 8;
-  IS = 9;
-  NOT = 10;
-  OR = 11;
+  OPERATOR_UNSPECIFIED = 0;
+  OPERATOR_EQUAL = 1;
+  OPERATOR_NOT_EQUAL = 2;
+  OPERATOR_GREATER_THAN = 3;
+  OPERATOR_GREATER_THAN_OR_EQUAL = 4;
+  OPERATOR_LESS_THAN = 5;
+  OPERATOR_LESS_THAN_OR_EQUAL = 6;
+  OPERATOR_AND = 7;
+  OPERATOR_BETWEEN = 8;
+  OPERATOR_IN = 9;
+  OPERATOR_IS = 10;
+  OPERATOR_NOT = 11;
+  OPERATOR_OR = 12;
 }
 
 enum Error {
-  DATABASE_ERROR = 0;
-  INVALID_ARGUMENT = 1;
-  INVALID_QUERY = 2;
-  NOT_FOUND = 3;
-  UNAUTHENTICATED = 4;
-  UNAUTHORIZED = 5;
-  UNKNOWN = 6;
+  ERROR_UNSPECIFIED = 0;
+  ERROR_DATABASE_ERROR = 1;
+  ERROR_INVALID_ARGUMENT = 2;
+  ERROR_INVALID_QUERY = 3;
+  ERROR_NOT_FOUND = 4;
+  ERROR_UNAUTHENTICATED = 5;
+  ERROR_UNAUTHORIZED = 6;
+  ERROR_UNKNOWN = 7;
 }
 
 message StringSet {
@@ -88,22 +91,25 @@ message InsertQuery {
 }
 
 enum UpdateAction {
-  SET = 0;
-  REMOVE = 1;
+  UPDATE_ACTION_UNSPECIFIED = 0;
+  UPDATE_ACTION_SET = 1;
+  UPDATE_ACTION_REMOVE = 2;
 }
 
 enum UpdateType {
-  VALUE = 0;
-  SET_ADD = 1;
-  SET_DELETE = 2;
-  LIST_APPEND = 3;
+  UPDATE_TYPE_UNSPECIFIED = 0;
+  UPDATE_TYPE_VALUE = 1;
+  UPDATE_TYPE_SET_ADD = 2;
+  UPDATE_TYPE_SET_DELETE = 3;
+  UPDATE_TYPE_LIST_APPEND = 4;
 }
 
-enum ReturnValues {
-  ALL_NEW = 0;
-  MODIFIED_NEW = 1;
-  ALL_OLD = 2;
-  MODIFIED_OLD = 3;
+enum ReturnValue {
+  RETURN_VALUE_UNSPECIFIED = 0;
+  RETURN_VALUE_ALL_NEW = 1;
+  RETURN_VALUE_MODIFIED_NEW = 2;
+  RETURN_VALUE_ALL_OLD = 3;
+  RETURN_VALUE_MODIFIED_OLD = 4;
 }
 
 message UpdateOperation {
@@ -117,17 +123,17 @@ message UpdateQuery {
   string table = 1;
   repeated UpdateOperation updates = 2;
   repeated Filter filters = 3;
-  optional ReturnValues return_values = 4;
+  optional ReturnValue return_value = 4;
 }
 
 message DeleteQuery {
   string table = 1;
   repeated Filter filters = 2;
-  optional ReturnValues return_values = 3;
+  optional ReturnValue return_values = 3;
 }
 
 message ReadQuery {
-  repeated SelectQuery query = 1;
+  repeated SelectQuery queries = 1;
 }
 
 message WriteQuery {
@@ -145,7 +151,7 @@ message BulkWriteQuery {
 message BulkQuery {
   oneof kind {
     ReadQuery read = 1;
-    WriteQuery BulkWriteQuery = 2;
+    WriteQuery bulk_write_queries = 2;
   }
 }
 
