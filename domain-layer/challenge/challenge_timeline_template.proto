@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package topcoder.domain.challenge_timeline_template;
 
+import "common/common.proto";
+
 message ChallengeTimelineTemplate {
   string id = 1;
   string track_id = 2;
@@ -27,4 +29,6 @@ message UpdateChallengeTimelineTemplateInput {
   optional string type_id = 3;
   optional string timeline_template_id = 4;
   bool is_default = 5;
+
+  repeated topcoder.common.ScanCriteria filter_criteria = 6;
 }
