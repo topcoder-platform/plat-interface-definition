@@ -11,7 +11,7 @@ message Phase {
 }
 
 message PhaseList {
-  repeated Phase phases = 1;
+  repeated Phase items = 1;
 }
 
 message CreatePhaseInput {

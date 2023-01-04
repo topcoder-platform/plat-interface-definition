@@ -17,7 +17,7 @@ message TimelineTemplate {
 }
 
 message TimelineTemplateList {
-  repeated TimelineTemplate timeline_templates = 1;
+  repeated TimelineTemplate items = 1;
 }
 
 message CreateTimelineTemplateInput {

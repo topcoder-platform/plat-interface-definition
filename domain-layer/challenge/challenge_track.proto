@@ -11,7 +11,7 @@ message ChallengeTrack {
 }
 
 message ChallengeTrackList {
-  repeated ChallengeTrack challenge_tracks = 1;
+  repeated ChallengeTrack items = 1;
 }
 
 message CreateChallengeTrackInput {

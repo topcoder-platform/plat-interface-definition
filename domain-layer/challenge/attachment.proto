@@ -12,7 +12,7 @@ message Attachment {
 }
 
 message AttachmentList {
-  repeated Attachment challenge_timeline_templates = 1;
+  repeated Attachment items = 1;
 }
 
 message CreateAttachmentInput {

@@ -12,7 +12,7 @@ message ChallengeType {
 }
 
 message ChallengeTypeList {
-  repeated ChallengeType challenge_types = 1;
+  repeated ChallengeType items = 1;
 }
 
 message CreateChallengeTypeInput {

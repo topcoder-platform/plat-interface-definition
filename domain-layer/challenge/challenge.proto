@@ -195,7 +195,7 @@ message Challenge {
 }
 
 message ChallengeList {
-  repeated Challenge challenges = 1;
+  repeated Challenge items = 1;
 }
 
 message CreateChallengeInput {

@@ -13,7 +13,7 @@ message ChallengeTimelineTemplate {
 }
 
 message ChallengeTimelineTemplateList {
-  repeated ChallengeTimelineTemplate challenge_timeline_templates = 1;
+  repeated ChallengeTimelineTemplate items = 1;
 }
 
 message CreateChallengeTimelineTemplateInput {
