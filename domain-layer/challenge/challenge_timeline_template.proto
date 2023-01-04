@@ -24,11 +24,12 @@ message CreateChallengeTimelineTemplateInput {
 }
 
 message UpdateChallengeTimelineTemplateInput {
-  string id = 1;
-  optional string track_id = 2;
-  optional string type_id = 3;
-  optional string timeline_template_id = 4;
-  bool is_default = 5;
-
-  repeated topcoder.common.ScanCriteria filter_criteria = 6;
+  message UpdateInput {
+    optional string track_id = 2;
+    optional string type_id = 3;
+    optional string timeline_template_id = 4;
+    optional bool is_default = 5;
+  }
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 2;
 }
