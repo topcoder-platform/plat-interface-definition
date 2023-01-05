@@ -15,7 +15,7 @@ service TimelineTemplate {
       returns (topcoder.domain.timeline_template.TimelineTemplate);
 
   rpc Update(topcoder.domain.timeline_template.UpdateTimelineTemplateInput)
-      returns (topcoder.domain.timeline_template.TimelineTemplate);
+      returns (topcoder.domain.timeline_template.TimelineTemplateList);
 
   rpc Delete(topcoder.common.LookupCriteria)
       returns (topcoder.domain.timeline_template.TimelineTemplateList);

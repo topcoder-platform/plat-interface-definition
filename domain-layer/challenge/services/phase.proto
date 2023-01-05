@@ -15,7 +15,7 @@ service Phase {
       returns (topcoder.domain.phase.Phase);
 
   rpc Update(topcoder.domain.phase.UpdatePhaseInput)
-      returns (topcoder.domain.phase.Phase);
+      returns (topcoder.domain.phase.PhaseList);
 
   rpc Delete(topcoder.common.LookupCriteria)
       returns (topcoder.domain.phase.PhaseList);
