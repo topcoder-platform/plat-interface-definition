@@ -17,7 +17,11 @@ message AttachmentList {
 }
 
 message CreateAttachmentInput {
-  Attachment attachment = 1;
+  string url = 1;
+  int64 file_size = 2;
+  string name = 3;
+  string challenge_id = 4;
+  optional string description = 5;
 }
 
 message UpdateAttachmentInput {
