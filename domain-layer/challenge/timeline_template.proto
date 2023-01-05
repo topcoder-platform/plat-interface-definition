@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package topcoder.domain.timeline_template;
+import "common/common.proto";
 
 message TimelineTemplatePhase {
   string phase_id = 1;
@@ -28,9 +29,12 @@ message CreateTimelineTemplateInput {
 }
 
 message UpdateTimelineTemplateInput {
-  string id = 1;
-  string name = 2;
-  optional string description = 3;
-  bool is_active = 4;
-  repeated TimelineTemplatePhase phases = 5;
+  message UpdateInput {
+    string name = 2;
+    optional string description = 3;
+    bool is_active = 4;
+    repeated TimelineTemplatePhase phases = 5;
+  }
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 2;
 }
