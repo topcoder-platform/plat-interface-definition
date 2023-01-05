@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package topcoder.domain.attachment;
+import "common/common.proto";
 
 message Attachment {
   string id = 1;
@@ -20,5 +21,13 @@ message CreateAttachmentInput {
 }
 
 message UpdateAttachmentInput {
-  Attachment attachment = 1;
+  message UpdateInput {
+    string url = 2;
+    int64 file_size = 3;
+    string name = 4;
+    string challenge_id = 5;
+    optional string description = 6;
+  }
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 2;
 }

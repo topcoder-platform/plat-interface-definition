@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package topcoder.domain.challenge_track;
+import "common/common.proto";
 
 message ChallengeTrack {
   string id = 1;
@@ -22,9 +23,12 @@ message CreateChallengeTrackInput {
 }
 
 message UpdateChallengeTrackInput {
-  string id = 1;
-  string name = 2;
-  optional string description = 3;
-  bool is_active = 4;
-  string abbreviation = 5;
+  message UpdateInput {
+    string name = 2;
+    optional string description = 3;
+    bool is_active = 4;
+    string abbreviation = 5;
+  }
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 2;
 }
