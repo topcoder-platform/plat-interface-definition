@@ -6,10 +6,6 @@ option java_package = "com.topcoder.dal.rdb";
 option java_outer_classname = "RDBProtos";
 option java_multiple_files = true;
 
-message RawQuery {
-  string query = 1;
-}
-
 enum ColumnType {
   STRING = 0;
   INT = 1;
@@ -37,8 +33,9 @@ message Value {
 }
 
 message Column {
-  string name = 1;
-  optional ColumnType type = 2;
+  optional string table_name = 1;
+  string name = 2;
+  optional ColumnType type = 3;
 }
 
 enum Operator {
@@ -56,20 +53,42 @@ enum Operator {
   IS_NOT_NULL = 11;
 }
 
+enum JoinType {
+  INNER = 0;
+  LEFT = 1;
+  RIGHT = 2;
+  FULL = 3;
+}
+
 message WhereCriteria {
   Operator operator = 1;
   string key = 2;
   Value value = 3;
 }
 
+message RawQuery {
+  string query = 1;
+  repeated Column columns = 2;
+}
+
+message Join {
+  JoinType type = 1;
+  string from_table = 2;
+  string join_table = 3;
+  string from_column = 4;
+  string join_column = 5;
+}
+
 message SelectQuery {
-  string table = 1;
-  repeated Column column = 2;
-  repeated WhereCriteria where = 3;
-  repeated string group_by = 4;
-  repeated string order_by = 5;
-  uint32 limit = 6;
-  uint32 offset = 7;
+  optional string schema = 1;
+  string table = 2;
+  repeated Column column = 3;
+  repeated WhereCriteria where = 4;
+  repeated string group_by = 5;
+  repeated string order_by = 6;
+  repeated Join join = 7;
+  uint32 limit = 8;
+  uint32 offset = 9;
 }
 
 message ColumnValue {
@@ -83,6 +102,10 @@ message InsertQuery {
   optional string id_column = 3;
   optional string id_sequence = 4;
   optional string id_table = 5;
+}
+
+message BulkInsertQuery {
+  repeated InsertQuery insert = 1;
 }
 
 message UpdateQuery {
