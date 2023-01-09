@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package topcoder.domain.payment;
+
+import "common/common.proto";
+
+message Payment {
+  int64 payment_id = 1;
+  int32 user_id = 2;
+  int64 most_recent_payment_detail_id = 3;
+  optional int64 referral_payment_id = 4;
+  optional int32 pay_referrer = 5;
+  string create_date = 6;  // DATETIME YEAR TO FRACTION (3)
+  optional string modify_date = 7;
+  optional bool has_global_ad = 8;
+}
+
+message PaymentList {
+  repeated Payment items = 1;
+}
+
+message Payee {
+  int32 user_id = 1;
+}
+message Payable {
+  float amount = 1;
+}
+
+enum PaymentType {
+  PAYMENT_TYPE_UNSPECIFIED = 0;
+  PAYMENT_TYPE_WINNER = 1;
+  PAYMENT_TYPE_COPILOT = 2;
+  PAYMENT_TYPE_REVIEWER = 3;
+}
+
+message TaskPayment {
+  string challenge_id = 1;
+  PaymentType payment_type = 2;
+  Payee payee = 3;
+  Payable payable = 4;
+  optional int32 due_in_days = 5;
+  string desc = 6;
+}
+
+message ChallengePayment {
+  string challenge_id = 1;
+  int32 legacy_challenge_id = 2;
+  PaymentType payment_type = 3;
+  Payee payee = 4;
+  Payable payable = 5;
+  optional int32 due_in_days = 6;
+  string desc = 7;
+}
+
+message CreatePaymentInput {
+  oneof kind {
+    ChallengePayment challenge_payment = 1;
+    TaskPayment task_payment = 2;
+  }
+}
+
+message UpdatePaymentInput {
+  message UpdateInput {
+    Payable payable = 1;
+  }
+
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 2;
+}
