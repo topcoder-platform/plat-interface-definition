@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package topcoder.domain.payment;
+
+message PaymentDetail {
+  int64 payment_detail_id = 1;
+  float net_amount = 2;
+  float gross_amount = 3;
+  float total_amount = 4;
+  optional string date_paid = 5;
+  int32 payment_status_id = 6;
+  optional int32 payment_address_id = 7;
+  int32 modification_rationale_id = 8;
+  string payment_desc = 9;
+  int32 payment_type_id = 10;
+  string date_modified = 11;
+  string date_due = 12;
+  int32 payment_method_id = 13;
+  optional string client = 14;
+  optional int32 algorithm_round_id = 15;
+  optional int32 algorithm_problem_id = 16;
+  optional int32 component_contest_id = 17;
+  optional int32 component_project_id = 18;
+  optional int32 cockpit_project_id = 19;
+  optional int32 studio_contest_id = 20;
+  optional int32 digital_run_stage_id = 21;
+  optional int32 digital_run_season_id = 22;
+  optional int32 parent_payment_id = 23;
+  string create_date = 24;
+  int32 charity_ind = 25;
+  int32 installment_number = 26;
+  int32 digital_run_track_id = 27;
+  optional string jira_issue_id = 28;
+  int32 user_id = 29;
+}
+
+message PaymentDetailList {
+  repeated PaymentDetail items = 1;
+}
