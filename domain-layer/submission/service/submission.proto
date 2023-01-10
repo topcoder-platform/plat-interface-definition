@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package topcoder.domain.submission_service;
+
+import "common/common.proto";
+import "domain-layer/submission/submission.proto";
+
+service SubmissionService {
+  rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
+
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.submission
+                   .Submission);
+
+  rpc Create(topcoder.domain.submission
+                 .CreateSubmissionInput)
+      returns (topcoder.domain.submission
+                   .Submission);
+  // rpc Update(UpdateResourceRequest) returns (MutationResult);
+
+  rpc Delete(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.submission
+                   .SubmissionList);
+}
