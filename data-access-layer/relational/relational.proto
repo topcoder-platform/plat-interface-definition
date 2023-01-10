@@ -7,15 +7,16 @@ option java_outer_classname = "RDBProtos";
 option java_multiple_files = true;
 
 enum ColumnType {
-  STRING = 0;
-  INT = 1;
-  LONG = 2;
-  FLOAT = 3;
-  DOUBLE = 4;
-  BOOLEAN = 5;
-  DATE = 6;
-  DATETIME = 7;
-  BLOB = 8;
+  COLUMN_TYPE_UNSPECIFIED = 0;
+  COLUMN_TYPE_STRING = 1;
+  COLUMN_TYPE_INT = 2;
+  COLUMN_TYPE_LONG = 3;
+  COLUMN_TYPE_FLOAT = 4;
+  COLUMN_TYPE_DOUBLE = 5;
+  COLUMN_TYPE_BOOLEAN = 6;
+  COLUMN_TYPE_DATE = 7;
+  COLUMN_TYPE_DATETIME = 8;
+  COLUMN_TYPE_BLOB = 9;
 }
 
 message Value {
@@ -39,25 +40,27 @@ message Column {
 }
 
 enum Operator {
-  EQUAL = 0;
-  NOT_EQUAL = 1;
-  GREATER_THAN = 2;
-  GREATER_THAN_OR_EQUAL = 3;
-  LESS_THAN = 4;
-  LESS_THAN_OR_EQUAL = 5;
-  IN = 6;
-  NOT_IN = 7;
-  LIKE = 8;
-  NOT_LIKE = 9;
-  IS_NULL = 10;
-  IS_NOT_NULL = 11;
+  OPERATOR_UNSPECIFIED = 0;
+  OPERATOR_EQUAL = 1;
+  OPERATOR_NOT_EQUAL = 2;
+  OPERATOR_GREATER_THAN = 3;
+  OPERATOR_GREATER_THAN_OR_EQUAL = 4;
+  OPERATOR_LESS_THAN = 5;
+  OPERATOR_LESS_THAN_OR_EQUAL = 6;
+  OPERATOR_IN = 7;
+  OPERATOR_NOT_IN = 8;
+  OPERATOR_LIKE = 9;
+  OPERATOR_NOT_LIKE = 10;
+  OPERATOR_IS_NULL = 11;
+  OPERATOR_IS_NOT_NULL = 12;
 }
 
 enum JoinType {
-  INNER = 0;
-  LEFT = 1;
-  RIGHT = 2;
-  FULL = 3;
+  JOIN_TYPE_UNSPECIFIED = 0;
+  JOIN_TYPE_INNER = 1;
+  JOIN_TYPE_LEFT = 2;
+  JOIN_TYPE_RIGHT = 3;
+  JOIN_TYPE_FULL = 4;
 }
 
 message WhereCriteria {
@@ -73,10 +76,12 @@ message RawQuery {
 
 message Join {
   JoinType type = 1;
-  string from_table = 2;
-  string join_table = 3;
-  string from_column = 4;
-  string join_column = 5;
+  optional string from_table_schema = 2;
+  optional string join_table_schema = 3;
+  string from_table = 4;
+  string join_table = 5;
+  string from_column = 6;
+  string join_column = 7;
 }
 
 message SelectQuery {
@@ -97,11 +102,12 @@ message ColumnValue {
 }
 
 message InsertQuery {
-  string table = 1;
-  repeated ColumnValue column_value = 2;
-  optional string id_column = 3;
-  optional string id_sequence = 4;
-  optional string id_table = 5;
+  optional string schema = 1;
+  string table = 2;
+  repeated ColumnValue column_value = 3;
+  optional string id_column = 4;
+  optional string id_sequence = 5;
+  optional string id_table = 6;
 }
 
 message BulkInsertQuery {
@@ -109,14 +115,16 @@ message BulkInsertQuery {
 }
 
 message UpdateQuery {
-  string table = 1;
-  repeated ColumnValue column_value = 2;
-  repeated WhereCriteria where = 3;
+  optional string schema = 1;
+  string table = 2;
+  repeated ColumnValue column_value = 3;
+  repeated WhereCriteria where = 4;
 }
 
 message DeleteQuery {
-  string table = 1;
-  repeated WhereCriteria where = 2;
+  optional string schema = 1;
+  string table = 2;
+  repeated WhereCriteria where = 3;
 }
 
 message Query {
