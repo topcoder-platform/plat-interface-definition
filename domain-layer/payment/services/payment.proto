@@ -18,5 +18,5 @@ service Payment {
       returns (topcoder.domain.payment.Payment);
 
   rpc Delete(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.payment.PaymentList);
+      returns (topcoder.domain.payment.Payment);
 }
