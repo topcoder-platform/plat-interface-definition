@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package topcoder.domain.phase;
+import "common/common.proto";
 
 message Phase {
   string id = 1;
@@ -22,9 +23,12 @@ message CreatePhaseInput {
 }
 
 message UpdatePhaseInput {
-  string id = 1;
-  string name = 2;
-  optional string description = 3;
-  bool is_open = 4;
-  int64 duration = 5;
+  message UpdateInput {
+    string name = 2;
+    optional string description = 3;
+    bool is_open = 4;
+    int64 duration = 5;
+  }
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 2;
 }

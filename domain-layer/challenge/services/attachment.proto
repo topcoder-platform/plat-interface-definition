@@ -6,10 +6,17 @@ import "common/common.proto";
 import "domain-layer/challenge/attachment.proto";
 
 service Attachment {
+  rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
+
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.attachment.Attachment);
+
   rpc Create(topcoder.domain.attachment.CreateAttachmentInput)
       returns (topcoder.domain.attachment.Attachment);
+
   rpc Update(topcoder.domain.attachment.UpdateAttachmentInput)
-      returns (topcoder.domain.attachment.Attachment);
+      returns (topcoder.domain.attachment.AttachmentList);
+
   rpc Delete(topcoder.common.LookupCriteria)
       returns (topcoder.domain.attachment.AttachmentList);
 }
