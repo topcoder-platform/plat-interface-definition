@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package topcoder.domain.challenge;
 
-import "google/protobuf/timestamp.proto";
-
 enum Track {
   TRACK_UNSPECIFIED = 0;
   TRACK_DEVELOP = 1;
@@ -74,8 +72,8 @@ message Challenge {
   repeated PrizeSet prize_sets = 17;
   repeated string tags = 18;
   optional int32 project_id = 19;
-  optional google.protobuf.Timestamp start_date = 20;
-  optional google.protobuf.Timestamp end_date = 21;
+  optional int32 start_date = 20;
+  optional int32 end_date = 21;
   ChallengeStatus status = 22;
   repeated string attachments = 23;
   repeated string groups = 24;
@@ -83,8 +81,8 @@ message Challenge {
   repeated Discussion discussions = 26;
   string created_by = 27;
   optional string updated_by = 28;
-  google.protobuf.Timestamp created = 29;
-  optional google.protobuf.Timestamp updated = 30;
+  int32 created = 29;
+  optional int32 updated = 30;
   Overview overview = 31;
 
   enum ChallengeStatus {
@@ -145,7 +143,7 @@ message Challenge {
     string name = 2;
     DiscussionType type = 3;
     string provider = 4;
-    string url = 5;
+    optional string url = 5;
 
     enum DiscussionType {
       DISCUSSION_TYPE_UNSPECIFIED = 0;
@@ -155,14 +153,14 @@ message Challenge {
 
   message Phase {
     int32 duration = 1;
-    optional google.protobuf.Timestamp scheduled_start_date = 2;
-    optional google.protobuf.Timestamp scheduled_end_date = 3;
-    optional google.protobuf.Timestamp actual_start_date = 4;
-    optional google.protobuf.Timestamp actual_end_date = 5;
+    optional string scheduled_start_date = 2;
+    optional string scheduled_end_date = 3;
+    optional string actual_start_date = 4;
+    optional string actual_end_date = 5;
     PhaseName name = 6;
     string phase_id = 7;
     string id = 8;
-    bool open = 9;
+    bool is_open = 9;
   }
 
   message Winner {
@@ -183,7 +181,7 @@ message Challenge {
     }
 
     string type = 1;  // Placement, Copilot, Reviewer
-    string description = 2;
+    optional string description = 2;
     repeated Prize prizes = 3;
   }
 
@@ -214,8 +212,8 @@ message CreateChallengeInput {
   repeated Challenge.PrizeSet prize_sets = 15;
   repeated string tags = 16;
   optional int32 project_id = 17;
-  optional google.protobuf.Timestamp start_date = 18;
-  optional google.protobuf.Timestamp end_date = 19;
+  optional int32 start_date = 18;
+  optional int32 end_date = 19;
   Challenge.ChallengeStatus status = 20;
   repeated string attachments = 21;
   repeated string groups = 22;
