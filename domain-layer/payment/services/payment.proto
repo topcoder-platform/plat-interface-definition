@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package topcoder.domain.service.payment;
+
+import "common/common.proto";
+import "domain-layer/payment/payment.proto";
+
+service Payment {
+  rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
+
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.payment.Payment);
+
+  rpc Create(topcoder.domain.payment.CreatePaymentInput)
+      returns (topcoder.domain.payment.Payment);
+
+  rpc Update(topcoder.domain.payment.UpdatePaymentInput)
+      returns (topcoder.domain.payment.Payment);
+
+  rpc Delete(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.payment.Payment);
+}

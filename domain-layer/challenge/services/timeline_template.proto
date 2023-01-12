@@ -8,11 +8,15 @@ import "domain-layer/challenge/timeline_template.proto";
 service TimelineTemplate {
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
-  rpc Lookup(topcoder.common.LookupCriteria) returns (topcoder.domain.timeline_template.TimelineTemplate);
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.timeline_template.TimelineTemplate);
 
-  rpc Create(topcoder.domain.timeline_template.CreateTimelineTemplateInput) returns (topcoder.domain.timeline_template.TimelineTemplate);
+  rpc Create(topcoder.domain.timeline_template.CreateTimelineTemplateInput)
+      returns (topcoder.domain.timeline_template.TimelineTemplate);
 
-  rpc Update(topcoder.domain.timeline_template.UpdateTimelineTemplateInput) returns (topcoder.domain.timeline_template.TimelineTemplate);
+  rpc Update(topcoder.domain.timeline_template.UpdateTimelineTemplateInput)
+      returns (topcoder.domain.timeline_template.TimelineTemplateList);
 
-  rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.timeline_template.TimelineTemplateList);
+  rpc Delete(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.timeline_template.TimelineTemplateList);
 }

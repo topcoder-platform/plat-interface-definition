@@ -8,11 +8,15 @@ import "domain-layer/challenge/phase.proto";
 service Phase {
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
-  rpc Lookup(topcoder.common.LookupCriteria) returns (topcoder.domain.phase.Phase);
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.phase.Phase);
 
-  rpc Create(topcoder.domain.phase.CreatePhaseInput) returns (topcoder.domain.phase.Phase);
+  rpc Create(topcoder.domain.phase.CreatePhaseInput)
+      returns (topcoder.domain.phase.Phase);
 
-  rpc Update(topcoder.domain.phase.UpdatePhaseInput) returns (topcoder.domain.phase.Phase);
+  rpc Update(topcoder.domain.phase.UpdatePhaseInput)
+      returns (topcoder.domain.phase.PhaseList);
 
-  rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.phase.PhaseList);
+  rpc Delete(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.phase.PhaseList);
 }
