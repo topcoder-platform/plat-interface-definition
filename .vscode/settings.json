@@ -1,5 +1,5 @@
 {
-    "clang-format.style": "google",
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "xaver.clang-format"
+  "clang-format.style": "google",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "xaver.clang-format"
 }

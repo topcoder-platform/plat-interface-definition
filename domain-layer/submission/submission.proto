@@ -41,3 +41,30 @@ message CreateSubmissionInput {
     optional string submitted_date = 9;
   }
 }
+
+message UpdateSubmissionInput {
+  message authUser {
+    string handle = 1;
+    string sub = 2;
+    repeated string roles = 3;
+    repeated string scopes = 4;
+  }
+
+  string submissionId = 1;
+
+  message entity {
+    optional string url = 1;
+    optional string fileType = 2;
+    optional string challenge_id = 3;
+    optional string type = 4;
+    optional string member_id = 5;
+    optional int64 legacy_upload_id = 6;
+    optional int64 legacy_submission_id = 7;
+    optional string submission_phase_id = 8;
+    optional string submitted_date = 9;
+  }
+}
+
+message SubmissionList {
+  repeated string id = 1;
+}

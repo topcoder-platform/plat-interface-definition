@@ -8,15 +8,11 @@ import "domain-layer/resource/resource_role.proto";
 service ResourceRole {
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
-  rpc Lookup(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.resource_role.ResourceRole);
+  rpc Lookup(topcoder.common.LookupCriteria) returns (topcoder.domain.resource_role.ResourceRole);
 
-  rpc Create(topcoder.domain.resource_role.CreateResourceRoleInput)
-      returns (topcoder.domain.resource_role.ResourceRole);
+  rpc Create(topcoder.domain.resource_role.CreateResourceRoleInput) returns (topcoder.domain.resource_role.ResourceRole);
 
-  rpc Update(topcoder.domain.resource_role.UpdateResourceRoleInput)
-      returns (topcoder.domain.resource_role.ResourceRoleList);
+  rpc Update(topcoder.domain.resource_role.UpdateResourceRoleInput) returns (topcoder.domain.resource_role.ResourceRoleList);
 
-  rpc Delete(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.resource_role.ResourceRoleList);
+  rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.resource_role.ResourceRoleList);
 }

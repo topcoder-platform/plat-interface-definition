@@ -8,17 +8,10 @@ import "domain-layer/resource/resource_role_phase_dependency.proto";
 service ResourceRolePhaseDependency {
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
-  rpc Lookup(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.resource_role_phase_dependency
-                   .ResourceRolePhaseDependency);
+  rpc Lookup(topcoder.common.LookupCriteria) returns (topcoder.domain.resource_role_phase_dependency.ResourceRolePhaseDependency);
 
-  rpc Create(topcoder.domain.resource_role_phase_dependency
-                 .CreateResourceRolePhaseDependencyInput)
-      returns (topcoder.domain.resource_role_phase_dependency
-                   .ResourceRolePhaseDependency);
+  rpc Create(topcoder.domain.resource_role_phase_dependency.CreateResourceRolePhaseDependencyInput) returns (topcoder.domain.resource_role_phase_dependency.ResourceRolePhaseDependency);
   // rpc Update(UpdateResourceRequest) returns (MutationResult);
 
-  rpc Delete(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.resource_role_phase_dependency
-                   .ResourceRolePhaseDependencyList);
+  rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.resource_role_phase_dependency.ResourceRolePhaseDependencyList);
 }

@@ -8,15 +8,11 @@ import "domain-layer/challenge/challenge_track.proto";
 service ChallengeTrack {
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
-  rpc Lookup(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.challenge_track.ChallengeTrack);
+  rpc Lookup(topcoder.common.LookupCriteria) returns (topcoder.domain.challenge_track.ChallengeTrack);
 
-  rpc Create(topcoder.domain.challenge_track.CreateChallengeTrackInput)
-      returns (topcoder.domain.challenge_track.ChallengeTrack);
+  rpc Create(topcoder.domain.challenge_track.CreateChallengeTrackInput) returns (topcoder.domain.challenge_track.ChallengeTrack);
 
-  rpc Update(topcoder.domain.challenge_track.UpdateChallengeTrackInput)
-      returns (topcoder.domain.challenge_track.ChallengeTrackList);
+  rpc Update(topcoder.domain.challenge_track.UpdateChallengeTrackInput) returns (topcoder.domain.challenge_track.ChallengeTrackList);
 
-  rpc Delete(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.challenge_track.ChallengeTrackList);
+  rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.challenge_track.ChallengeTrackList);
 }

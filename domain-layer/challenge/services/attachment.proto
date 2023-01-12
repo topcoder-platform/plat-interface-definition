@@ -6,10 +6,7 @@ import "common/common.proto";
 import "domain-layer/challenge/attachment.proto";
 
 service Attachment {
-  rpc Create(topcoder.domain.attachment.CreateAttachmentInput)
-      returns (topcoder.domain.attachment.Attachment);
-  rpc Update(topcoder.domain.attachment.UpdateAttachmentInput)
-      returns (topcoder.domain.attachment.Attachment);
-  rpc Delete(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.attachment.AttachmentList);
+  rpc Create(topcoder.domain.attachment.CreateAttachmentInput) returns (topcoder.domain.attachment.Attachment);
+  rpc Update(topcoder.domain.attachment.UpdateAttachmentInput) returns (topcoder.domain.attachment.Attachment);
+  rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.attachment.AttachmentList);
 }

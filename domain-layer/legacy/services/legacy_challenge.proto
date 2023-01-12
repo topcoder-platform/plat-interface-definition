@@ -12,8 +12,6 @@ message CheckChallengeExistsResponse {
 }
 
 service LegacyChallenge {
-  rpc CheckChallengeExists(topcoder.domain.legacy_challenge.LegacyChallengeId)
-      returns (CheckChallengeExistsResponse) {}
-  rpc Lookup(topcoder.domain.common.LookupCriteria)
-      returns (topcoder.domain.legacy_challenge.LegacyChallengeList) {}
+  rpc CheckChallengeExists(topcoder.domain.legacy_challenge.LegacyChallengeId) returns (CheckChallengeExistsResponse) {}
+  rpc Lookup(topcoder.domain.common.LookupCriteria) returns (topcoder.domain.legacy_challenge.LegacyChallengeList) {}
 }
