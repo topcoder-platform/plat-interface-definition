@@ -72,8 +72,8 @@ message Challenge {
   repeated PrizeSet prize_sets = 17;
   repeated string tags = 18;
   optional int32 project_id = 19;
-  optional int32 start_date = 20;
-  optional int32 end_date = 21;
+  optional int64 start_date = 20;
+  optional int64 end_date = 21;
   ChallengeStatus status = 22;
   repeated string attachments = 23;
   repeated string groups = 24;
@@ -81,8 +81,8 @@ message Challenge {
   repeated Discussion discussions = 26;
   string created_by = 27;
   optional string updated_by = 28;
-  int32 created = 29;
-  optional int32 updated = 30;
+  int64 created = 29;
+  optional int64 updated = 30;
   Overview overview = 31;
 
   enum ChallengeStatus {
@@ -153,10 +153,10 @@ message Challenge {
 
   message Phase {
     int32 duration = 1;
-    optional string scheduled_start_date = 2;
-    optional string scheduled_end_date = 3;
-    optional string actual_start_date = 4;
-    optional string actual_end_date = 5;
+    optional int64 scheduled_start_date = 2;  // Unix timestamp
+    optional int64 scheduled_end_date = 3;    // Unix timestamp
+    optional int64 actual_start_date = 4;     // Unix timestamp
+    optional int64 actual_end_date = 5;       // Unix timestamp
     PhaseName name = 6;
     string phase_id = 7;
     string id = 8;
@@ -206,18 +206,24 @@ message CreateChallengeInput {
   optional string description_format = 9;
   repeated Challenge.Metadata metadata = 10;
   optional Challenge.Task task = 11;
-  repeated Challenge.Phase phases = 12;
+  repeated Phase phases = 12;
   repeated Challenge.Event events = 13;
   repeated Challenge.Term terms = 14;
   repeated Challenge.PrizeSet prize_sets = 15;
   repeated string tags = 16;
   optional int32 project_id = 17;
-  optional int32 start_date = 18;
-  optional int32 end_date = 19;
+  optional int64 start_date = 18;
+  optional int64 end_date = 19;
   Challenge.ChallengeStatus status = 20;
   repeated string attachments = 21;
   repeated string groups = 22;
   repeated Challenge.Discussion discussions = 23;
+
+  message Phase {
+    int32 default_duration = 1;
+    string phase_id = 2;
+    string predecessor = 3;
+  }
 }
 
 message UpdateChallengeInput {
