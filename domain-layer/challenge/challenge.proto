@@ -2,55 +2,7 @@ syntax = "proto3";
 
 package topcoder.domain.challenge;
 
-enum Track {
-  TRACK_UNSPECIFIED = 0;
-  TRACK_DEVELOP = 1;
-  TRACK_DESIGN = 2;
-  TRACK_DATA_SCIENCE = 3;
-  TRACK_QA = 4;
-}
-
-enum SubTrack {
-  SUB_TRACK_UNSPECIFIED = 0;
-  SUB_TRACK_FIRST_2_FINISH = 1;
-  SUB_TRACK_CODE = 2;
-  SUB_TRACK_DESIGN_FIRST_2_FINISH = 3;
-  SUB_TRACK_ASSEMBLY_COMPETITION = 4 [deprecated = true];
-  SUB_TRACK_UI_PROTOTYPE_COMPETITION = 5 [deprecated = true];
-  SUB_TRACK_ARCHITECTURE = 6 [deprecated = true];
-  SUB_TRACK_BUG_HUNT = 7;
-  SUB_TRACK_MARATHON_MATCH = 8;
-  SUB_TRACK_SPECIFICATION = 9 [deprecated = true];
-  SUB_TRACK_WEB_DESIGNS = 10;
-  SUB_TRACK_TEST_SCENARIOS = 11 [deprecated = true];
-  SUB_TRACK_TEST_SUITES = 12 [deprecated = true];
-}
-
-enum ReviewType {
-  REVIEW_TYPE_UNSPECIFIED = 0;
-  REVIEW_TYPE_COMMUNITY = 1;
-  REVIEW_TYPE_INTERNAL = 2;
-}
-
-enum ConfidentialityType {
-  CONFIDENTIALITY_TYPE_UNSPECIFIED = 0;
-  CONFIDENTIALITY_TYPE_PUBLIC = 1;
-  CONFIDENTIALITY_TYPE_PRIVATE = 2;
-}
-
-enum PhaseName {
-  PHASE_NAME_UNSPECIFIED = 0;
-  PHASE_NAME_REGISTRATION = 1;
-  PHASE_NAME_SUBMISSION = 2;
-  PHASE_NAME_SCREENING = 3;
-  PHASE_NAME_REVIEW = 4;
-  PHASE_NAME_APPEALS = 5;
-  PHASE_NAME_APPEALS_RESPONSE = 6;
-  PHASE_NAME_AGGREGATION = 7;
-  PHASE_NAME_FINAL_FIX = 8;
-  PHASE_NAME_POST_MORTEM = 9;
-  PHASE_NAME_ITERATIVE_REVIEW = 10;
-}
+import "google/protobuf/timestamp.proto";
 
 message Challenge {
   string id = 1;
@@ -74,7 +26,7 @@ message Challenge {
   optional int32 project_id = 19;
   optional int64 start_date = 20;
   optional int64 end_date = 21;
-  ChallengeStatus status = 22;
+  string status = 22;
   repeated string attachments = 23;
   repeated string groups = 24;
   repeated Winner winners = 25;
@@ -85,36 +37,18 @@ message Challenge {
   optional int64 updated = 30;
   Overview overview = 31;
 
-  enum ChallengeStatus {
-    CHALLENGE_STATUS_UNSPECIFIED = 0;
-    CHALLENGE_STATUS_NEW = 1;
-    CHALLENGE_STATUS_DRAFT = 2;
-    CHALLENGE_STATUS_ACTIVE = 3;
-    CHALLENGE_STATUS_COMPLETED = 4;
-    CHALLENGE_STATUS_CANCELLED = 5;
-    CHALLENGE_STATUS_DELETED = 6;
-    CHALLENGE_STATUS_APPROVED = 7;
-    CHALLENGE_STATUS_CANCELLED_FAILED_REVIEW = 8;
-    CHALLENGE_STATUS_CANCELLED_FAILED_SCREENING = 9;
-    CHALLENGE_STATUS_CANCELLED_ZERO_SUBMISSIONS = 10;
-    CHALLENGE_STATUS_CANCELLED_WINNER_UNRESPONSIVE = 11;
-    CHALLENGE_STATUS_CANCELLED_CLIENT_REQUEST = 12;
-    CHALLENGE_STATUS_CANCELLED_REQUIREMENTS_INFEASIBLE = 13;
-    CHALLENGE_STATUS_CANCELLED_ZERO_REGISTRATIONS = 14;
-    CHALLENGE_STATUS_CANCELLED_PAYMENT_FAILED = 15;
-  }
-
   message Legacy {
-    Track track = 1;
-    SubTrack sub_track = 2;
-    int32 forum_id = 3;
+    optional string track = 1;  // Develop, Design, Data Science, QA
+    optional string sub_track = 2;
+    optional int32 forum_id = 3;
     int32 direct_project_id = 4;
-    ReviewType review_type = 5;
-    optional int32 review_scorecard_id = 6;
-    optional int32 screening_scorecard_id = 7;
-    optional bool pure_v5_task = 8;
-    optional bool self_service = 9;
-    optional string self_service_copilot = 10;
+    string review_type = 5;           // Community, Internal
+    string confidentiality_type = 6;  // Public, Private
+    optional int32 review_scorecard_id = 7;
+    optional int32 screening_scorecard_id = 8;
+    optional bool pure_v5_task = 9;
+    optional bool self_service = 10;
+    optional string self_service_copilot = 11;
   }
 
   message Billing {
@@ -141,23 +75,18 @@ message Challenge {
   message Discussion {
     optional string id = 1;
     string name = 2;
-    DiscussionType type = 3;
+    string type = 3;  // Challenge
     string provider = 4;
     optional string url = 5;
-
-    enum DiscussionType {
-      DISCUSSION_TYPE_UNSPECIFIED = 0;
-      DISCUSSION_TYPE_CHALLENGE = 1;
-    }
   }
 
   message Phase {
     int32 duration = 1;
-    optional int64 scheduled_start_date = 2;  // Unix timestamp
-    optional int64 scheduled_end_date = 3;    // Unix timestamp
-    optional int64 actual_start_date = 4;     // Unix timestamp
-    optional int64 actual_end_date = 5;       // Unix timestamp
-    PhaseName name = 6;
+    optional google.protobuf.Timestamp scheduled_start_date = 2;
+    optional google.protobuf.Timestamp scheduled_end_date = 3;
+    optional google.protobuf.Timestamp actual_start_date = 4;
+    optional google.protobuf.Timestamp actual_end_date = 5;
+    string name = 6;
     string phase_id = 7;
     string id = 8;
     bool is_open = 9;
@@ -206,7 +135,7 @@ message CreateChallengeInput {
   optional string description_format = 9;
   repeated Challenge.Metadata metadata = 10;
   optional Challenge.Task task = 11;
-  repeated Phase phases = 12;
+  repeated Challenge.Phase phases = 12;
   repeated Challenge.Event events = 13;
   repeated Challenge.Term terms = 14;
   repeated Challenge.PrizeSet prize_sets = 15;
@@ -214,16 +143,10 @@ message CreateChallengeInput {
   optional int32 project_id = 17;
   optional int64 start_date = 18;
   optional int64 end_date = 19;
-  Challenge.ChallengeStatus status = 20;
+  string status = 20;
   repeated string attachments = 21;
   repeated string groups = 22;
   repeated Challenge.Discussion discussions = 23;
-
-  message Phase {
-    int32 default_duration = 1;
-    string phase_id = 2;
-    string predecessor = 3;
-  }
 }
 
 message UpdateChallengeInput {
