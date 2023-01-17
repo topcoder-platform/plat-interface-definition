@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package topcoder.domain.legacy_challenge;
+
+message LegacyChallengePhase {
+  int64 project_phase_id = 1;
+  int64 project_id = 2;
+  int64 phase_type_id = 3;
+  int64 phase_status_id = 4;
+  optional string fixed_start_time = 5;
+  optional string scheduled_start_time = 6;
+  optional string scheduled_end_time = 7;
+  optional string actual_start_time = 8;
+  optional string actual_end_time = 9;
+  int32 duration = 10;
+  int32 create_user = 11;
+  string create_date = 12;
+  optional int32 modify_user = 13;
+  optional string modify_date = 14;
+}
+
+message LegacyChallengePhaseList {
+  repeated LegacyChallengePhase phases = 1;
+}
+
+message CreateLegacyChallengePhaseInput {
+  int64 project_id = 1;
+  int64 phase_type_id = 2;
+  int64 phase_status_id = 3;
+  optional string fixed_start_time = 4;
+  optional string scheduled_start_time = 5;
+  optional string scheduled_end_time = 6;
+  optional string actual_start_time = 7;
+  optional string actual_end_time = 8;
+  int32 duration = 9;
+  int32 create_user = 10;
+  optional int32 modify_user = 11;
+}
