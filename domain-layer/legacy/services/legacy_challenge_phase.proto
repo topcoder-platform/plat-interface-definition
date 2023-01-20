@@ -2,12 +2,15 @@ syntax = "proto3";
 
 package topcoder.domain.legacy_challenge_phase_service;
 
-// import "common/common.proto";
+import "common/common.proto";
 import "domain-layer/legacy/legacy_challenge_phase.proto";
+import "google/protobuf/empty.proto";
 
 option java_package = "com.topcoder.domain.legacy_challenge_phase_service";
 
 service LegacyChallengePhase {
   rpc Create(topcoder.domain.legacy_challenge.CreateLegacyChallengePhaseInput)
-      returns (topcoder.domain.legacy_challenge.LegacyChallengePhase);
+      returns (topcoder.common.CreateResult);
+  rpc GetPhaseTypes(google.protobuf.Empty)
+      returns (topcoder.domain.legacy_challenge.PhaseTypeList);
 }
