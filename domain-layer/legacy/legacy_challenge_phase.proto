@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package topcoder.domain.legacy_challenge;
+package topcoder.domain.legacy_challenge_phase;
 
 message LegacyChallengePhase {
   int64 project_phase_id = 1;
