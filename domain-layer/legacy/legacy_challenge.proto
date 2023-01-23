@@ -22,3 +22,7 @@ message LegacyChallengeId {
 message LegacyChallengeList {
   repeated LegacyChallenge legacy_challenges = 1;
 }
+
+message CheckChallengeExistsResponse {
+  bool exists = 1;
+}
