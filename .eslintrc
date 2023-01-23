@@ -1,0 +1,13 @@
+{
+  "env": {
+    "es2022": true
+  },
+  "plugins": ["prettier"],
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2022
+  },
+  "rules": {
+    "prefer-const": "error"
+  }
+}

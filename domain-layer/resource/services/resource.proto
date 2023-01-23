@@ -13,14 +13,11 @@ message Payment {
 service Resource {
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
-  rpc Lookup(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.resource.Resource);
+  rpc Lookup(topcoder.common.LookupCriteria) returns (topcoder.domain.resource.Resource);
 
-  rpc Create(topcoder.domain.resource.CreateResourceInput)
-      returns (topcoder.domain.resource.Resource);
+  rpc Create(topcoder.domain.resource.CreateResourceInput) returns (topcoder.domain.resource.Resource);
 
-  rpc Delete(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.resource.ResourceList);
+  rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.resource.ResourceList);
 
   // rpc addPayment(Payment) returns { boolean }
 }

@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package topcoder.domain.submission;
+
+message Submission {
+  string id = 1;
+  string challenge_id = 2;
+  string created = 3;
+  string created_by = 4;
+  string file_type = 5;
+  optional int64 legacy_challenge_id = 6;
+  optional int64 legacySubmission_id = 7;
+  int64 member_id = 8;
+  optional string submission_phase_id = 9;
+  optional string submitted_date = 10;
+  string type = 11;
+  optional string updated = 12;
+  optional string updated_by = 13;
+  optional string url = 14;
+}
+
+message CreateSubmissionInput {
+  message authUser {
+    string handle = 1;
+    string sub = 2;
+    repeated string roles = 3;
+    repeated string scopes = 4;
+  }
+  message files {
+    string submission = 1;
+  }
+  message entity {
+    string url = 1;
+    string fileType = 2;
+    string challenge_id = 3;
+    string type = 4;
+    string member_id = 5;
+    optional int64 legacy_upload_id = 6;
+    optional int64 legacy_submission_id = 7;
+    optional string submission_phase_id = 8;
+    optional string submitted_date = 9;
+  }
+}
+
+message UpdateSubmissionInput {
+  message authUser {
+    string handle = 1;
+    string sub = 2;
+    repeated string roles = 3;
+    repeated string scopes = 4;
+  }
+
+  string submissionId = 1;
+
+  message entity {
+    optional string url = 1;
+    optional string fileType = 2;
+    optional string challenge_id = 3;
+    optional string type = 4;
+    optional string member_id = 5;
+    optional int64 legacy_upload_id = 6;
+    optional int64 legacy_submission_id = 7;
+    optional string submission_phase_id = 8;
+    optional string submitted_date = 9;
+  }
+}
+
+message SubmissionList {
+  repeated string id = 1;
+}

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A collection of interface definitions for the Topcoder Platform. These are used to define the API for the Topcoder Platform, and are used to generate the API documentation, stubs for the API clients, and the API server.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky install"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/topcoder-platform/plat-interface-definition.git"
@@ -12,5 +14,20 @@
   "bugs": {
     "url": "https://github.com/topcoder-platform/plat-interface-definition/issues"
   },
-  "homepage": "https://github.com/topcoder-platform/plat-interface-definition#readme"
+  "homepage": "https://github.com/topcoder-platform/plat-interface-definition#readme",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.4.0",
+    "commitlint": "^17.4.0",
+    "husky": "^8.0.3",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1"
+  },
+  "lint-staged": {
+    "*.{json,md,yml}": [
+      "npx prettier . --write"
+    ]
+  }
 }

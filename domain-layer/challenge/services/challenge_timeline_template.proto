@@ -8,20 +8,11 @@ import "domain-layer/challenge/challenge_timeline_template.proto";
 service ChallengeTimelineTemplate {
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
-  rpc Lookup(topcoder.common.LookupCriteria) returns (
-      topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplate);
+  rpc Lookup(topcoder.common.LookupCriteria) returns (topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplate);
 
-  rpc Create(topcoder.domain.challenge_timeline_template
-                 .CreateChallengeTimelineTemplateInput)
-      returns (topcoder.domain.challenge_timeline_template
-                   .ChallengeTimelineTemplate);
+  rpc Create(topcoder.domain.challenge_timeline_template.CreateChallengeTimelineTemplateInput) returns (topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplate);
 
-  rpc Update(topcoder.domain.challenge_timeline_template
-                 .UpdateChallengeTimelineTemplateInput)
-      returns (topcoder.domain.challenge_timeline_template
-                   .ChallengeTimelineTemplateList);
+  rpc Update(topcoder.domain.challenge_timeline_template.UpdateChallengeTimelineTemplateInput) returns (topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplateList);
 
-  rpc Delete(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.challenge_timeline_template
-                   .ChallengeTimelineTemplateList);
+  rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.challenge_timeline_template.ChallengeTimelineTemplateList);
 }
