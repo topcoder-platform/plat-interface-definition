@@ -1,8 +1,6 @@
 syntax = "proto3";
 
-package topcoder.domain.legacy_challenge;
-
-option java_package = "com.topcoder.domain.legacy_challenge";
+package topcoder.domain.challenge;
 
 message LegacyChallenge {
   int32 project_id = 1;
