@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package topcoder.domain.prize_service;
+
+import "common/common.proto";
+import "domain-layer/legacy/prize.proto";
+import "google/protobuf/empty.proto";
+
+service PrizeService {
+  rpc Create(topcoder.domain.prize.CreatePrizeInput)
+      returns (topcoder.common.CreateResult);
+
+  rpc Scan(topcoder.common.ScanCriteria)
+      returns (topcoder.domain.prize.PrizeList);
+
+  rpc GetPrizeTypes(google.protobuf.Empty)
+      returns (topcoder.domain.prize.PrizeTypeList);
+}
