@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package topcoder.domain.legacy_challenge_status;
+
+message LegacyChallengeStatus {
+  int32 name = 1;
+  string description = 2;
+  float project_status_id = 3;
+  int32 create_user = 4;
+  int64 create_date = 5;
+  int32 modify_user = 6;
+  int64 modify_date = 7;
+}

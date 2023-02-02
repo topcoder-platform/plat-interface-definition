@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package topcoder.domain.legacy_phase_type;
+
+message LegacyPhaseType {
+  int32 name = 1;
+  int32 phase_type_id = 2;
+  string description = 3;
+  int32 create_user = 4;
+  int64 create_date = 5;
+  int32 modify_user = 6;
+  int64 modify_date = 7;
+}

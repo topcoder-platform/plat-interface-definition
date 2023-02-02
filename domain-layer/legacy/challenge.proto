@@ -24,3 +24,9 @@ message LegacyChallengeList {
 message CheckChallengeExistsResponse {
   bool exists = 1;
 }
+
+message CreateChallengeInput {
+  int32 project_status_id = 1;
+  int32 project_category_id = 2;
+  int64 tc_direct_project_id = 3;
+}
