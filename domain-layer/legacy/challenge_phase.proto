@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package topcoder.domain.legacy_challenge_phase;
+package topcoder.domain.challenge_phase;
 
 message LegacyChallengePhase {
   int64 project_phase_id = 1;
@@ -37,7 +37,7 @@ message PhaseTypeList {
   repeated PhaseType items = 1;
 }
 
-message CreateLegacyChallengePhaseInput {
+message CreatePhaseInput {
   int64 project_id = 1;
   int64 phase_type_id = 2;
   int64 phase_status_id = 3;

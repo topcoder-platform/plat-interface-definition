@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package topcoder.common;
 
+import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -63,6 +64,8 @@ message LookupCriteria {
   google.protobuf.Value value = 3;
 }
 
+// TODO: There has to be a better way to do this.
 message GoogleProtobufTypesPlaceholder {
   google.protobuf.Timestamp timestamp = 1;
+  google.protobuf.Empty empty = 2;
 }
