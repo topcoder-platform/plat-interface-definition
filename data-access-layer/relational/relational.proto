@@ -172,4 +172,5 @@ message QueryResponse {
 
 service QueryService {
   rpc Query(QueryRequest) returns (QueryResponse);
+  rpc StreamQuery(stream QueryRequest) returns (stream QueryResponse);
 }

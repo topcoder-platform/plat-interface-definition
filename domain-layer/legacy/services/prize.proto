@@ -7,12 +7,12 @@ import "domain-layer/legacy/prize.proto";
 import "google/protobuf/empty.proto";
 
 service PrizeService {
-  rpc Create(topcoder.domain.prize.CreatePrizeInput)
+  rpc Create(topcoder.domain.legacy_prize.CreatePrizeInput)
       returns (topcoder.common.CreateResult);
 
   rpc Scan(topcoder.common.ScanCriteria)
-      returns (topcoder.domain.prize.PrizeList);
+      returns (topcoder.domain.legacy_prize.PrizeList);
 
   rpc GetPrizeTypes(google.protobuf.Empty)
-      returns (topcoder.domain.prize.PrizeTypeList);
+      returns (topcoder.domain.legacy_prize.PrizeTypeList);
 }

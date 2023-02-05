@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package topcoder.domain.prize;
+package topcoder.domain.legacy_prize;
 
 message Prize {
   int32 prize_id = 1;
@@ -12,7 +12,7 @@ message Prize {
   int64 create_date = 7;
   int32 modify_user = 8;
   int64 modify_date = 9;
-  int32 project_id = 10;  // legacy challenge id
+  int32 project_id = 10;
 }
 
 message PrizeType {
@@ -33,5 +33,5 @@ message CreatePrizeInput {
   float prize_amount = 2;
   int32 prize_type_id = 3;
   optional int32 number_of_submissions = 4;
-  int32 project_id = 5;  // legacy challenge id
+  int32 project_id = 5;
 }

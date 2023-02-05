@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package topcoder.domain.challenge;
+package topcoder.domain.legacy_challenge;
 
 message LegacyChallenge {
   int32 project_id = 1;
@@ -26,7 +26,20 @@ message CheckChallengeExistsResponse {
 }
 
 message CreateChallengeInput {
-  int32 project_status_id = 1;
-  int32 project_category_id = 2;
-  int64 tc_direct_project_id = 3;
+  string name = 1;
+  int32 project_status_id = 2;
+  int32 project_category_id = 3;
+  int64 tc_direct_project_id = 4;
+  repeated float winner_prizes = 5;
+  float copilot_cost = 6;
+  optional string review_type = 7;
+  optional float review_cost = 8;
+  bool timeline_notification = 9;
+  bool status_notification = 10;
+  bool rated = 11;
+  string confidentiality_type = 12;
+  int32 billing_project = 13;
+  optional float reliability_bonus_cost = 14;
+  optional float checkpoint_bonus_cost = 15;
+  map<string, string> project_info = 16;
 }

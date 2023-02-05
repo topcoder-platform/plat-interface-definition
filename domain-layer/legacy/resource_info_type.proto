@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package topcoder.domain.legacy_resource_info;
+package topcoder.domain.legacy_resource_info_type;
 
 message ResourceInfoType {
   int32 resource_info_type_id = 1;

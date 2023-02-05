@@ -5,7 +5,7 @@ package topcoder.domain.legacy_challenge_payment;
 message LegacyChallengePayment {
   int32 place = 1;
   int32 prize_id = 2;
-  int32 project_id = 3;  // legacy challenge id
+  int32 project_id = 3;
   int32 prize_type_id = 4;
   float prize_amount = 5;
   int32 create_user = 6;

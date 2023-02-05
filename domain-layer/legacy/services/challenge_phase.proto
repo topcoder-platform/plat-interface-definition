@@ -7,9 +7,9 @@ import "domain-layer/legacy/challenge_phase.proto";
 import "google/protobuf/empty.proto";
 
 service LegacyChallengePhase {
-  rpc Create(topcoder.domain.challenge_phase.CreatePhaseInput)
+  rpc Create(topcoder.domain.legacy_challenge_phase.CreatePhaseInput)
       returns (topcoder.common.CreateResult);
 
   rpc GetPhaseTypes(google.protobuf.Empty)
-      returns (topcoder.domain.challenge_phase.PhaseTypeList);
+      returns (topcoder.domain.legacy_challenge_phase.PhaseTypeList);
 }
