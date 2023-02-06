@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package topcoder.domain.project_info;
+
+message ProjectInfo {
+  int32 project_id = 1;
+  int32 project_info_type_id = 2;
+  string value = 3;
+  optional int32 create_user = 4;
+  optional string create_date = 5;
+  optional int32 modify_user = 6;
+  optional string modify_date = 7;
+}
+
+message ProjectInfoList {
+  repeated ProjectInfo project_info = 1;
+}
+
+message GetProjectInfoInput {
+  int32 project_id = 1;
+  optional int32 project_info_type_id = 2;
+}
+
+message CreateProjectInfoInput {
+  int32 project_id = 1;
+  int32 project_info_type_id = 2;
+  string value = 3;
+  optional int32 create_user = 4;
+  optional string create_date = 5;
+}
+
+message DeleteProjectInfoInput {
+  int32 project_id = 1;
+  int32 project_info_type_id = 2;
+}
+
+message UpdateProjectInfoInput {
+  int32 project_id = 1;
+  int32 project_info_type_id = 2;
+  string value = 3;
+  optional int32 modify_user = 4;
+  optional string modify_date = 5;
+}
+
+message ProjectInfoType {
+  int32 project_info_type_id = 1;
+  string name = 2;
+  string description = 3;
+  optional int32 create_user = 4;
+  optional string create_date = 5;
+  optional int32 modify_user = 6;
+  optional string modify_date = 7;
+}
+
+message ProjectInfoTypeList {
+  repeated ProjectInfoType project_info_types = 1;
+}

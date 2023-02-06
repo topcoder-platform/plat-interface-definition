@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package topcoder.domain.service.phase;
+
+import "domain-layer/legacy/phase.proto";
+import "google/protobuf/empty.proto";
+
+service LegacyPhase {
+    rpc GetPhaseCriteria(google.protobuf.Empty)
+        returns(topcoder.domain.phase.PhaseCriteriaList);
+
+    rpc CreatePhaseCriteria(topcoder.domain.phase.CreatePhaseCriteriaInput)
+        returns(topcoder.domain.phase.PhaseCriteria);
+
+    rpc DeletePhaseCriteria(topcoder.domain.phase.DeletePhaseCriteriaInput)
+        returns(google.protobuf.Empty);
+
+    rpc GetPhaseTypes(google.protobuf.Empty)
+        returns(topcoder.domain.phase.PhaseTypeList);
+
+    rpc GetProjectPhases(topcoder.domain.phase.GetProjectPhasesInput)
+        returns(topcoder.domain.phase.ProjectPhaseList);
+
+    rpc DeleteProjectPhases(topcoder.domain.phase.DeleteProjectPhasesInput)
+        returns(google.protobuf.Empty);
+    
+    rpc CreateProjectPhase(topcoder.domain.phase.CreateProjectPhaseInput)
+        returns(topcoder.domain.phase.ProjectPhase);
+    
+    rpc UpdateProjectPhase(topcoder.domain.phase.UpdateProjectPhaseInput)
+        returns(topcoder.domain.phase.ProjectPhase);
+
+    rpc CreatePhaseDependency(topcoder.domain.phase.CreatePhaseDependencyInput)
+        returns(topcoder.domain.phase.PhaseDependency);
+}

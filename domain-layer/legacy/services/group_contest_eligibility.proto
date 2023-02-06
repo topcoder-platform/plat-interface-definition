@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package topcoder.domain.service.group_contest_eligibility;
+
+import "domain-layer/legacy/group_contest_eligibility.proto";
+import "google/protobuf/empty.proto";
+
+service LegacyGroupContestEligibility {
+    rpc GetContestEligibilities(topcoder.domain.group_contest_eligibility.GetContestEligibilityInput)
+        returns (topcoder.domain.group_contest_eligibility.ContestEligibilityList);
+
+    rpc CreateContestEligibility(topcoder.domain.group_contest_eligibility.ContestEligibility)
+        returns (google.protobuf.Empty);
+
+    rpc GetGroupContestEligibilities(topcoder.domain.group_contest_eligibility.GetGroupContestEligibilityInput)
+        returns (topcoder.domain.group_contest_eligibility.GroupContestEligibilityList);
+
+    rpc CreateGroupContestEligibility(topcoder.domain.group_contest_eligibility.GroupContestEligibility)
+        returns (google.protobuf.Empty);
+
+    rpc DeleteContestEligibility(topcoder.domain.group_contest_eligibility.DeleteContestEligibilityInput)
+        returns (google.protobuf.Empty);
+
+    rpc DeleteGroupContestEligibility(topcoder.domain.group_contest_eligibility.DeleteGroupContestEligibilityInput)
+        returns (google.protobuf.Empty);
+}
