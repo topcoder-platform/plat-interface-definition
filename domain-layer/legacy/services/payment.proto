@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package topcoder.domain.service.payment;
+
+import "domain-layer/legacy/payment.proto";
+import "google/protobuf/empty.proto";
+
+service LegacyPayment {
+    rpc GetProjectPayments(topcoder.domain.payment.GetProjectPaymentsInput)
+        returns(topcoder.domain.payment.ProjectPaymentList);
+
+    rpc CreateProjectPayment(topcoder.domain.payment.CreateProjectPaymentsInput)
+        returns(topcoder.domain.payment.ProjectPayment);
+
+    rpc UpdateProjectPayment(topcoder.domain.payment.UpdateProjectPaymentsInput)
+        returns(topcoder.domain.payment.ProjectPayment);
+
+    rpc DeleteProjectPayment(topcoder.domain.payment.DeleteProjectPaymentsInput)
+        returns(google.protobuf.Empty);
+
+    rpc GetProjectPrizes(topcoder.domain.payment.GetPrizesInput)
+        returns(topcoder.domain.payment.PrizeList);
+
+    rpc CreateProjectPrize(topcoder.domain.payment.CreatePrizeInput)
+        returns(topcoder.domain.payment.Prize);
+
+    rpc UpdateProjectPrize(topcoder.domain.payment.UpdatePrizeInput)
+        returns(topcoder.domain.payment.Prize);
+
+    rpc DeleteProjectPrize(topcoder.domain.payment.DeletePrizeInput)
+        returns(google.protobuf.Empty);
+}
