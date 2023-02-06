@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package topcoder.domain.legacy_challenge_payment_type;
+
+message LegacyChallengePaymentType {
+  int32 project_id = 1;
+  string name = 2;
+  int32 multiplier = 3;
+  bool mergeable = 4;
+  int32 pacts_payment_type_id = 5;
+}
