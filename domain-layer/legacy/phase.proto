@@ -3,13 +3,13 @@ syntax = "proto3";
 package topcoder.domain.phase;
 
 message PhaseType {
-  int32 phase_type_id = 1;
+  int64 phase_type_id = 1;
   string name = 2;
-  string description = 3;
-  int32 create_user = 4;
-  int64 create_date = 5;
-  int32 modify_user = 6;
-  int64 modify_date = 7;
+  optional string description = 3;
+  optional int32 create_user = 4;
+  optional string create_date = 5;
+  optional int32 modify_user = 6;
+  optional string modify_date = 7;
 }
 
 message PhaseTypeList {
@@ -66,20 +66,20 @@ message PhaseCriteriaList {
 }
 
 message ProjectPhase {
-  int32 project_phase_id = 1;
-  int32 project_id = 2;
-  int32 phase_type_id = 3;
-  int32 phase_status_id = 4;
-  int64 fixed_start_time = 5;
-  int64 scheduled_start_time = 6;
-  int64 scheduled_end_time = 7;
-  int64 actual_start_time = 8;
-  int64 actual_end_time = 9;
-  int64 duration = 10;
-  int32 create_user = 11;
-  int64 create_date = 12;
-  int32 modify_user = 13;
-  int64 modify_date = 14;
+  int64 project_phase_id = 1;
+  int64 project_id = 2;
+  int64 phase_type_id = 3;
+  int64 phase_status_id = 4;
+  optional string fixed_start_time = 5;
+  optional string scheduled_start_time = 6;
+  optional string scheduled_end_time = 7;
+  optional string actual_start_time = 8;
+  optional string actual_end_time = 9;
+  int32 duration = 10;
+  optional int32 create_user = 11;
+  optional string create_date = 12;
+  optional int32 modify_user = 13;
+  optional string modify_date = 14;
 }
 
 message GetProjectPhasesInput {
@@ -88,7 +88,7 @@ message GetProjectPhasesInput {
 }
 
 message ProjectPhaseList {
-  repeated ProjectPhase project_phase_list = 1;
+  repeated ProjectPhase project_phases = 1;
 }
 
 message DeleteProjectPhasesInput {
@@ -97,26 +97,25 @@ message DeleteProjectPhasesInput {
 }
 
 message CreateProjectPhaseInput {
-  int32 project_phase_id = 1;
-  int32 project_id = 2;
-  int32 phase_type_id = 3;
-  int32 phase_status_id = 4;
-  int64 fixed_start_time = 5;
-  int64 scheduled_start_time = 6;
-  int64 scheduled_end_time = 7;
-  int64 actual_start_time = 8;
-  int64 actual_end_time = 9;
-  int64 duration = 10;
-  int32 create_user = 11;
-  int64 create_date = 12;
+  int64 project_id = 1;
+  int64 phase_type_id = 2;
+  int64 phase_status_id = 3;
+  optional string fixed_start_time = 4;
+  optional string scheduled_start_time = 5;
+  optional string scheduled_end_time = 6;
+  optional string actual_start_time = 7;
+  optional string actual_end_time = 8;
+  int32 duration = 9;
+  int32 create_user = 10;
+  optional int32 modify_user = 11;
 }
 
 message UpdateProjectPhaseInput {
   int32 phase_status_id = 1;
-  int64 fixed_start_time = 2;
-  int64 scheduled_start_time = 3;
-  int64 scheduled_end_time = 4;
-  int64 duration = 5;
+  optional int64 fixed_start_time = 2;
+  optional int64 scheduled_start_time = 3;
+  optional int64 scheduled_end_time = 4;
+  optional int64 duration = 5;
   optional int64 actual_start_time = 6;
   optional int64 actual_end_time = 7;
 }
