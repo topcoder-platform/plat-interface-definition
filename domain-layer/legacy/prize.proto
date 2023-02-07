@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package topcoder.domain.legacy_prize;
+
+message Prize {
+  int32 prize_id = 1;
+  int32 place = 2;
+  float prize_amount = 3;
+  int32 prize_type_id = 4;
+  int32 number_of_submissions = 5;
+  int32 create_user = 6;
+  int64 create_date = 7;
+  int32 modify_user = 8;
+  int64 modify_date = 9;
+  int32 project_id = 10;
+}
+
+message PrizeType {
+  int32 prize_type_id = 1;
+  string prize_type_desc = 2;
+}
+
+message PrizeList {
+  repeated Prize prizes = 1;
+}
+
+message PrizeTypeList {
+  repeated PrizeType prize_types = 1;
+}
+
+message CreatePrizeInput {
+  int32 place = 1;
+  float prize_amount = 2;
+  int32 prize_type_id = 3;
+  optional int32 number_of_submissions = 4;
+  int32 project_id = 5;
+}
