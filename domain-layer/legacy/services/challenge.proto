@@ -6,8 +6,14 @@ import "common/common.proto";
 import "domain-layer/legacy/challenge.proto";
 
 service LegacyChallenge {
-  rpc CheckChallengeExists(topcoder.domain.challenge.LegacyChallengeId)
-      returns (topcoder.domain.challenge.CheckChallengeExistsResponse);
-  rpc Lookup(topcoder.common.LookupCriteria)
-      returns (topcoder.domain.challenge.LegacyChallengeList);
+    rpc CheckChallengeExists(topcoder.domain.challenge.LegacyChallengeId)
+        returns (topcoder.domain.challenge.CheckChallengeExistsResponse);
+    rpc Lookup(topcoder.common.LookupCriteria)
+        returns (topcoder.domain.challenge.LegacyChallengeList);
+    rpc Update(topcoder.domain.challenge.UpdateChallengeInput)
+        returns (topcoder.domain.challenge.LegacyChallenge);
+    rpc ActivateChallenge(topcoder.domain.challenge.LegacyChallengeId)
+        returns (topcoder.domain.challenge.LegacyChallenge);
+    rpc CloseChallenge(topcoder.domain.challenge.CloseChallengeInput)
+        returns (topcoder.domain.challenge.LegacyChallenge);
 }
