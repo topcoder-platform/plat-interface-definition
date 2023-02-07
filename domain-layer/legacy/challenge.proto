@@ -21,7 +21,7 @@ message LegacyChallengeList {
   repeated LegacyChallenge legacy_challenges = 1;
 }
 
-message CheckChallengeExistsResponse {
+message CheckExistsResponse {
   bool exists = 1;
 }
 
@@ -42,4 +42,16 @@ message CreateChallengeInput {
   optional float reliability_bonus_cost = 14;
   optional float checkpoint_bonus_cost = 15;
   map<string, string> project_info = 16;
+}
+
+message UpdateChallengeInput {
+  int32 project_id = 1;
+  int32 project_status_id = 2;
+  int32 modify_user = 3;
+}
+
+message CloseChallengeInput {
+  int32 project_id = 1;
+  int32 winner_id = 2;
+  int32 modify_user = 3;
 }
