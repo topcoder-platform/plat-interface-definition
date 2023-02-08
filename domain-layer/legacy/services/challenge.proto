@@ -16,4 +16,6 @@ service LegacyChallenge {
         returns (topcoder.domain.challenge.LegacyChallenge);
     rpc CloseChallenge(topcoder.domain.challenge.CloseChallengeInput)
         returns (topcoder.domain.challenge.LegacyChallenge);
+    rpc GetLegacyChallenge(topcoder.domain.challenge.LegacyChallengeId)
+        returns(topcoder.domain.challenge.LegacyChallenge);
 }

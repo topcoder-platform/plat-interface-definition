@@ -111,11 +111,12 @@ message CreateProjectPhaseInput {
 }
 
 message UpdateProjectPhaseInput {
-  int32 phase_status_id = 1;
-  optional int64 fixed_start_time = 2;
-  optional int64 scheduled_start_time = 3;
-  optional int64 scheduled_end_time = 4;
-  optional int64 duration = 5;
-  optional int64 actual_start_time = 6;
-  optional int64 actual_end_time = 7;
+  int64 project_phase_id = 1;
+  int32 phase_status_id = 2;
+  optional int64 fixed_start_time = 3;
+  optional int64 scheduled_start_time = 4;
+  optional int64 scheduled_end_time = 5;
+  optional int64 duration = 6;
+  optional int64 actual_start_time = 7;
+  optional int64 actual_end_time = 8;
 }

@@ -38,9 +38,11 @@ message CreateProjectPaymentsInput {
 }
 
 message UpdateProjectPaymentsInput {
-  float amount = 1;
-  int32 modify_user = 2;
-  int64 modify_date = 3;
+  int32 resource_id = 1;
+  int32 project_payment_type_id = 2;
+  float amount = 3;
+  int32 modify_user = 4;
+  int64 modify_date = 5;
 }
 
 message DeleteProjectPaymentsInput {
