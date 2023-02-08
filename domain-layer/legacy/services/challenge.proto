@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package topcoder.domain.challenge_service;
+package topcoder.domain.legacy_challenge_service;
 
 import "common/common.proto";
 import "domain-layer/legacy/challenge.proto";
@@ -18,4 +18,6 @@ service LegacyChallenge {
         returns (topcoder.domain.challenge.LegacyChallenge);
     rpc GetLegacyChallenge(topcoder.domain.challenge.LegacyChallengeId)
         returns(topcoder.domain.challenge.LegacyChallenge);
+    rpc Create(topcoder.domain.legacy_challenge.CreateChallengeInput)
+      returns (topcoder.common.CreateResult);
 }
