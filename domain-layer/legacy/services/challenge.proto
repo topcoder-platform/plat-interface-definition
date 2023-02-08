@@ -18,6 +18,9 @@ service LegacyChallenge {
   rpc Update(topcoder.domain.legacy_challenge.UpdateChallengeInput)
       returns (topcoder.domain.legacy_challenge.LegacyChallenge);
 
+  rpc Get(topcoder.domain.legacy_challenge.LegacyChallengeId)
+      returns (topcoder.domain.legacy_challenge.LegacyChallenge);
+
   rpc Activate(topcoder.domain.legacy_challenge.LegacyChallengeId)
       returns (topcoder.domain.legacy_challenge.LegacyChallenge);
 

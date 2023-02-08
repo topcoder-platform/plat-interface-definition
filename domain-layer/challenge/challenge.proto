@@ -95,6 +95,7 @@ message Challenge {
   message Winner {
     string handle = 1;
     int32 placement = 2;
+    int32 user_id = 3;
   }
 
   message Task {
