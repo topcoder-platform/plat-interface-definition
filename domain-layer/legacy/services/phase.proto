@@ -7,7 +7,7 @@ import "domain-layer/legacy/phase.proto";
 import "google/protobuf/empty.proto";
 
 service LegacyPhase {
-    rpc GetPhaseCriteria(google.protobuf.Empty)
+    rpc GetPhaseCriteria(topcoder.domain.phase.GetPhaseCriteriaInput)
         returns(topcoder.domain.phase.PhaseCriteriaList);
 
     rpc CreatePhaseCriteria(topcoder.domain.phase.CreatePhaseCriteriaInput)
