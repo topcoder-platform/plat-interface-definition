@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package topcoder.domain.legacy_challenge_service;
+package topcoder.domain.service.legacy_challenge_service;
 
 import "common/common.proto";
 import "domain-layer/legacy/challenge.proto";

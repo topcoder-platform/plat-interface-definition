@@ -43,8 +43,8 @@ message ScanCriteria {
 }
 
 message ScanRequest {
-  optional string next_token = 1;
-  repeated topcoder.common.ScanCriteria scan_criteria = 2;
+  repeated ScanCriteria criteria = 1;
+  optional string next_token = 2;
 }
 
 message ScanResult {

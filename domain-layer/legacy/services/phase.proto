@@ -7,30 +7,30 @@ import "domain-layer/legacy/phase.proto";
 import "google/protobuf/empty.proto";
 
 service LegacyPhase {
-    rpc GetPhaseCriteria(topcoder.domain.phase.GetPhaseCriteriaInput)
-        returns(topcoder.domain.phase.PhaseCriteriaList);
+  rpc GetPhaseCriteria(topcoder.domain.phase.GetPhaseCriteriaInput)
+      returns (topcoder.domain.phase.PhaseCriteriaList);
 
-    rpc CreatePhaseCriteria(topcoder.domain.phase.CreatePhaseCriteriaInput)
-        returns(topcoder.common.CreateResult);
+  rpc CreatePhaseCriteria(topcoder.domain.phase.CreatePhaseCriteriaInput)
+      returns (topcoder.common.CreateResult);
 
-    rpc DeletePhaseCriteria(topcoder.domain.phase.DeletePhaseCriteriaInput)
-        returns(google.protobuf.Empty);
+  rpc DeletePhaseCriteria(topcoder.domain.phase.DeletePhaseCriteriaInput)
+      returns (google.protobuf.Empty);
 
-    rpc GetPhaseTypes(google.protobuf.Empty)
-        returns(topcoder.domain.phase.PhaseTypeList);
+  rpc GetPhaseTypes(google.protobuf.Empty)
+      returns (topcoder.domain.phase.PhaseTypeList);
 
-    rpc GetProjectPhases(topcoder.domain.phase.GetProjectPhasesInput)
-        returns(topcoder.domain.phase.ProjectPhaseList);
+  rpc GetProjectPhases(topcoder.domain.phase.GetProjectPhasesInput)
+      returns (topcoder.domain.phase.ProjectPhaseList);
 
-    rpc DeleteProjectPhases(topcoder.domain.phase.DeleteProjectPhasesInput)
-        returns(google.protobuf.Empty);
-    
-    rpc CreateProjectPhase(topcoder.domain.phase.CreateProjectPhaseInput)
-        returns(topcoder.common.CreateResult);
-    
-    rpc UpdateProjectPhase(topcoder.domain.phase.UpdateProjectPhaseInput)
-        returns(google.protobuf.Empty);
+  rpc DeleteProjectPhases(topcoder.domain.phase.DeleteProjectPhasesInput)
+      returns (google.protobuf.Empty);
 
-    rpc CreatePhaseDependency(topcoder.domain.phase.CreatePhaseDependencyInput)
-        returns(topcoder.common.CreateResult);
+  rpc CreateProjectPhase(topcoder.domain.phase.CreateProjectPhaseInput)
+      returns (topcoder.common.CreateResult);
+
+  rpc UpdateProjectPhase(topcoder.domain.phase.UpdateProjectPhaseInput)
+      returns (google.protobuf.Empty);
+
+  rpc CreatePhaseDependency(topcoder.domain.phase.CreatePhaseDependencyInput)
+      returns (topcoder.common.CreateResult);
 }

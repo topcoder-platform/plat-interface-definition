@@ -6,7 +6,7 @@ import "common/common.proto";
 import "domain-layer/legacy/challenge_payment.proto";
 import "google/protobuf/empty.proto";
 
-service LegacyPayment {
+service LegacyChallengePayment {
   rpc Get(
       topcoder.domain.legacy_challenge_payment.GetLegacyChallengePaymentInput)
       returns (
