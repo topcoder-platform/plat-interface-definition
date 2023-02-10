@@ -35,3 +35,21 @@ message CreatePrizeInput {
   optional int32 number_of_submissions = 4;
   int32 project_id = 5;
 }
+
+message UpdatePrizeInput {
+  message UpdateInput {
+    optional int32 place = 1;
+    optional float prize_amount = 2;
+    optional int32 prize_type_id = 3;
+    optional int32 number_of_submissions = 4;
+  }
+
+  message UpdateCriteria {
+    optional uint32 project_id = 1;
+    optional uint32 place = 2;
+    optional uint32 prize_id = 3;
+  }
+
+  UpdateCriteria update_criteria = 1;
+  UpdateInput update_input = 2;
+}

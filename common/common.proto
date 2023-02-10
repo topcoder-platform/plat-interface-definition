@@ -59,6 +59,11 @@ message CreateResult {
   }
 }
 
+message UpdateResult {
+  int64 updated_count = 1;
+  optional string message = 2;
+}
+
 message LookupCriteria {
   string key = 1;
   google.protobuf.Value value = 3;

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package topcoder.domain.prize_service;
+package topcoder.domain.legacy_prize_service;
 
 import "common/common.proto";
 import "domain-layer/legacy/prize.proto";
@@ -12,6 +12,9 @@ service PrizeService {
 
   rpc Scan(topcoder.common.ScanCriteria)
       returns (topcoder.domain.legacy_prize.PrizeList);
+
+  rpc Update(topcoder.domain.legacy_prize.UpdatePrizeInput)
+      returns (topcoder.common.UpdateResult);
 
   rpc GetPrizeTypes(google.protobuf.Empty)
       returns (topcoder.domain.legacy_prize.PrizeTypeList);
