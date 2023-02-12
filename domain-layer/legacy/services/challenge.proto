@@ -7,7 +7,7 @@ import "domain-layer/legacy/challenge.proto";
 
 service LegacyChallenge {
   rpc CheckExists(topcoder.domain.legacy_challenge.LegacyChallengeId)
-      returns (topcoder.domain.legacy_challenge.CheckExistsResponse);
+      returns (topcoder.common.CheckExistsResult);
 
   rpc Lookup(topcoder.common.LookupCriteria)
       returns (topcoder.domain.legacy_challenge.LegacyChallengeList);

@@ -64,6 +64,10 @@ message UpdateResult {
   optional string message = 2;
 }
 
+message CheckExistsResult {
+  bool exists = 1;
+}
+
 message LookupCriteria {
   string key = 1;
   google.protobuf.Value value = 3;

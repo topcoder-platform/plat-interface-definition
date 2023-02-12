@@ -21,10 +21,6 @@ message LegacyChallengeList {
   repeated LegacyChallenge legacy_challenges = 1;
 }
 
-message CheckExistsResponse {
-  bool exists = 1;
-}
-
 message CreateChallengeInput {
   string name = 1;
   int32 project_status_id = 2;
