@@ -4,6 +4,7 @@ package topcoder.domain.service.legacy_challenge_service;
 
 import "common/common.proto";
 import "domain-layer/legacy/challenge.proto";
+import "google/protobuf/empty.proto";
 
 service LegacyChallenge {
   rpc CheckExists(topcoder.domain.legacy_challenge.LegacyChallengeId)
@@ -16,13 +17,13 @@ service LegacyChallenge {
       returns (topcoder.common.CreateResult);
 
   rpc Update(topcoder.domain.legacy_challenge.UpdateChallengeInput)
-      returns (topcoder.domain.legacy_challenge.LegacyChallenge);
+      returns (topcoder.common.UpdateResult);
 
   rpc Get(topcoder.domain.legacy_challenge.LegacyChallengeId)
       returns (topcoder.domain.legacy_challenge.LegacyChallenge);
 
   rpc Activate(topcoder.domain.legacy_challenge.LegacyChallengeId)
-      returns (topcoder.domain.legacy_challenge.LegacyChallenge);
+      returns (google.protobuf.Empty);
 
   rpc CloseChallenge(topcoder.domain.legacy_challenge.CloseChallengeInput)
       returns (topcoder.domain.legacy_challenge.LegacyChallenge);

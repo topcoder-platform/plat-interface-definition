@@ -18,7 +18,7 @@ service LegacyChallengePayment {
 
   rpc Update(topcoder.domain.legacy_challenge_payment
                  .UpdateLegacyChallengePaymentInput)
-      returns (google.protobuf.Empty);
+      returns (topcoder.common.UpdateResult);
 
   rpc Delete(topcoder.domain.legacy_challenge_payment
                  .DeleteLegacyChallengePaymentInput)
