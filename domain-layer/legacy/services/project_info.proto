@@ -6,18 +6,18 @@ import "domain-layer/legacy/project_info.proto";
 import "google/protobuf/empty.proto";
 
 service LegacyProjectInfo {
-    rpc Create(topcoder.domain.project_info.CreateProjectInfoInput)
-        returns (topcoder.domain.project_info.ProjectInfo);
+  rpc Create(topcoder.domain.project_info.CreateProjectInfoInput)
+      returns (topcoder.domain.project_info.ProjectInfo);
 
-    rpc Update(topcoder.domain.project_info.UpdateProjectInfoInput)
-        returns (topcoder.domain.project_info.ProjectInfo);
+  rpc Update(topcoder.domain.project_info.UpdateProjectInfoInput)
+      returns (topcoder.domain.project_info.ProjectInfo);
 
-    rpc Delete(topcoder.domain.project_info.DeleteProjectInfoInput)
-        returns (google.protobuf.Empty);
-    
-    rpc GetProjectInfo(topcoder.domain.project_info.GetProjectInfoInput)
-        returns (topcoder.domain.project_info.ProjectInfoList);
+  rpc Delete(topcoder.domain.project_info.DeleteProjectInfoInput)
+      returns (google.protobuf.Empty);
 
-    rpc GetProjectInfoTypes(google.protobuf.Empty)
-        returns (topcoder.domain.project_info.ProjectInfoTypeList);
+  rpc GetProjectInfo(topcoder.domain.project_info.GetProjectInfoInput)
+      returns (topcoder.domain.project_info.ProjectInfoList);
+
+  rpc GetProjectInfoTypes(google.protobuf.Empty)
+      returns (topcoder.domain.project_info.ProjectInfoTypeList);
 }

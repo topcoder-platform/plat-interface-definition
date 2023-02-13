@@ -21,8 +21,41 @@ message LegacyChallengeList {
   repeated LegacyChallenge legacy_challenges = 1;
 }
 
-message CheckChallengeExistsResponse {
-  bool exists = 1;
+message CreateChallengeInput {
+  string name = 1;
+  int32 project_status_id = 2;
+  int32 project_category_id = 3;
+  optional int32 project_studio_spec_id = 4;
+  optional int32 project_mm_spec_id = 5;
+  int64 tc_direct_project_id = 6;
+  repeated Prize winner_prizes = 7;
+  optional string review_type = 8;
+  bool timeline_notification = 9;
+  bool status_notification = 10;
+  bool rated = 11;
+  string confidentiality_type = 12;
+  int32 billing_project = 13;
+  map<sint32, string> project_info = 14;
+  repeated Phase phases = 15;
+
+  message Prize {
+    int32 place = 1;
+    float amount = 2;
+    string type = 3;
+    int32 num_submissions = 4;
+  }
+
+  message Phase {
+    sint32 phase_type_id = 1;
+    sint32 phase_status_id = 2;
+    optional string fixed_start_time = 3;
+    string scheduled_start_time = 4;
+    string scheduled_end_time = 5;
+    optional string actual_start_time = 6;
+    optional string actual_end_time = 7;
+    int32 duration = 8;
+    map<sint32, string> phase_criteria = 9;
+  }
 }
 
 message UpdateChallengeInput {
@@ -35,23 +68,4 @@ message CloseChallengeInput {
   int32 project_id = 1;
   int32 winner_id = 2;
   int32 modify_user = 3;
-}
-
-message CreateChallengeInput {
-  string name = 1;
-  int32 project_status_id = 2;
-  int32 project_category_id = 3;
-  int64 tc_direct_project_id = 4;
-  repeated float winner_prizes = 5;
-  float copilot_cost = 6;
-  optional string review_type = 7;
-  optional float review_cost = 8;
-  bool timeline_notification = 9;
-  bool status_notification = 10;
-  bool rated = 11;
-  string confidentiality_type = 12;
-  int32 billing_project = 13;
-  optional float reliability_bonus_cost = 14;
-  optional float checkpoint_bonus_cost = 15;
-  map<string, string> project_info = 16;
 }

@@ -13,7 +13,7 @@ message ProjectInfo {
 }
 
 message ProjectInfoList {
-  repeated ProjectInfo project_info = 1;
+  repeated ProjectInfo project_infos = 1;
 }
 
 message GetProjectInfoInput {

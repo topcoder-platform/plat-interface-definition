@@ -71,7 +71,6 @@ message WhereCriteria {
 
 message RawQuery {
   string query = 1;
-  repeated Column columns = 2;
 }
 
 message Join {
@@ -149,6 +148,10 @@ message SelectQueryResult {
   repeated Row rows = 1;
 }
 
+message RawQueryResult {
+  repeated Row rows = 1;
+}
+
 message InsertQueryResult {
   uint64 last_insert_id = 1;
 }
@@ -167,6 +170,7 @@ message QueryResponse {
     InsertQueryResult insert_result = 2;
     UpdateQueryResult update_result = 3;
     DeleteQueryResult delete_result = 4;
+    RawQueryResult raw_result = 5;
   }
 }
 

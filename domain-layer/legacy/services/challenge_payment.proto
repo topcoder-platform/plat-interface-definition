@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package topcoder.domain.service.legacy_challenge_payment;
+
+import "common/common.proto";
+import "domain-layer/legacy/challenge_payment.proto";
+import "google/protobuf/empty.proto";
+
+service LegacyChallengePayment {
+  rpc Get(
+      topcoder.domain.legacy_challenge_payment.GetLegacyChallengePaymentInput)
+      returns (
+          topcoder.domain.legacy_challenge_payment.LegacyChallengePaymentList);
+
+  rpc Create(topcoder.domain.legacy_challenge_payment
+                 .CreateLegacyChallengePaymentInput)
+      returns (topcoder.common.CreateResult);
+
+  rpc Update(topcoder.domain.legacy_challenge_payment
+                 .UpdateLegacyChallengePaymentInput)
+      returns (topcoder.common.UpdateResult);
+
+  rpc Delete(topcoder.domain.legacy_challenge_payment
+                 .DeleteLegacyChallengePaymentInput)
+      returns (google.protobuf.Empty);
+}

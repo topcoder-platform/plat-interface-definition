@@ -6,9 +6,9 @@ import "domain-layer/legacy/notification.proto";
 import "google/protobuf/empty.proto";
 
 service LegacyNotification {
-    rpc GetNotifications(topcoder.domain.notification.GetNotificationsInput)
-        returns(topcoder.domain.notification.NotificationList);
-    
-    rpc DeleteNotifications(topcoder.domain.notification.DeleteNotificationsInput)
-        returns(google.protobuf.Empty);
+  rpc GetNotifications(topcoder.domain.notification.GetNotificationsInput)
+      returns (topcoder.domain.notification.NotificationList);
+
+  rpc DeleteNotifications(topcoder.domain.notification.DeleteNotificationsInput)
+      returns (google.protobuf.Empty);
 }
