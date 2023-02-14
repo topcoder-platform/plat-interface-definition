@@ -18,4 +18,7 @@ service LegacyPrizeService {
 
   rpc GetPrizeTypes(google.protobuf.Empty)
       returns (topcoder.domain.legacy_prize.PrizeTypeList);
+    
+  rpc Delete(topcoder.domain.legacy_prize.DeletePrizeInput)
+      returns (google.protobuf.Empty);
 }

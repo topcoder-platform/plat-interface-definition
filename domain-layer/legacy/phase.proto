@@ -50,10 +50,10 @@ message CreatePhaseCriteriaInput {
   int32 project_phase_id = 1;
   int32 phase_criteria_type_id = 2;
   string parameter = 3;
-  int32 create_user = 4;
-  int64 create_date = 5;
-  int32 modify_user = 6;
-  int64 modify_date = 7;
+  optional int32 create_user = 4;
+  optional int64 create_date = 5;
+  optional int32 modify_user = 6;
+  optional int64 modify_date = 7;
 }
 
 message DeletePhaseCriteriaInput {

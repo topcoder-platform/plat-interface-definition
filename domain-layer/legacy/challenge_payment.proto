@@ -25,24 +25,24 @@ message GetLegacyChallengePaymentInput {
 }
 
 message CreateLegacyChallengePaymentInput {
-  int32 project_payment_id = 1;
+  optional int32 project_payment_id = 1;
   int32 project_payment_type_id = 2;
   int32 resource_id = 3;
-  int32 submission_id = 4;
+  optional int32 submission_id = 4;
   float amount = 5;
-  int32 pacts_payment_id = 6;
-  int32 create_user = 7;
-  int64 create_date = 8;
-  int32 modify_user = 9;
-  int64 modify_date = 10;
+  optional int32 pacts_payment_id = 6;
+  optional int32 create_user = 7;
+  optional int64 create_date = 8;
+  optional int32 modify_user = 9;
+  optional int64 modify_date = 10;
 }
 
 message UpdateLegacyChallengePaymentInput {
   int32 resource_id = 1;
   int32 project_payment_type_id = 2;
   float amount = 3;
-  int32 modify_user = 4;
-  int64 modify_date = 5;
+  optional int32 modify_user = 4;
+  optional int64 modify_date = 5;
 }
 
 message DeleteLegacyChallengePaymentInput {
