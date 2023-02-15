@@ -36,7 +36,9 @@ message CreateChallengeInput {
   string confidentiality_type = 12;
   int32 billing_project = 13;
   map<sint32, string> project_info = 14;
-  repeated Phase phases = 15;
+  map<sint32, string> resource_info = 15;
+  repeated Phase phases = 16;
+  Copilot copilot = 17;
 
   message Prize {
     int32 place = 1;
@@ -55,6 +57,11 @@ message CreateChallengeInput {
     optional string actual_end_time = 7;
     int32 duration = 8;
     map<sint32, string> phase_criteria = 9;
+  }
+
+  message Copilot {
+    int32 user_id = 1;
+    float fee = 2;
   }
 }
 
