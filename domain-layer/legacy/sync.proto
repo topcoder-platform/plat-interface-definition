@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package topcoder.domain.sync;
+
+option java_multiple_files = true;
+option java_package = "com.topcoder.onlinereview.grpc.sync.proto";
+option java_outer_classname = "SyncInputProtos";
+
+message SyncInput {
+  int32 project_id = 1;
+  repeated Table updated_tables = 2;
+}
+
+message Table {
+  string table = 1;
+  string primary_key = 2;
+  optional string value = 3;
+}
