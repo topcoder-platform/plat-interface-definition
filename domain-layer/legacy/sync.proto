@@ -14,5 +14,5 @@ message SyncInput {
 message Table {
   string table = 1;
   string primary_key = 2;
-  optional string value = 3;
+  repeated string value = 3;
 }
