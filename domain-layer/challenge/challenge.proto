@@ -42,8 +42,8 @@ message Challenge {
     optional string sub_track = 2;
     optional int32 forum_id = 3;
     int32 direct_project_id = 4;
-    string review_type = 5;           // Community, Internal
-    string confidentiality_type = 6;  // Public, Private
+    string review_type = 5;           // COMMUNITY, INTERNAL
+    string confidentiality_type = 6;  // public, private
     optional int32 review_scorecard_id = 7;
     optional int32 screening_scorecard_id = 8;
     optional bool pure_v5_task = 9;
