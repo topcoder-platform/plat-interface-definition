@@ -3,6 +3,7 @@ syntax = "proto3";
 package topcoder.domain.challenge;
 
 import "google/protobuf/timestamp.proto";
+import "common/common.proto";
 
 message Challenge {
   string id = 1;
@@ -151,5 +152,121 @@ message CreateChallengeInput {
 }
 
 message UpdateChallengeInput {
-  Challenge challenge = 1;
+  message UpdateInput {
+    string id = 1;
+    optional int32 legacy_id = 2;
+    optional string name = 3;
+    optional string type_id = 4;
+    optional string track_id = 5;
+    optional Legacy legacy = 6;
+    optional Billing billing = 7;
+    optional string description = 8;
+    optional string private_description = 9;
+    optional string description_format = 10;
+    repeated Metadata metadata = 11;
+    optional Task task = 12;
+    optional string timeline_template_id = 13;
+    repeated Phase phases = 14;
+    repeated Event events = 15;
+    repeated Term terms = 16;
+    repeated PrizeSet prize_sets = 17;
+    repeated string tags = 18;
+    optional int32 project_id = 19;
+    optional int64 start_date = 20;
+    optional int64 end_date = 21;
+    optional string status = 22;
+    repeated string attachments = 23;
+    repeated string groups = 24;
+    repeated Winner winners = 25;
+    repeated Discussion discussions = 26;
+    optional string created_by = 27;
+    optional string updated_by = 28;
+    optional int64 created = 29;
+    optional int64 updated = 30;
+    optional Overview overview = 31;
+
+    message Legacy {
+      optional string track = 1;  // Develop, Design, Data Science, QA
+      optional string sub_track = 2;
+      optional int32 forum_id = 3;
+      int32 direct_project_id = 4;
+      string review_type = 5;           // COMMUNITY, INTERNAL
+      string confidentiality_type = 6;  // public, private
+      optional int32 review_scorecard_id = 7;
+      optional int32 screening_scorecard_id = 8;
+      optional bool pure_v5_task = 9;
+      optional bool self_service = 10;
+      optional string self_service_copilot = 11;
+    }
+
+    message Billing {
+      int32 billing_account_id = 1;
+      float markup = 2;
+    }
+
+    message Event {
+      int32 id = 1;
+      string name = 2;
+      string key = 3;
+    }
+
+    message Term {
+      string id = 1;
+      string role_id = 2;
+    }
+
+    message Metadata {
+      string name = 1;
+      string value = 2;
+    }
+
+    message Discussion {
+      optional string id = 1;
+      string name = 2;
+      string type = 3;  // Challenge
+      string provider = 4;
+      optional string url = 5;
+    }
+
+    message Phase {
+      int32 duration = 1;
+      optional google.protobuf.Timestamp scheduled_start_date = 2;
+      optional google.protobuf.Timestamp scheduled_end_date = 3;
+      optional google.protobuf.Timestamp actual_start_date = 4;
+      optional google.protobuf.Timestamp actual_end_date = 5;
+      string name = 6;
+      string phase_id = 7;
+      string id = 8;
+      bool is_open = 9;
+    }
+
+    message Winner {
+      string handle = 1;
+      int32 placement = 2;
+      int32 user_id = 3;
+    }
+
+    message Task {
+      bool is_task = 1;
+      bool is_assigned = 2;
+      optional int32 member_id = 3;
+    }
+
+    message PrizeSet {
+      message Prize {
+        float value = 1;
+        string type = 2;
+      }
+
+      string type = 1;  // Placement, Copilot, Reviewer
+      optional string description = 2;
+      repeated Prize prizes = 3;
+    }
+
+    message Overview {
+      int32 total_prizes = 1;
+    }
+  }
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 2;
 }
