@@ -75,16 +75,16 @@ message ProjectPhase {
   int64 project_id = 2;
   int64 phase_type_id = 3;
   int64 phase_status_id = 4;
-  optional string fixed_start_time = 5;
-  optional string scheduled_start_time = 6;
-  optional string scheduled_end_time = 7;
-  optional string actual_start_time = 8;
-  optional string actual_end_time = 9;
+  optional int64 fixed_start_time = 5;
+  optional int64 scheduled_start_time = 6;
+  optional int64 scheduled_end_time = 7;
+  optional int64 actual_start_time = 8;
+  optional int64 actual_end_time = 9;
   int32 duration = 10;
   optional int32 create_user = 11;
-  optional string create_date = 12;
+  optional int64 create_date = 12;
   optional int32 modify_user = 13;
-  optional string modify_date = 14;
+  optional int64 modify_date = 14;
 }
 
 message GetProjectPhasesInput {
