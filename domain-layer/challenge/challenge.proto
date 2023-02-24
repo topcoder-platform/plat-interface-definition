@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package topcoder.domain.challenge;
 
-import "google/protobuf/timestamp.proto";
 import "common/common.proto";
+import "google/protobuf/timestamp.proto";
 
 message Challenge {
   string id = 1;
