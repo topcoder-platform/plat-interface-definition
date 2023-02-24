@@ -29,10 +29,6 @@ message CreateReviewInput {
   int32 committed = 6;
   float score = 7;
   float initial_score = 8;
-  optional int32 create_user = 9;
-  optional int64 create_date = 10;
-  optional int32 modify_user = 11;
-  optional int64 modify_date = 12;
 }
 
 message ReviewItem {
@@ -54,10 +50,6 @@ message CreateReviewItemInput {
   optional int32 upload_id = 4;
   string answer = 5;
   int32 sort = 6;
-  optional int32 create_user = 7;
-  optional int64 create_date = 8;
-  optional int32 modify_user = 9;
-  optional int64 modify_date = 10;
 }
 
 message Submission {
