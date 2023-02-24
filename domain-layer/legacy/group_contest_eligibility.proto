@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package topcoder.domain.group_contest_eligibility;
+
+message ContestEligibility {
+  int32 contest_eligibility_id = 1;
+  int32 contest_id = 2;
+  int32 is_studio = 3;
+}
+
+message GetContestEligibilityInput {
+  int32 contest_id = 1;
+}
+
+message ContestEligibilityList {
+  repeated ContestEligibility contest_eligibilities = 1;
+}
+
+message DeleteContestEligibilityInput {
+  int32 contest_eligibility_id = 1;
+}
+
+message GroupContestEligibility {
+  int32 contest_eligibility_id = 1;
+  int32 group_id = 2;
+}
+
+message GetGroupContestEligibilityInput {
+  int32 contest_eligibility_id = 1;
+}
+
+message GroupContestEligibilityList {
+  repeated GroupContestEligibility group_contest_eligibilities = 1;
+}
+
+message DeleteGroupContestEligibilityInput {
+  int32 contest_eligibility_id = 1;
+  int32 group_id = 2;
+}

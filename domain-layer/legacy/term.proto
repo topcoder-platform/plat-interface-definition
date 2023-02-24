@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package topcoder.domain.term;
+
+message ProjectRoleTermsOfUseXref {
+  int32 project_id = 1;
+  int32 resource_role_id = 2;
+  int32 terms_of_use_id = 3;
+  int64 create_date = 4;
+  int64 modify_date = 5;
+  int32 sort_order = 6;
+  int32 group_ind = 7;
+}
+
+message GetProjectRoleTermsOfUseXrefInput {
+  int32 project_id = 1;
+}
+
+message ProjectRoleTermsOfUseXrefList {
+  repeated ProjectRoleTermsOfUseXref terms = 1;
+}
+
+message CreateProjectRoleTermsOfUseXrefInput {
+  int32 project_id = 1;
+  int32 resource_role_id = 2;
+  int32 terms_of_use_id = 3;
+  optional int64 create_date = 4;
+  optional int64 modify_date = 5;
+  optional int32 sort_order = 6;
+  optional int32 group_ind = 7;
+}
+
+message DeleteProjectRoleTermsOfUseXrefInput {
+  int32 project_id = 1;
+  int32 resource_role_id = 2;
+  int32 terms_of_use_id = 3;
+}

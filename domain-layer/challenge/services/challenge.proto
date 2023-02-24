@@ -12,7 +12,7 @@ service Challenge {
 
   rpc Lookup(topcoder.common.LookupCriteria) returns (topcoder.domain.challenge.Challenge);
 
-  rpc Update(topcoder.domain.challenge.UpdateChallengeInput) returns (topcoder.domain.challenge.ChallengeList);
+  rpc Update(topcoder.domain.challenge.UpdateChallengeInput) returns (topcoder.common.UpdateResult);
 
   rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.challenge.ChallengeList);
 }

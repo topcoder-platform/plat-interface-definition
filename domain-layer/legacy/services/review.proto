@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package topcoder.domain.service.review;
+
+import "common/common.proto";
+import "domain-layer/legacy/review.proto";
+
+service LegacyReview {
+  rpc CreateReview(topcoder.domain.review.CreateReviewInput)
+      returns (topcoder.common.CreateResult);
+
+  rpc CreateReviewItem(topcoder.domain.review.CreateReviewItemInput)
+      returns (topcoder.common.CreateResult);
+
+  rpc GetSubmission(topcoder.domain.review.GetSubmissionInput)
+      returns (topcoder.domain.review.Submission);
+}

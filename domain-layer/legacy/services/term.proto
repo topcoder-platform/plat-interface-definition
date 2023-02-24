@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package topcoder.domain.service.term;
+
+import "common/common.proto";
+import "domain-layer/legacy/term.proto";
+import "google/protobuf/empty.proto";
+
+service LegacyTerm {
+  rpc GetProjectRoleTermsOfUseXrefs(
+      topcoder.domain.term.GetProjectRoleTermsOfUseXrefInput)
+      returns (topcoder.domain.term.ProjectRoleTermsOfUseXrefList);
+
+  rpc CreateProjectRoleTermsOfUseXref(
+      topcoder.domain.term.CreateProjectRoleTermsOfUseXrefInput)
+      returns (topcoder.common.CreateResult);
+
+  rpc DeleteProjectRoleTermsOfUseXref(
+      topcoder.domain.term.DeleteProjectRoleTermsOfUseXrefInput)
+      returns (google.protobuf.Empty);
+}

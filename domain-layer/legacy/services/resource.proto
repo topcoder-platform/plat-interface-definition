@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package topcoder.domain.service.resource;
+
+import "common/common.proto";
+import "domain-layer/legacy/resource.proto";
+import "google/protobuf/empty.proto";
+
+service LegacyResource {
+  rpc GetResources(topcoder.domain.legacy_resource.GetResourcesInput)
+      returns (topcoder.domain.legacy_resource.ResourceList);
+
+  rpc GetResourceInfos(topcoder.domain.legacy_resource.GetResourceInfosInput)
+      returns (topcoder.domain.legacy_resource.ResourceInfoList);
+
+  rpc CreateResourceInfos(
+      topcoder.domain.legacy_resource.CreateResourceInfoInput)
+      returns (topcoder.common.CreateResult);
+
+  rpc UpdateResourceInfos(
+      topcoder.domain.legacy_resource.UpdateResourceInfoInput)
+      returns (google.protobuf.Empty);
+}

@@ -53,3 +53,8 @@ message UpdatePrizeInput {
   UpdateCriteria update_criteria = 1;
   UpdateInput update_input = 2;
 }
+
+message DeletePrizeInput {
+  int32 prize_id = 1;
+  int32 project_id = 2;
+}

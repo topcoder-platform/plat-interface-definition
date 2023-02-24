@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package topcoder.domain.user;
+
+message User {
+  int64 user_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  int64 create_date = 4;
+  int64 modify_date = 5;
+  string handle = 6;
+  string status = 8;
+  string handle_lower = 11;
+}
