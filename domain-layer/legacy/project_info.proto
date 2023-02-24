@@ -25,8 +25,6 @@ message CreateProjectInfoInput {
   int32 project_id = 1;
   int32 project_info_type_id = 2;
   string value = 3;
-  optional int32 create_user = 4;
-  optional string create_date = 5;
 }
 
 message DeleteProjectInfoInput {
@@ -38,8 +36,6 @@ message UpdateProjectInfoInput {
   int32 project_id = 1;
   int32 project_info_type_id = 2;
   string value = 3;
-  optional int32 modify_user = 4;
-  optional string modify_date = 5;
 }
 
 message ProjectInfoType {

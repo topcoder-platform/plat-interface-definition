@@ -49,16 +49,12 @@ message CreateResourceInfoInput {
   int32 resource_id = 1;
   int32 resource_info_type_id = 2;
   string value = 3;
-  optional int32 create_user = 4;
-  optional int64 create_date = 5;
 }
 
 message UpdateResourceInfoInput {
   int32 resource_id = 1;
   int32 resource_info_type_id = 2;
   string value = 3;
-  optional int32 modify_user = 6;
-  optional int64 modify_date = 7;
 }
 
 message DeleteResourceInfoInput {
