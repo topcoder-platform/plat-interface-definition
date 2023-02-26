@@ -58,7 +58,7 @@ message Challenge {
   }
 
   message Event {
-    int32 id = 1;
+    optional int32 id = 1;
     string name = 2;
     string key = 3;
   }
@@ -76,7 +76,7 @@ message Challenge {
   message Discussion {
     optional string id = 1;
     string name = 2;
-    string type = 3;  // Challenge
+    string type = 3;  // challenge
     string provider = 4;
     optional string url = 5;
   }
@@ -132,7 +132,7 @@ message CreateChallengeInput {
   optional string timeline_template_id = 4;
   Challenge.Legacy legacy = 5;
   Challenge.Billing billing = 6;
-  string description = 7;
+  optional string description = 7;
   optional string private_description = 8;
   optional string description_format = 9;
   repeated Challenge.Metadata metadata = 10;
