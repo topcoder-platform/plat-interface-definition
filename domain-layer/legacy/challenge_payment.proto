@@ -3,13 +3,43 @@ syntax = "proto3";
 package topcoder.domain.legacy_challenge_payment;
 
 message LegacyChallengePayment {
-  int32 place = 1;
-  int32 prize_id = 2;
-  int32 project_id = 3;
-  int32 prize_type_id = 4;
-  float prize_amount = 5;
-  int32 create_user = 6;
-  int64 create_date = 7;
-  int32 modify_user = 8;
-  int64 modify_date = 9;
+  int32 project_payment_id = 1;
+  int32 project_payment_type_id = 2;
+  int32 resource_id = 3;
+  int32 submission_id = 4;
+  float amount = 5;
+  int32 pacts_payment_id = 6;
+  int32 create_user = 7;
+  int64 create_date = 8;
+  int32 modify_user = 9;
+  int64 modify_date = 10;
+}
+
+message LegacyChallengePaymentList {
+  repeated LegacyChallengePayment project_payments = 1;
+}
+
+message GetLegacyChallengePaymentInput {
+  int32 resource_id = 1;
+  int32 project_payment_type_id = 2;
+}
+
+message CreateLegacyChallengePaymentInput {
+  optional int32 project_payment_id = 1;
+  int32 project_payment_type_id = 2;
+  int32 resource_id = 3;
+  optional int32 submission_id = 4;
+  float amount = 5;
+  optional int32 pacts_payment_id = 6;
+}
+
+message UpdateLegacyChallengePaymentInput {
+  int32 resource_id = 1;
+  int32 project_payment_type_id = 2;
+  float amount = 3;
+}
+
+message DeleteLegacyChallengePaymentInput {
+  int32 resource_id = 1;
+  int32 project_payment_type_id = 2;
 }

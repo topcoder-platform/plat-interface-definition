@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package topcoder.domain.challenge;
 
+import "common/common.proto";
 import "google/protobuf/timestamp.proto";
 
 message Challenge {
@@ -42,8 +43,8 @@ message Challenge {
     optional string sub_track = 2;
     optional int32 forum_id = 3;
     int32 direct_project_id = 4;
-    string review_type = 5;           // Community, Internal
-    string confidentiality_type = 6;  // Public, Private
+    string review_type = 5;           // COMMUNITY, INTERNAL
+    string confidentiality_type = 6;  // public, private
     optional int32 review_scorecard_id = 7;
     optional int32 screening_scorecard_id = 8;
     optional bool pure_v5_task = 9;
@@ -95,6 +96,7 @@ message Challenge {
   message Winner {
     string handle = 1;
     int32 placement = 2;
+    int32 user_id = 3;
   }
 
   message Task {
@@ -150,5 +152,39 @@ message CreateChallengeInput {
 }
 
 message UpdateChallengeInput {
-  Challenge challenge = 1;
+  message UpdateInput {
+    string id = 1;
+    optional int32 legacy_id = 2;
+    optional string name = 3;
+    optional string type_id = 4;
+    optional string track_id = 5;
+    optional Challenge.Legacy legacy = 6;
+    optional Challenge.Billing billing = 7;
+    optional string description = 8;
+    optional string private_description = 9;
+    optional string description_format = 10;
+    repeated Challenge.Metadata metadata = 11;
+    optional Challenge.Task task = 12;
+    optional string timeline_template_id = 13;
+    repeated Challenge.Phase phases = 14;
+    repeated Challenge.Event events = 15;
+    repeated Challenge.Term terms = 16;
+    repeated Challenge.PrizeSet prize_sets = 17;
+    repeated string tags = 18;
+    optional int32 project_id = 19;
+    optional int64 start_date = 20;
+    optional int64 end_date = 21;
+    optional string status = 22;
+    repeated string attachments = 23;
+    repeated string groups = 24;
+    repeated Challenge.Winner winners = 25;
+    repeated Challenge.Discussion discussions = 26;
+    optional string created_by = 27;
+    optional string updated_by = 28;
+    optional int64 created = 29;
+    optional int64 updated = 30;
+    optional Challenge.Overview overview = 31;
+  }
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 2;
 }

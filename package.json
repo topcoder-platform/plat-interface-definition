@@ -18,16 +18,11 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^17.4.0",
     "commitlint": "^17.4.0",
-    "husky": "^8.0.3",
-    "eslint": "^8.30.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "lint-staged": "^13.1.0",
-    "prettier": "^2.8.1"
+    "husky": "^8.0.3"
   },
-  "lint-staged": {
-    "*.{json,md,yml}": [
-      "npx prettier . --write"
-    ]
+  "volta": {
+    "node": "18.13.0",
+    "typescript": "4.9.4",
+    "yarn": "1.22.19"
   }
 }
