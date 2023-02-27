@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package topcoder.domain.service.legacy_submission_service;
+
+import "common/common.proto";
+import "domain-layer/legacy/submission.proto";
+import "google/protobuf/empty.proto";
+
+service LegacySubmission {
+  rpc CheckExists(topcoder.domain.legacy_submission.LegacySubmissionId)
+      returns (topcoder.common.CheckExistsResult);
+
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.legacy_submission.LegacySubmissionList);
+
+  rpc Create(topcoder.domain.legacy_submission.CreateSubmissionInput)
+      returns (topcoder.common.CreateResult);
+
+  rpc Update(topcoder.domain.legacy_submission.UpdateSubmissionInput)
+      returns (topcoder.common.UpdateResult);
+
+  rpc Get(topcoder.domain.legacy_submission.LegacySubmissionId)
+      returns (topcoder.domain.legacy_submission.LegacySubmission);
+}
