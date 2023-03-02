@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package topcoder.domain.submission;
+import "common/common.proto";
 
 message Submission {
   string id = 1;
@@ -9,7 +10,7 @@ message Submission {
   string created_by = 4;
   string file_type = 5;
   optional int64 legacy_challenge_id = 6;
-  optional int64 legacySubmission_id = 7;
+  optional int64 legacy_submission_id = 7;
   int64 member_id = 8;
   optional string submission_phase_id = 9;
   optional int64 submitted_date = 10;
@@ -17,46 +18,38 @@ message Submission {
   optional int64 updated = 12;
   optional string updated_by = 13;
   optional string url = 14;
+  optional int64 legacy_upload_id = 15;
+  optional string v5_challenge_id = 16;
 }
 
 message CreateSubmissionInput {
-  string id = 1;
-  string challenge_id = 2;
-  string created_by = 3;
-  string file_type = 4;
-  optional int64 legacy_challenge_id = 5;
-  optional int64 legacySubmission_id = 6;
-  int64 member_id = 7;
+  string challenge_id = 1;
+  string file_type = 2;
+  int64 member_id = 3;
+  string type = 4;
+  optional string url = 5;
+  optional int64 legacy_challenge_id = 6;
+  optional int64 legacy_submission_id = 7;
   optional string submission_phase_id = 8;
   optional int64 submitted_date = 9;
-  string type = 10;
-  optional string updated_by = 11;
-  optional string url = 12;
-  int64 created = 13;
-  optional int64 updated = 14;
+  optional int64 legacy_upload_id = 10;
 }
 
 message UpdateSubmissionInput {
-  message authUser {
-    string handle = 1;
-    string sub = 2;
-    repeated string roles = 3;
-    repeated string scopes = 4;
+  message UpdateInput {
+    optional string type = 1;
+    optional string url = 2;
+    optional int64 member_id = 3;
+    optional string challenge_id = 4;
+    optional int64 submitted_date = 5;
+    optional string legacy_challenge_id = 6;
+    optional string legacy_submission_id = 7;
+    optional string submission_upload_id = 8;
+    optional string submission_phase_id = 9;
   }
 
-  string submissionId = 1;
-
-  message entity {
-    optional string url = 1;
-    optional string fileType = 2;
-    optional string challenge_id = 3;
-    optional string type = 4;
-    optional string member_id = 5;
-    optional int64 legacy_upload_id = 6;
-    optional int64 legacy_submission_id = 7;
-    optional string submission_phase_id = 8;
-    optional string submitted_date = 9;
-  }
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 3;
 }
 
 message SubmissionList {

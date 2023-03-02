@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package topcoder.domain.service.legacy_resource_submission;
+
+import "common/common.proto";
+import "domain-layer/legacy/resource_submission.proto";
+
+service LegacyResourceSubmission {
+  rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
+
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.legacy_resource_submission.ResourceSubmission);
+
+  rpc Create(
+      topcoder.domain.legacy_resource_submission.CreateResourceSubmissionInput)
+      returns (topcoder.common.CreateResult);
+}
