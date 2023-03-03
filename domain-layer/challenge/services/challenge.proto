@@ -4,6 +4,7 @@ package topcoder.domain.service.challenge;
 
 import "common/common.proto";
 import "domain-layer/challenge/challenge.proto";
+import "google/protobuf/empty.proto";
 
 service Challenge {
   rpc Create(topcoder.domain.challenge.CreateChallengeInput) returns (topcoder.domain.challenge.Challenge);
@@ -15,4 +16,6 @@ service Challenge {
   rpc Update(topcoder.domain.challenge.UpdateChallengeInput) returns (topcoder.common.UpdateResult);
 
   rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.challenge.ChallengeList);
+
+  rpc UpdateForACL(topcoder.domain.challenge.UpdateChallengeInputForACL) returns (google.protobuf.Empty);
 }
