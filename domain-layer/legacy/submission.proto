@@ -14,14 +14,6 @@ message LegacySubmission {
   int64 modify_date = 8;
 }
 
-message LegacySubmissionId {
-  int32 submission_id = 1;
-}
-
-message LegacySubmissionList {
-  repeated LegacySubmission legacy_submissions = 1;
-}
-
 message CreateSubmissionInput {
   int32 submission_status_id = 1;
   int32 submission_type_id = 2;
