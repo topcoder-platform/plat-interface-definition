@@ -188,3 +188,25 @@ message UpdateChallengeInput {
   repeated topcoder.common.ScanCriteria filter_criteria = 1;
   UpdateInput update_input = 2;
 }
+
+message UpdateChallengeInputForACL {
+  message UpdateInputForACL {
+    optional string status = 1;
+    optional PhasesACL phases = 2;
+    optional Challenge.Legacy legacy = 3;
+    optional PrizeSetsACL prize_sets = 4;
+    optional Challenge.Overview overview = 5;
+    optional WinnersACL winners = 6;
+  }
+  message PhasesACL {
+    repeated Challenge.Phase phases = 1;
+  }
+  message PrizeSetsACL {
+    repeated Challenge.PrizeSet prize_sets = 1;
+  }
+  message WinnersACL {
+    repeated Challenge.Winner winners = 1;
+  }
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInputForACL update_input_for_acl = 2;
+}
