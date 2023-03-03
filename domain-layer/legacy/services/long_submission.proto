@@ -8,7 +8,6 @@ import "domain-layer/legacy/long_submission.proto";
 service LegacyLongSubmission {
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
-  rpc Create(
-      topcoder.domain.legacy_long_submission.CreateLongComponentStateInput)
+  rpc Create(topcoder.domain.legacy_long_submission.CreateLongSubmissionInput)
       returns (topcoder.common.CreateResult);
 }
