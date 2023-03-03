@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package topcoder.domain.service.legacy_upload;
+
+import "common/common.proto";
+import "domain-layer/legacy/upload.proto";
+
+service LegacyUpload {
+  rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
+
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.legacy_upload.Upload);
+
+  rpc Create(topcoder.domain.legacy_upload.CreateUploadInput)
+      returns (topcoder.common.CreateResult);
+
+  rpc Update(topcoder.domain.legacy_upload.UpdateUploadInput)
+      returns (topcoder.common.UpdateResult);
+}

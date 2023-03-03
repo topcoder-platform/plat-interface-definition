@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package topcoder.domain.legacy_submission;
+import "common/common.proto";
 
 message LegacySubmission {
   int32 submission_id = 1;
@@ -13,31 +14,20 @@ message LegacySubmission {
   int64 modify_date = 8;
 }
 
-message LegacySubmissionId {
-  int32 submission_id = 1;
-}
-
-message LegacySubmissionList {
-  repeated LegacySubmission legacy_submissions = 1;
-}
-
 message CreateSubmissionInput {
   int32 submission_status_id = 1;
   int32 submission_type_id = 2;
   int32 upload_id = 3;
-  int32 create_user = 4;
-  int64 create_date = 5;
-  int32 modify_user = 6;
-  int64 modify_date = 7;
 }
 
 message UpdateSubmissionInput {
-  int32 submission_id = 1;
-  int32 submission_status_id = 2;
-  int32 submission_type_id = 3;
-  int32 upload_id = 4;
-  int32 create_user = 5;
-  int64 create_date = 6;
-  int32 modify_user = 7;
-  int64 modify_date = 8;
+  message UpdateInput {
+    int32 submission_id = 1;
+    int32 submission_status_id = 2;
+    int32 submission_type_id = 3;
+    int32 upload_id = 4;
+  }
+
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 3;
 }

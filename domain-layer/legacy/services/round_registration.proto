@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package topcoder.domain.service.legacy_round_registration;
+
+import "common/common.proto";
+import "domain-layer/legacy/round_registration.proto";
+
+service LegacyRoundRegistration {
+  rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
+
+  rpc Create(
+      topcoder.domain.legacy_round_registration.CreateRoundRegistrationInput)
+      returns (topcoder.common.CreateResult);
+}

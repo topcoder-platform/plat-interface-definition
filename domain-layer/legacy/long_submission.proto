@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package topcoder.domain.legacy_long_submission;
+
+message LongSubmission {
+  int32 long_component_state_id = 1;
+  int32 submission_number = 2;
+  string submission_text = 3;
+  int64 open_time = 4;
+  int64 submit_time = 5;
+  int32 submission_points = 6;
+  int32 language_id = 7;
+  bool example = 8;
+}
+
+message CreateLongSubmissionInput {
+  int32 submission_number = 1;
+  string submission_text = 2;
+  int64 open_time = 3;
+  int64 submit_time = 4;
+  int32 submission_points = 5;
+  int32 language_id = 6;
+  bool example = 7;
+}

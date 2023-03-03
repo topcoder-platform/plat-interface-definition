@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package topcoder.domain.review;
+import "common/common.proto";
+
+import "google/protobuf/struct.proto";
+
+message Review {
+  string id = 1;
+  float score = 2;
+  string type_id = 3;
+  string reviewer_id = 4;
+  string score_card_id = 5;
+  string submission_id = 6;
+  string status = 7;
+  optional string reviewed_date = 8;
+  optional google.protobuf.Struct metadata = 9;
+  optional string v5_score_card_id = 10;
+  int64 created = 11;
+  int64 updated = 12;
+  string created_by = 13;
+  string updated_by = 14;
+}
+
+message CreateReviewInput {
+  float score = 1;
+  string type_id = 2;
+  string reviewer_id = 3;
+  string score_card_id = 4;
+  string submission_id = 5;
+  string status = 6;
+  optional string reviewed_date = 7;
+  optional google.protobuf.Struct metadata = 8;
+}
+
+message UpdateReviewInput {
+  message UpdateInput {
+    optional float score = 1;
+    optional string type_id = 2;
+    optional string reviewer_id = 3;
+    optional string score_card_id = 4;
+    optional string submission_id = 5;
+    optional string status = 6;
+    optional string reviewed_date = 7;
+    optional google.protobuf.Struct metadata = 8;
+  }
+
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 3;
+}
+
+message ReviewList {
+  repeated string id = 1;
+}
