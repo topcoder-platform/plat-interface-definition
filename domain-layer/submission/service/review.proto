@@ -12,10 +12,10 @@ service Review {
       returns (topcoder.domain.review.Review);
 
   rpc Create(topcoder.domain.review.CreateReviewInput)
-      returns (topcoder.common.CreateResult);
+      returns (topcoder.domain.review.Review);
 
   rpc Update(topcoder.domain.review.UpdateReviewInput)
-      returns (topcoder.common.UpdateResult);
+      returns (topcoder.domain.review.ReviewList);
 
   rpc Delete(topcoder.common.LookupCriteria)
       returns (topcoder.domain.review.ReviewList);
