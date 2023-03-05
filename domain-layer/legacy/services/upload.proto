@@ -4,6 +4,7 @@ package topcoder.domain.service.legacy_upload;
 
 import "common/common.proto";
 import "domain-layer/legacy/upload.proto";
+import "google/protobuf/empty.proto";
 
 service LegacyUpload {
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
@@ -16,4 +17,6 @@ service LegacyUpload {
 
   rpc Update(topcoder.domain.legacy_upload.UpdateUploadInput)
       returns (topcoder.common.UpdateResult);
+
+  rpc Delete(topcoder.common.LookupCriteria) returns (google.protobuf.Empty);
 }
