@@ -193,19 +193,38 @@ message UpdateChallengeInputForACL {
   message UpdateInputForACL {
     optional string status = 1;
     optional PhasesACL phases = 2;
-    optional Challenge.Legacy legacy = 3;
-    optional PrizeSetsACL prize_sets = 4;
-    optional Challenge.Overview overview = 5;
-    optional WinnersACL winners = 6;
+    optional Challenge.Phase current_phase = 3;
+    optional CurrentPhaseNamesACL current_phase_names = 4;
+    optional google.protobuf.Timestamp registration_start_date = 5;
+    optional google.protobuf.Timestamp registration_end_date = 6;
+    optional google.protobuf.Timestamp submission_start_date = 7;
+    optional google.protobuf.Timestamp submission_end_date = 8;
+    optional google.protobuf.Timestamp start_date = 9;
+    optional google.protobuf.Timestamp end_date = 10;
+    optional LegacyACL legacy = 11;
+    optional PrizeSetsACL prize_sets = 12;
+    optional Challenge.Overview overview = 13;
+    optional WinnersACL winners = 14;
   }
   message PhasesACL {
     repeated Challenge.Phase phases = 1;
+  }
+  message CurrentPhaseNamesACL {
+    repeated string current_phase_names = 1;
+  }
+  message LegacyACL {
+    optional int32 review_scorecard_id = 1;
+    optional int32 screening_scorecard_id = 2;
   }
   message PrizeSetsACL {
     repeated Challenge.PrizeSet prize_sets = 1;
   }
   message WinnersACL {
-    repeated Challenge.Winner winners = 1;
+    repeated WinnerACL winners = 1;
+  }
+  message WinnerACL {
+    string handle = 1;
+    int32 placement = 2;
   }
   repeated topcoder.common.ScanCriteria filter_criteria = 1;
   UpdateInputForACL update_input_for_acl = 2;
