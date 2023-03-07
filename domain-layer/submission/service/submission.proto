@@ -12,10 +12,10 @@ service Submission {
       returns (topcoder.domain.submission.Submission);
 
   rpc Create(topcoder.domain.submission.CreateSubmissionInput)
-      returns (topcoder.common.CreateResult);
+      returns (topcoder.domain.submission.Submission);
 
   rpc Update(topcoder.domain.submission.UpdateSubmissionInput)
-      returns (topcoder.common.UpdateResult);
+      returns (topcoder.domain.submission.SubmissionList);
 
   rpc Delete(topcoder.common.LookupCriteria)
       returns (topcoder.domain.submission.SubmissionList);

@@ -12,10 +12,10 @@ service ReviewSummation {
       returns (topcoder.domain.review_summation.ReviewSummation);
 
   rpc Create(topcoder.domain.review_summation.CreateReviewSummationInput)
-      returns (topcoder.common.CreateResult);
+      returns (topcoder.domain.review_summation.ReviewSummation);
 
   rpc Update(topcoder.domain.review_summation.UpdateReviewSummationInput)
-      returns (topcoder.common.UpdateResult);
+      returns (topcoder.domain.review_summation.ReviewSummationList);
 
   rpc Delete(topcoder.common.LookupCriteria)
       returns (topcoder.domain.review_summation.ReviewSummationList);

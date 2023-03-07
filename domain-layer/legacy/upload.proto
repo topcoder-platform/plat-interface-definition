@@ -44,3 +44,7 @@ message UpdateUploadInput {
   repeated topcoder.common.ScanCriteria filter_criteria = 1;
   UpdateInput update_input = 3;
 }
+
+message DeleteUploadInput {
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+}

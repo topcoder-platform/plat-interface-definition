@@ -53,5 +53,5 @@ message UpdateSubmissionInput {
 }
 
 message SubmissionList {
-  repeated string id = 1;
+  repeated Submission items = 1;
 }

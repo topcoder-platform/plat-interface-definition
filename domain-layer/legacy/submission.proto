@@ -8,10 +8,13 @@ message LegacySubmission {
   int32 submission_status_id = 2;
   int32 submission_type_id = 3;
   int32 upload_id = 4;
-  int32 create_user = 5;
-  int64 create_date = 6;
-  int32 modify_user = 7;
-  int64 modify_date = 8;
+  int32 screening_score = 5;
+  int32 initial_score = 6;
+  int32 final_score = 7;
+  int32 create_user = 8;
+  int64 create_date = 9;
+  int32 modify_user = 10;
+  int64 modify_date = 11;
 }
 
 message CreateSubmissionInput {
@@ -35,10 +38,13 @@ message CreateSubmissionInput {
 
 message UpdateSubmissionInput {
   message UpdateInput {
-    int32 submission_id = 1;
-    int32 submission_status_id = 2;
-    int32 submission_type_id = 3;
-    int32 upload_id = 4;
+    optional int32 submission_id = 1;
+    optional int32 submission_status_id = 2;
+    optional int32 submission_type_id = 3;
+    optional int32 upload_id = 4;
+    optional int32 screening_score = 5;
+    optional int32 initial_score = 6;
+    optional int32 final_score = 7;
   }
 
   repeated topcoder.common.ScanCriteria filter_criteria = 1;
