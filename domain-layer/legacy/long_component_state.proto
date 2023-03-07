@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 package topcoder.domain.legacy_long_component_state;
-import "common/common.proto";
 
 message LongComponentState {
   int32 long_component_state_id = 1;
@@ -25,11 +24,7 @@ message CreateLongComponentStateInput {
 }
 
 message UpdateLongComponentStateInput {
-  message UpdateInput {
-    optional int32 submission_number = 1;
-    optional int32 points = 2;
-  }
-
-  repeated topcoder.common.ScanCriteria filter_criteria = 1;
-  UpdateInput update_input = 3;
+  int32 long_component_state_id = 1;
+  optional int32 submission_number = 2;
+  optional int32 points = 3;
 }
