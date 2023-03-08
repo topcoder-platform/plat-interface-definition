@@ -37,12 +37,9 @@ message CreateUploadInput {
 }
 
 message UpdateUploadInput {
-  message UpdateInput {
-    string url = 1;
-  }
-
-  repeated topcoder.common.ScanCriteria filter_criteria = 1;
-  UpdateInput update_input = 3;
+  int32 upload_id = 1;
+  optional string url = 2;
+  optional int32 upload_status_id = 3;
 }
 
 message DeleteUploadInput {

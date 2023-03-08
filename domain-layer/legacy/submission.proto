@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 package topcoder.domain.legacy_submission;
-import "common/common.proto";
 
 message LegacySubmission {
   int32 submission_id = 1;
@@ -37,16 +36,11 @@ message CreateSubmissionInput {
 }
 
 message UpdateSubmissionInput {
-  message UpdateInput {
-    optional int32 submission_id = 1;
-    optional int32 submission_status_id = 2;
-    optional int32 submission_type_id = 3;
-    optional int32 upload_id = 4;
-    optional int32 screening_score = 5;
-    optional int32 initial_score = 6;
-    optional int32 final_score = 7;
-  }
-
-  repeated topcoder.common.ScanCriteria filter_criteria = 1;
-  UpdateInput update_input = 3;
+  int32 submission_id = 1;
+  optional int32 submission_status_id = 2;
+  optional int32 submission_type_id = 3;
+  optional int32 upload_id = 4;
+  optional int32 screening_score = 5;
+  optional int32 initial_score = 6;
+  optional int32 final_score = 7;
 }
