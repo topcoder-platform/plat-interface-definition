@@ -6,6 +6,9 @@ import "common/common.proto";
 import "domain-layer/legacy/submission.proto";
 
 service LegacySubmission {
+  rpc CheckExists(topcoder.domain.legacy_submission.LegacySubmissionId)
+      returns (topcoder.common.CheckExistsResult);
+
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
   rpc Lookup(topcoder.common.LookupCriteria)

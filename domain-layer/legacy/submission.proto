@@ -16,10 +16,11 @@ message LegacySubmission {
   int64 modify_date = 11;
 }
 
+message LegacySubmissionId {
+  int32 legacy_submission_id = 1;
+}
+
 message CreateSubmissionInput {
-  int32 submission_status_id = 1;
-  int32 submission_type_id = 2;
-  int32 upload_id = 3;
   string challenge_id = 4;
   int64 created = 5;
   string file_type = 6;
