@@ -7,15 +7,20 @@ import "domain-layer/challenge/challenge.proto";
 import "google/protobuf/empty.proto";
 
 service Challenge {
-  rpc Create(topcoder.domain.challenge.CreateChallengeInput) returns (topcoder.domain.challenge.Challenge);
+  rpc Create(topcoder.domain.challenge.CreateChallengeInput)
+      returns (topcoder.domain.challenge.Challenge);
 
   rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
 
-  rpc Lookup(topcoder.common.LookupCriteria) returns (topcoder.domain.challenge.Challenge);
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.challenge.Challenge);
 
-  rpc Update(topcoder.domain.challenge.UpdateChallengeInput) returns (topcoder.common.UpdateResult);
+  rpc Update(topcoder.domain.challenge.UpdateChallengeInput)
+      returns (topcoder.domain.challenge.ChallengeList);
 
-  rpc Delete(topcoder.common.LookupCriteria) returns (topcoder.domain.challenge.ChallengeList);
+  rpc Delete(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.challenge.ChallengeList);
 
-  rpc UpdateForACL(topcoder.domain.challenge.UpdateChallengeInputForACL) returns (google.protobuf.Empty);
+  rpc UpdateForACL(topcoder.domain.challenge.UpdateChallengeInputForACL)
+      returns (google.protobuf.Empty);
 }
