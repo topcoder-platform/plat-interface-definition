@@ -47,6 +47,4 @@ message CreatePhaseInput {
   optional string actual_start_time = 7;
   optional string actual_end_time = 8;
   int32 duration = 9;
-  int32 create_user = 10;
-  optional int32 modify_user = 11;
 }

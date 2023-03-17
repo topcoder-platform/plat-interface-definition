@@ -8,7 +8,7 @@ import "common/common.proto";
 
 service LegacyProjectInfo {
   rpc Create(topcoder.domain.project_info.CreateProjectInfoInput)
-      returns (topcoder.domain.project_info.ProjectInfo);
+      returns (topcoder.common.CreateResult);
 
   rpc Update(topcoder.domain.project_info.UpdateProjectInfoInput)
       returns (topcoder.common.UpdateResult);
