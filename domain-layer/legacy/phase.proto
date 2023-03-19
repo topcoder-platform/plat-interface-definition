@@ -18,13 +18,14 @@ message PhaseTypeList {
 
 message PhaseDependency {
   int32 dependent_phase_id = 1;
-  int64 dependency_start = 2;
-  int64 dependent_start = 3;
-  int64 lag_time = 4;
-  int32 create_user = 5;
-  int64 create_date = 6;
-  int32 modify_user = 7;
-  int64 modify_date = 8;
+  int32 dependency_phase_id = 2;
+  int64 dependency_start = 3;
+  int64 dependent_start = 4;
+  int64 lag_time = 5;
+  int32 create_user = 6;
+  int64 create_date = 7;
+  int32 modify_user = 8;
+  int64 modify_date = 9;
 }
 
 message CreatePhaseDependencyInput {
