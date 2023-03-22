@@ -92,6 +92,8 @@ message Challenge {
     string id = 8;
     bool is_open = 9;
     repeated Constraint constraints = 10;
+    optional string description = 11;
+    optional string predecessor = 12;
 
     message Constraint {
       string name = 1;
