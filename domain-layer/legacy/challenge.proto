@@ -7,9 +7,9 @@ message LegacyChallenge {
   int32 project_status_id = 2;
   int32 project_category_id = 3;
   int32 create_user = 4;
-  int64 create_date = 5;
+  string create_date = 5;
   int32 modify_user = 6;
-  int64 modify_date = 7;
+  string modify_date = 7;
   int64 tc_direct_project_id = 8;
 }
 
