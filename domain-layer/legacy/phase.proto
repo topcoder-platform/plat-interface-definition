@@ -75,7 +75,7 @@ message ProjectPhase {
   optional int64 scheduled_end_time = 7;
   optional int64 actual_start_time = 8;
   optional int64 actual_end_time = 9;
-  int32 duration = 10;
+  int64 duration = 10;
   optional int32 create_user = 11;
   optional int64 create_date = 12;
   optional int32 modify_user = 13;
@@ -105,7 +105,7 @@ message CreateProjectPhaseInput {
   optional string scheduled_end_time = 6;
   optional string actual_start_time = 7;
   optional string actual_end_time = 8;
-  int32 duration = 9;
+  int64 duration = 9;
 }
 
 message UpdateProjectPhaseInput {

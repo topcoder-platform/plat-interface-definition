@@ -25,8 +25,8 @@ message Challenge {
   repeated PrizeSet prize_sets = 17;
   repeated string tags = 18;
   optional int32 project_id = 19;
-  optional int64 start_date = 20;
-  optional int64 end_date = 21;
+  optional string start_date = 20;
+  optional string end_date = 21;
   string status = 22;
   repeated string attachments = 23;
   repeated string groups = 24;
@@ -82,7 +82,7 @@ message Challenge {
   }
 
   message Phase {
-    int32 duration = 1;
+    int64 duration = 1;
     optional google.protobuf.Timestamp scheduled_start_date = 2;
     optional google.protobuf.Timestamp scheduled_end_date = 3;
     optional google.protobuf.Timestamp actual_start_date = 4;
@@ -152,8 +152,8 @@ message CreateChallengeInput {
   repeated Challenge.PrizeSet prize_sets = 15;
   repeated string tags = 16;
   optional int32 project_id = 17;
-  optional int64 start_date = 18;
-  optional int64 end_date = 19;
+  optional string start_date = 18;
+  optional string end_date = 19;
   string status = 20;
   repeated string attachments = 21;
   repeated string groups = 22;
@@ -185,8 +185,8 @@ message UpdateChallengeInput {
     optional GroupsUpdate group_update = 20;
 
     optional int32 project_id = 21;
-    optional int64 start_date = 22;
-    optional int64 end_date = 23;
+    optional string start_date = 22;
+    optional string end_date = 23;
     optional string status = 24;
     optional Challenge.Overview overview = 25;
 

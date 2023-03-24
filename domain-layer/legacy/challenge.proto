@@ -29,7 +29,7 @@ message Phase {
   string scheduled_end_time = 5;
   optional string actual_start_time = 6;
   optional string actual_end_time = 7;
-  int32 duration = 8;
+  int64 duration = 8;
   map<sint32, string> phase_criteria = 9;
 }
 
