@@ -161,38 +161,70 @@ message CreateChallengeInput {
 
 message UpdateChallengeInput {
   message UpdateInput {
-    string id = 1;
-    optional int32 legacy_id = 2;
-    optional string name = 3;
-    optional string type_id = 4;
-    optional string track_id = 5;
-    optional Challenge.Legacy legacy = 6;
-    optional Challenge.Billing billing = 7;
-    optional string description = 8;
-    optional string private_description = 9;
-    optional string description_format = 10;
-    repeated Challenge.Metadata metadata = 11;
-    optional Challenge.Task task = 12;
-    optional string timeline_template_id = 13;
-    repeated Challenge.Phase phases = 14;
-    repeated Challenge.Event events = 15;
-    repeated Challenge.Term terms = 16;
-    repeated Challenge.PrizeSet prize_sets = 17;
-    repeated string tags = 18;
+    optional string name = 1;
+
+    optional string type_id = 2;
+    optional string track_id = 3;
+    optional string timeline_template_id = 4;
+
+    optional Challenge.Legacy legacy = 5;
+    optional Challenge.Billing billing = 6;
+    optional string description = 7;
+    optional string private_description = 8;
+    optional string description_format = 9;
+    optional WinnerUpdate winner_update = 10;
+    optional DiscussionUpdate discussion_update = 11;
+    optional MetadataUpdate metadata_update = 12;
+    optional Challenge.Task task = 13;
+    optional PhaseUpdate phase_update = 14;
+    optional EventUpdate event_update = 15;
+    optional TermUpdate term_update = 16;
+    optional PrizeSetUpdate prize_set_update = 17;
+    optional TagsUpdate tag_update = 18;
     optional int32 project_id = 19;
     optional int64 start_date = 20;
     optional int64 end_date = 21;
     optional string status = 22;
-    repeated string attachments = 23;
-    repeated string groups = 24;
-    repeated Challenge.Winner winners = 25;
-    repeated Challenge.Discussion discussions = 26;
-    optional string created_by = 27;
-    optional string updated_by = 28;
-    optional int64 created = 29;
-    optional int64 updated = 30;
-    optional Challenge.Overview overview = 31;
+    optional AttachmentsUpdate attachment_update = 23;
+    optional GroupsUpdate group_update = 24;
+    optional string created_by = 25;
+    optional string updated_by = 26;
+    optional int64 created = 27;
+    optional int64 updated = 38;
+    optional Challenge.Overview overview = 29;
+
+    message WinnerUpdate {
+      repeated Challenge.Winner winners = 1;
+    }
+    message DiscussionUpdate {
+      repeated Challenge.Discussion discussions = 1;
+    }
+    message MetadataUpdate {
+      repeated Challenge.Metadata metadata = 1;
+    }
+    message PhaseUpdate {
+      repeated Challenge.Phase phases = 1;
+    }
+    message EventUpdate {
+      repeated Challenge.Event events = 1;
+    }
+    message TermUpdate {
+      repeated Challenge.Term terms = 1;
+    }
+    message PrizeSetUpdate {
+      repeated Challenge.PrizeSet prize_sets = 1;
+    }
+    message TagsUpdate {
+      repeated string tags = 1;
+    }
+    message AttachmentsUpdate {
+      repeated string attachments = 1;
+    }
+    message GroupsUpdate {
+      repeated string groups = 1;
+    }
   }
+
   repeated topcoder.common.ScanCriteria filter_criteria = 1;
   UpdateInput update_input = 2;
 }

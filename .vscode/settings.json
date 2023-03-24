@@ -1,5 +1,6 @@
 {
   "clang-format.style": "google",
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "xaver.clang-format"
+  "editor.defaultFormatter": "xaver.clang-format",
+  "java.compile.nullAnalysis.mode": "disabled"
 }
