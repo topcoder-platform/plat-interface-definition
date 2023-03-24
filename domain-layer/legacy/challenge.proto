@@ -36,7 +36,7 @@ message Phase {
 message Prize {
   int32 place = 1;
   float amount = 2;
-  string type = 3;
+  optional string type = 3;
   int32 num_submissions = 4;
 }
 
@@ -63,7 +63,7 @@ message UpdateChallengeInput {
   optional PhaseUpdate phase_update = 5;
   optional GroupUpdate group_update = 6;
   optional TermUpdate term_update = 7;
-  int32 billing_project = 8;
+  optional int32 billing_project = 8;
   map<sint32, string> project_info = 9;
 
   message PrizeUpdate {
@@ -79,8 +79,8 @@ message UpdateChallengeInput {
   }
 
   message Term {
-    string id = 1;
-    string role_id = 2;
+    optional string id = 1;
+    optional string role_id = 2;
   }
 
   message TermUpdate {
