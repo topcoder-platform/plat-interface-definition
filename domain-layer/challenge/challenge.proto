@@ -126,7 +126,7 @@ message Challenge {
   }
 
   message Overview {
-    int32 total_prizes = 1;
+    float total_prizes = 1;
   }
 }
 
