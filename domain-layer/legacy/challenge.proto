@@ -35,7 +35,7 @@ message Phase {
 
 message Prize {
   int32 place = 1;
-  float amount = 2;
+  int64 amount_in_cents = 2;
   optional string type = 3;
   int32 num_submissions = 4;
 }

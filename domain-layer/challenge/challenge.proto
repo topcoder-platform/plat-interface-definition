@@ -116,7 +116,7 @@ message Challenge {
 
   message PrizeSet {
     message Prize {
-      float value = 1;
+      int64 amount_in_cents = 1;
       string type = 2;
     }
 
@@ -126,7 +126,7 @@ message Challenge {
   }
 
   message Overview {
-    float total_prizes = 1;
+    int64 total_prizes_in_cents = 1;
   }
 }
 
