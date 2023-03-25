@@ -50,9 +50,8 @@ message CreateChallengeInput {
   repeated Prize winner_prizes = 7;
   optional string review_type = 8;
   string confidentiality_type = 9;
-  int32 billing_project = 10;
-  map<sint32, string> project_info = 11;
-  repeated Phase phases = 13;
+  map<sint32, string> project_info = 10;
+  repeated Phase phases = 11;
 }
 
 message UpdateChallengeInput {
@@ -62,8 +61,7 @@ message UpdateChallengeInput {
   optional PhaseUpdate phase_update = 4;
   optional GroupUpdate group_update = 5;
   optional TermUpdate term_update = 6;
-  optional int32 billing_project = 7;
-  map<sint32, string> project_info = 8;
+  map<sint32, string> project_info = 7;
 
   message PrizeUpdate {
     repeated Prize winner_prizes = 1;
