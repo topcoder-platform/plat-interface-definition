@@ -117,7 +117,7 @@ message Challenge {
   message PrizeSet {
     message Prize {
       optional int64 amount_in_cents = 1;
-      optional float amount = 2;
+      optional float value = 2;
       string type = 3;
     }
 
