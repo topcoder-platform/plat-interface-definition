@@ -5,6 +5,23 @@ package topcoder.domain.challenge;
 import "common/common.proto";
 import "google/protobuf/timestamp.proto";
 
+message PrizeSet {
+  message Prize {
+    optional int64 amount_in_cents = 1;
+    optional float amount = 2;
+    string type = 3;
+  }
+
+  string type = 1;  // Placement, Copilot, Reviewer
+  optional string description = 2;
+  repeated Prize prizes = 3;
+}
+
+message Overview {
+  optional int64 total_prizes_in_cents = 1;
+  optional float total_prizes = 2;
+}
+
 message Challenge {
   string id = 1;
   optional int32 legacy_id = 2;
@@ -116,7 +133,7 @@ message Challenge {
 
   message PrizeSet {
     message Prize {
-      int64 amount_in_cents = 1;
+      int64 amount = 1;
       string type = 2;
     }
 
@@ -126,7 +143,7 @@ message Challenge {
   }
 
   message Overview {
-    int64 total_prizes_in_cents = 1;
+    int64 total_prizes = 1;
   }
 }
 
