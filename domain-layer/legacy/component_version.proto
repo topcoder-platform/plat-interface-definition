@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package topcoder.domain.legacy_component_version;
+
+message LegacyComponentVersion {
+  int64 comp_vers_id = 1;
+  int64 component_id = 2;
+  int64 version = 3;
+  string version_text = 4;
+  string create_time = 5;
+  int64 phase_id = 6;
+  string phase_time = 7;
+  double price = 8;
+  string comments = 9;
+  string modify_date = 10;
+  int64 suspended_ind = 11;
+}
