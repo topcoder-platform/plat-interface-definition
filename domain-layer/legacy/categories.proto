@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package topcoder.domain.legacy_category;
+
+message LegacyCategory {
+  int64 category_id = 1;
+  int64 parent_category_id = 2;
+  string category_name = 3;
+  string category_description = 4;
+  int32 status_id = 5;
+  int32 viewable = 6;
+  bool is_custom = 7;
+}
