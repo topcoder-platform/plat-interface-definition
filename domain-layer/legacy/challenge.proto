@@ -58,11 +58,12 @@ message CreateChallengeInput {
 message UpdateChallengeInput {
   int32 project_id = 1;
   optional int32 project_status_id = 2;
-  optional PrizeUpdate prize_update = 3;
-  optional PhaseUpdate phase_update = 4;
-  optional GroupUpdate group_update = 5;
-  optional TermUpdate term_update = 6;
-  map<sint32, string> project_info = 7;
+  optional string name = 3;
+  optional PrizeUpdate prize_update = 4;
+  optional PhaseUpdate phase_update = 5;
+  optional GroupUpdate group_update = 6;
+  optional TermUpdate term_update = 7;
+  map<sint32, string> project_info = 8;
 
   message PrizeUpdate {
     repeated Prize winner_prizes = 1;
