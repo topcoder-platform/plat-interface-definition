@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package topcoder.domain.service.review.discussion;
+
+import "common/common.proto";
+import "domain-layer/review/discussion.proto";
+
+option java_multiple_files = true;
+option java_package = "com.topcoder.domain.service.review.discussion";
+
+service Discussion {
+    rpc Get(topcoder.common.LookupCriteria)
+        returns (topcoder.domain.review.discussion.Discussion);
+
+    rpc Search(topcoder.common.ScanRequest)
+        returns (topcoder.domain.review.discussion.DiscussionList);
+
+    rpc Create(topcoder.domain.review.discussion.Discussion)
+        returns (topcoder.domain.review.discussion.Discussion);
+
+    rpc Update(topcoder.domain.review.discussion.Discussion)
+        returns (topcoder.domain.review.discussion.Discussion);
+
+    rpc Delete(topcoder.common.LookupCriteria)
+        returns (topcoder.domain.review.discussion.Discussion);
+}

@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package topcoder.domain.review.scorecard;
+
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "com.topcoder.domain.review.scorecard";
+
+message Scorecard {
+    enum Status {
+        ENABLED = 0;
+        DISABLED = 1;
+    }
+
+    optional int64 id = 1;
+    string name = 2;
+    optional string description = 3;
+    int32 version = 4;
+    Status status = 5;
+    optional int64 parent_scorecard_id = 6;
+    repeated CriteriaGroup criteria_groups = 7;
+    google.protobuf.Timestamp created_at = 8;
+    google.protobuf.Timestamp updated_at = 9;
+    int32 created_by = 10;
+    int32 updated_by = 11;
+}
+
+message ScorecardList {
+    repeated Scorecard scorecards = 1;
+}
+
+message CriteriaGroup {
+    optional int64 id = 1;
+    string name = 2;
+    double weight = 3;
+    int32 display_order = 4;
+    repeated Criterion criterias = 5;
+    google.protobuf.Timestamp created_at = 6;
+    google.protobuf.Timestamp updated_at = 7;
+    int32 created_by = 8;
+    int32 updated_by = 9;
+}
+
+message Criterion {
+    optional int64 id = 1;
+    string name = 2;
+    optional string description = 3;
+    int64 answer_type_id = 4;
+    int32 display_order = 5;
+    optional string example = 6;
+    google.protobuf.Timestamp created_at = 7;
+    google.protobuf.Timestamp updated_at = 8;
+    int32 created_by = 9;
+    int32 updated_by = 10;
+}

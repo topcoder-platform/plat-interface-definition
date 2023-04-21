@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package topcoder.domain.service.review.scorecard;
+
+import "common/common.proto";
+import "domain-layer/review/scorecard.proto";
+
+option java_multiple_files = true;
+option java_package = "com.topcoder.domain.service.review.scorecard";
+
+service Scorecard {
+    rpc Get(topcoder.common.LookupCriteria)
+        returns (topcoder.domain.review.scorecard.Scorecard);
+
+    rpc Search(topcoder.common.ScanRequest)
+        returns (topcoder.domain.review.scorecard.ScorecardList);
+
+    rpc Create(topcoder.domain.review.scorecard.Scorecard)
+        returns (topcoder.domain.review.scorecard.Scorecard);
+
+    rpc Update(topcoder.domain.review.scorecard.Scorecard)
+        returns (topcoder.domain.review.scorecard.Scorecard);
+
+    rpc Delete(topcoder.common.LookupCriteria)
+        returns (topcoder.domain.review.scorecard.Scorecard);
+}

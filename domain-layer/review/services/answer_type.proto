@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package topcoder.domain.service.review.answertype;
+
+import "common/common.proto";
+import "domain-layer/review/answer_type.proto";
+
+option java_multiple_files = true;
+option java_package = "com.topcoder.domain.service.review.answertype";
+
+service AnswerType {
+    rpc Get(topcoder.common.LookupCriteria)
+        returns (topcoder.domain.review.answertype.AnswerType);
+
+    rpc Create(topcoder.domain.review.answertype.AnswerType)
+        returns (topcoder.domain.review.answertype.AnswerType);
+
+    rpc Update(topcoder.domain.review.answertype.AnswerType)
+        returns (topcoder.domain.review.answertype.AnswerType);
+
+    rpc Delete(topcoder.common.LookupCriteria)
+        returns (topcoder.domain.review.answertype.AnswerType);
+}
