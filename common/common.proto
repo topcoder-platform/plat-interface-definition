@@ -83,14 +83,16 @@ message GetRequest {
     int64 integer_id = 1;
     string string_id = 2;
   }
+  repeated string attributes = 3;
 }
 
 message SearchRequest {
   repeated SearchCriteria criteria = 1;
-  optional int32 page = 2;
-  optional int32 per_page = 3;
-  SortOrder sort_order = 4;
-  optional string sort_by = 5;
+  repeated string attributes = 2;
+  optional int32 page = 3;
+  optional int32 per_page = 4;
+  SortOrder sort_order = 5;
+  optional string sort_by = 6;
 }
 
 message SearchCriteria {
