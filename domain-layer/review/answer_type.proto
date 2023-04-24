@@ -18,6 +18,10 @@ message AnswerType {
     int32 updated_by = 8;
 }
 
+message AnswerTypeList {
+    repeated AnswerType answer_types = 1;
+}
+
 message AnswerTypeValue {
     optional int64 id = 1;
     string value = 2;

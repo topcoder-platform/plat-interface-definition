@@ -9,8 +9,11 @@ option java_multiple_files = true;
 option java_package = "com.topcoder.domain.service.review.answertype";
 
 service AnswerType {
-    rpc Get(topcoder.common.LookupCriteria)
+    rpc Lookup(topcoder.common.LookupCriteria)
         returns (topcoder.domain.review.answertype.AnswerType);
+
+    rpc Scan(topcoder.common.ScanRequest)
+        returns (topcoder.domain.review.answertype.AnswerTypeList);
 
     rpc Create(topcoder.domain.review.answertype.AnswerType)
         returns (topcoder.domain.review.answertype.AnswerType);
