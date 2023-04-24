@@ -36,6 +36,11 @@ enum Domain {
   DOMAIN_SUBMISSION = 10;
 }
 
+enum SortOrder {
+  ASC = 0;
+  DESC = 1;
+}
+
 message ScanCriteria {
   string key = 1;
   optional Operator operator = 2;
@@ -71,6 +76,26 @@ message CheckExistsResult {
 message LookupCriteria {
   string key = 1;
   google.protobuf.Value value = 3;
+}
+
+message GetRequest {
+  oneof id {
+    int64 integer_id = 1;
+    string string_id = 2;
+  }
+}
+
+message SearchRequest {
+  repeated SearchCriteria criteria = 1;
+  optional int32 page = 2;
+  optional int32 per_page = 3;
+  SortOrder sort_order = 4;
+  optional string sort_by = 5;
+}
+
+message SearchCriteria {
+  string key = 1;
+  google.protobuf.Value value = 2;
 }
 
 // TODO: There has to be a better way to do this.

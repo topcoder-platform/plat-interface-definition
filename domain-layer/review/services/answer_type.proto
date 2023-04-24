@@ -8,19 +8,23 @@ import "domain-layer/review/answer_type.proto";
 option java_multiple_files = true;
 option java_package = "com.topcoder.domain.service.review.answertype";
 
+message AnswerTypeList {
+  repeated topcoder.domain.review.answertype.AnswerType answer_types = 1;
+}
+
 service AnswerType {
-    rpc Lookup(topcoder.common.LookupCriteria)
-        returns (topcoder.domain.review.answertype.AnswerType);
+  rpc Get(topcoder.common.GetRequest)
+    returns (topcoder.domain.review.answertype.AnswerType);
 
-    rpc Scan(topcoder.common.ScanRequest)
-        returns (topcoder.domain.review.answertype.AnswerTypeList);
+  rpc Search(topcoder.common.SearchRequest)
+    returns (AnswerTypeList);
 
-    rpc Create(topcoder.domain.review.answertype.AnswerType)
-        returns (topcoder.domain.review.answertype.AnswerType);
+  rpc Create(topcoder.domain.review.answertype.AnswerType)
+      returns (topcoder.domain.review.answertype.AnswerType);
 
-    rpc Update(topcoder.domain.review.answertype.AnswerType)
-        returns (topcoder.domain.review.answertype.AnswerType);
+  rpc Update(topcoder.domain.review.answertype.AnswerType)
+      returns (topcoder.domain.review.answertype.AnswerType);
 
-    rpc Delete(topcoder.common.LookupCriteria)
-        returns (topcoder.domain.review.answertype.AnswerType);
+  rpc Delete(topcoder.common.GetRequest)
+      returns (topcoder.domain.review.answertype.AnswerType);
 }

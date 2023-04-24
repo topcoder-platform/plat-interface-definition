@@ -8,19 +8,23 @@ import "domain-layer/review/discussion.proto";
 option java_multiple_files = true;
 option java_package = "com.topcoder.domain.service.review.discussion";
 
+message DiscussionList {
+  repeated topcoder.domain.review.discussion.Discussion discussions = 1;
+}
+
 service Discussion {
-    rpc Lookup(topcoder.common.LookupCriteria)
-        returns (topcoder.domain.review.discussion.Discussion);
+  rpc Get(topcoder.common.GetRequest)
+    returns (topcoder.domain.review.discussion.Discussion);
 
-    rpc Scan(topcoder.common.ScanRequest)
-        returns (topcoder.domain.review.discussion.DiscussionList);
+  rpc Search(topcoder.common.SearchRequest)
+    returns (DiscussionList);
 
-    rpc Create(topcoder.domain.review.discussion.Discussion)
-        returns (topcoder.domain.review.discussion.Discussion);
+  rpc Create(topcoder.domain.review.discussion.Discussion)
+    returns (topcoder.domain.review.discussion.Discussion);
 
-    rpc Update(topcoder.domain.review.discussion.Discussion)
-        returns (topcoder.domain.review.discussion.Discussion);
+  rpc Update(topcoder.domain.review.discussion.Discussion)
+    returns (topcoder.domain.review.discussion.Discussion);
 
-    rpc Delete(topcoder.common.LookupCriteria)
-        returns (topcoder.domain.review.discussion.Discussion);
+  rpc Delete(topcoder.common.GetRequest)
+    returns (topcoder.domain.review.discussion.Discussion);
 }

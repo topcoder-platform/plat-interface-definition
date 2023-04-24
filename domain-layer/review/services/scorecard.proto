@@ -8,19 +8,23 @@ import "domain-layer/review/scorecard.proto";
 option java_multiple_files = true;
 option java_package = "com.topcoder.domain.service.review.scorecard";
 
+message ScorecardList {
+  repeated topcoder.domain.review.scorecard.Scorecard scorecards = 1;
+}
+
 service Scorecard {
-    rpc Get(topcoder.common.LookupCriteria)
-        returns (topcoder.domain.review.scorecard.Scorecard);
+  rpc Get(topcoder.common.GetRequest)
+    returns (topcoder.domain.review.scorecard.Scorecard);
 
-    rpc Search(topcoder.common.ScanRequest)
-        returns (topcoder.domain.review.scorecard.ScorecardList);
+  rpc Search(topcoder.common.SearchRequest)
+    returns (ScorecardList);
 
-    rpc Create(topcoder.domain.review.scorecard.Scorecard)
-        returns (topcoder.domain.review.scorecard.Scorecard);
+  rpc Create(topcoder.domain.review.scorecard.Scorecard)
+    returns (topcoder.domain.review.scorecard.Scorecard);
 
-    rpc Update(topcoder.domain.review.scorecard.Scorecard)
-        returns (topcoder.domain.review.scorecard.Scorecard);
+  rpc Update(topcoder.domain.review.scorecard.Scorecard)
+    returns (topcoder.domain.review.scorecard.Scorecard);
 
-    rpc Delete(topcoder.common.LookupCriteria)
-        returns (topcoder.domain.review.scorecard.Scorecard);
+  rpc Delete(topcoder.common.GetRequest)
+    returns (topcoder.domain.review.scorecard.Scorecard);
 }

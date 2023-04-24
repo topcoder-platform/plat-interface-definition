@@ -8,19 +8,23 @@ import "domain-layer/review/review.proto";
 option java_multiple_files = true;
 option java_package = "com.topcoder.domain.service.review.review";
 
+message ReviewList {
+  repeated topcoder.domain.review.review.Review reviews = 1;
+}
+
 service Discussion {
-    rpc Get(topcoder.common.LookupCriteria)
-        returns (topcoder.domain.review.review.Review);
+  rpc Get(topcoder.common.GetRequest)
+    returns (topcoder.domain.review.review.Review);
 
-    rpc Search(topcoder.common.ScanRequest)
-        returns (topcoder.domain.review.review.ReviewList);
+  rpc Search(topcoder.common.SearchRequest)
+    returns (ReviewList);
 
-    rpc Create(topcoder.domain.review.review.Review)
-        returns (topcoder.domain.review.review.Review);
+  rpc Create(topcoder.domain.review.review.Review)
+    returns (topcoder.domain.review.review.Review);
 
-    rpc Update(topcoder.domain.review.review.Review)
-        returns (topcoder.domain.review.review.Review);
+  rpc Update(topcoder.domain.review.review.Review)
+    returns (topcoder.domain.review.review.Review);
 
-    rpc Delete(topcoder.common.LookupCriteria)
-        returns (topcoder.domain.review.review.Review);
+  rpc Delete(topcoder.common.GetRequest)
+    returns (topcoder.domain.review.review.Review);
 }
