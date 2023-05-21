@@ -98,7 +98,7 @@ message PhaseFactRequest {
 message PhaseFactResponse {
   message FactResponse {
     topcoder.common.PhaseFact fact = 1;
-    bool response = 2;
+    google.protobuf.Value response = 2;
   }
   repeated FactResponse fact_responses = 1;
 }
