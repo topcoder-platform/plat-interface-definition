@@ -7,14 +7,14 @@ message PaymentDetail {
   float net_amount = 2;
   float gross_amount = 3;
   float total_amount = 4;
-  optional string date_paid = 5;
+  optional string date_paid = 5;  // DATETIME YEAR TO FRACTION (3)
   int32 payment_status_id = 6;
   optional int32 payment_address_id = 7;
   int32 modification_rationale_id = 8;
   string payment_desc = 9;
   int32 payment_type_id = 10;
-  string date_modified = 11;
-  string date_due = 12;
+  string date_modified = 11;  // DATETIME YEAR TO FRACTION (3)
+  string date_due = 12;       // DATETIME YEAR TO FRACTION (3)
   int32 payment_method_id = 13;
   optional string client = 14;
   optional int32 algorithm_round_id = 15;
@@ -26,12 +26,22 @@ message PaymentDetail {
   optional int32 digital_run_stage_id = 21;
   optional int32 digital_run_season_id = 22;
   optional int32 parent_payment_id = 23;
-  string create_date = 24;
+  string create_date = 24;  // DATETIME YEAR TO FRACTION (3)
   int32 charity_ind = 25;
   int32 installment_number = 26;
   int32 digital_run_track_id = 27;
   optional string jira_issue_id = 28;
-  int32 user_id = 29;
+  int32 create_user = 29;
+}
+
+message PaymentDetailXref {
+  int32 payment_id = 1;
+  int32 payment_detail_id = 2;
+}
+
+message PaymentDetailStatusReasonXref {
+  int32 payment_detail_id = 1;
+  int32 payment_status_reason_id = 2;
 }
 
 message PaymentDetailList {
