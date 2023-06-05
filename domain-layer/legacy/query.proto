@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package topcoder.domain.query;
+
+message QueryInput {
+  string sql = 1;
+}
+
+message QueryOutput {
+  repeated Row rows = 1;
+}
+
+message Row {
+  repeated Field fields = 1;
+}
+
+message Field {
+  string key = 1;
+  string value = 2;
+}
