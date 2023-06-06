@@ -78,3 +78,27 @@ message GoogleProtobufTypesPlaceholder {
   google.protobuf.Timestamp timestamp = 1;
   google.protobuf.Empty empty = 2;
 }
+
+// This is a necessary indirection (challenge-api -> domain-challenge -> acl)
+// When we have a proper review API in place, these requests can go to
+// review-api or domain-review directly.
+
+enum PhaseFact {
+  PHASE_FACT_UNSPECIFIED = 0;
+  PHASE_FACT_HAS_ACTIVE_UNREVIEWED_SUBMISSIONS = 1;
+  PHASE_FACT_ARE_ALL_SUBMISSIONS_REVIEWED = 2;
+  PHASE_FACT_ARE_ALL_APPEALS_RESOLVED = 3;
+}
+
+message PhaseFactRequest {
+  int32 legacy_id = 1;
+  repeated topcoder.common.PhaseFact facts = 2;
+}
+
+message PhaseFactResponse {
+  message FactResponse {
+    topcoder.common.PhaseFact fact = 1;
+    google.protobuf.Value response = 2;
+  }
+  repeated FactResponse fact_responses = 1;
+}

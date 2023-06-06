@@ -3,7 +3,6 @@ syntax = "proto3";
 package topcoder.domain.payment;
 
 import "common/common.proto";
-import "domain-layer/payment/payment_detail.proto";
 
 message Payment {
   int64 payment_id = 1;
@@ -14,7 +13,6 @@ message Payment {
   optional string create_date = 6;  // DATETIME YEAR TO FRACTION (3)
   optional string modify_date = 7;  // DATETIME YEAR TO FRACTION (3)
   optional bool has_global_ad = 8;
-  optional topcoder.domain.payment.PaymentDetailList details = 9;
 }
 
 message PaymentList {
@@ -26,6 +24,8 @@ message Payee {
 }
 message Payable {
   float amount = 1;
+  optional float gross_amount = 2;
+  optional float total_amount = 3;
 }
 
 enum PaymentType {
@@ -33,6 +33,7 @@ enum PaymentType {
   PAYMENT_TYPE_WINNER = 1;
   PAYMENT_TYPE_COPILOT = 2;
   PAYMENT_TYPE_REVIEWER = 3;
+  PAYMENT_TYPE_CONTEST_PAYMENT = 4;
 }
 
 message TaskPayment {
@@ -52,6 +53,7 @@ message ChallengePayment {
   Payable payable = 5;
   optional int32 due_in_days = 6;
   string desc = 7;
+  sint32 installment_number = 8;
 }
 
 message CreatePaymentInput {

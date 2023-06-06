@@ -23,4 +23,10 @@ service Challenge {
 
   rpc UpdateForACL(topcoder.domain.challenge.UpdateChallengeInputForACL)
       returns (google.protobuf.Empty);
+
+  // This is a necessary indirection (challenge-api -> domain-challenge -> acl)
+  // When we have a proper review API in place, these requests can go to
+  // review-api or domain-review directly.
+  rpc GetPhaseFacts(topcoder.common.PhaseFactRequest)
+      returns (topcoder.common.PhaseFactResponse);
 }
