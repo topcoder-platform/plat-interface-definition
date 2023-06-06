@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package topcoder.domain.service.query;
+
+import "domain-layer/legacy/query.proto";
+
+
+service Query {
+  rpc RawQuery(topcoder.domain.query.QueryInput)
+      returns (topcoder.domain.query.QueryOutput);
+}
