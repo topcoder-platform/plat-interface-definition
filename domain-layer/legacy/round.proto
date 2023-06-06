@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package topcoder.domain.marathon_match.round;
+
+message Round {
+  int32 round_id = 1;
+  int32 contest_id = 2;
+  string name = 3;
+  string status = 4;
+  bool ran_ratings = 5;
+  bool paid_money = 6;
+  int32 registration_limit = 7;
+  string notes = 8;
+  int32 invitational = 9;
+  int32 round_type_id = 10;
+  string link = 11;
+  string short_name = 12;
+  int32 forum_id = 13;
+  bool rated_ind = 14;
+  int32 region_id = 15;
+  int64 tc_direct_project_id = 16;
+  bool auto_end = 17;
+  string editorial_link = 18;
+  int32 creator_id = 19;
+}

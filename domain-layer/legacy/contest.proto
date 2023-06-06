@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package topcoder.domain.marathon_match.contest;
+
+message Contest {
+  int32 contest_id = 1;
+  string name = 2;
+  string start_date = 3;
+  string end_date = 4;
+  string status = 5;
+  int32 language_id = 6;
+  int32 group_id = 7;
+  string region_code = 8;
+  string ad_text = 9;
+  string ad_start = 10;
+  string ad_end = 11;
+  string ad_task = 12;
+  string ad_command = 13;
+  int32 activate_menu = 14;
+  int32 season_id = 15;
+}

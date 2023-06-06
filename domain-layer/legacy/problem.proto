@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package topcoder.domain.marathon_match.problem;
+
+message Problem {
+  int32 problem_id = 1;
+  string name = 2;
+  int32 status_id = 3;
+  string problem_text = 4;
+  int32 proposed_division_id = 5;
+  int32 problem_type_id = 6;
+  int32 proposed_difficulty_id = 7;
+  int32 accept_submissions = 8;
+  string create_date = 9;
+  string modify_date = 10;
+}
