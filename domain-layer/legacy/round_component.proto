@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package topcoder.domain.marathon_match.round_component;
+
+message RoundComponent {
+  int32 round_id = 1;
+  int32 component_id = 2;
+  int32 submit_order = 3;
+  int32 division_id = 4;
+  int32 difficulty_id = 5;
+  double points = 6;
+  int32 open_order = 7;
+}
