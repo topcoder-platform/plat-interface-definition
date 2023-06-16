@@ -264,6 +264,7 @@ message UpdateChallengeInputForACL {
   message WinnerACL {
     string handle = 1;
     int32 placement = 2;
+    int32 user_id = 3;
   }
   repeated topcoder.common.ScanCriteria filter_criteria = 1;
   UpdateInputForACL update_input_for_acl = 2;
