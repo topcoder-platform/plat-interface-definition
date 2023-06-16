@@ -11,6 +11,4 @@ message Problem {
   int32 problem_type_id = 6;
   int32 proposed_difficulty_id = 7;
   int32 accept_submissions = 8;
-  string create_date = 9;
-  string modify_date = 10;
 }
