@@ -244,6 +244,7 @@ message UpdateChallengeInputForACL {
     optional PrizeSetsACL prize_sets = 12;
     optional Challenge.Overview overview = 13;
     optional WinnersACL winners = 14;
+    optional string phase_to_close = 15;
   }
   message PhasesACL {
     repeated Challenge.Phase phases = 1;
