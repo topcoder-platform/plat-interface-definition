@@ -107,6 +107,7 @@ message InsertQuery {
   optional string id_column = 4;
   optional string id_sequence = 5;
   optional string id_table = 6;
+  repeated string returning_fields = 7;
 }
 
 message BulkInsertQuery {
@@ -153,7 +154,11 @@ message RawQueryResult {
 }
 
 message InsertQueryResult {
-  uint64 last_insert_id = 1;
+  oneof insert_result_type {
+    uint64 last_insert_id = 1;
+    Row row = 2;
+    uint64 affected_rows = 3;
+  }
 }
 
 message UpdateQueryResult {
