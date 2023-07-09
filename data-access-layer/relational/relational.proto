@@ -63,10 +63,26 @@ message Column {
   optional ColumnType type = 3;
 }
 
-message WhereCriteria {
+message WhereCondition {
   Operator operator = 1;
   string key = 2;
   Value value = 3;
+}
+
+message AndWhere {
+  repeated WhereCondition where = 1;
+}
+
+message OrWhere {
+  repeated WhereCondition where = 1;
+}
+
+message WhereCriteria {
+  oneof where_type {
+    WhereCondition condition = 1;
+    AndWhere and = 2;
+    OrWhere or =3;
+  }
 }
 
 message RawQuery {
