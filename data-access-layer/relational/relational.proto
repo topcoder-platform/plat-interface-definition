@@ -70,11 +70,11 @@ message WhereCondition {
 }
 
 message AndWhere {
-  repeated WhereCondition where = 1;
+  repeated WhereCriteria where = 1;
 }
 
 message OrWhere {
-  repeated WhereCondition where = 1;
+  repeated WhereCriteria where = 1;
 }
 
 message WhereCriteria {
