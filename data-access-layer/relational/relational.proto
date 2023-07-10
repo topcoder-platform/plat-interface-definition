@@ -63,7 +63,7 @@ message Column {
   optional ColumnType type = 3;
 }
 
-message WhereCondition {
+message Condition {
   Operator operator = 1;
   string key = 2;
   Value value = 3;
@@ -79,7 +79,7 @@ message OrWhere {
 
 message WhereCriteria {
   oneof where_type {
-    WhereCondition condition = 1;
+    Condition condition = 1;
     AndWhere and = 2;
     OrWhere or =3;
   }
