@@ -61,7 +61,8 @@ message TypedColumn {
   string schema = 1;
   string table_name = 2;
   string name = 3;
-  ColumnType type = 4;
+  optional string alias = 4;
+  ColumnType type = 5;
 }
 
 message Column {
@@ -72,13 +73,14 @@ message Column {
 
 message ReturningColumn {
   string name = 1;
-  ColumnType type = 2;
+  optional string alias = 2;
+  ColumnType type = 3;
 }
 
 message Condition {
   Operator operator = 1;
   Column key = 2;
-  Value value = 3;
+  repeated Value value = 3;
 }
 
 message AndWhere {
