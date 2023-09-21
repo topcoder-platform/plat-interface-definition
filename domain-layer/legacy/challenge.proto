@@ -53,6 +53,7 @@ message CreateChallengeInput {
   map<sint32, string> project_info = 10;
   repeated Phase phases = 11;
   repeated int32 groups = 12;
+  string id = 13;
 }
 
 message UpdateChallengeInput {
