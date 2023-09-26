@@ -37,6 +37,7 @@ message Challenge {
   int64 created = 29;
   optional int64 updated = 30;
   Overview overview = 31;
+  optional Constraint constraints = 32;
 
   message Legacy {
     optional string track = 1;  // Develop, Design, Data Science, QA
@@ -130,6 +131,10 @@ message Challenge {
     optional int64 total_prizes_in_cents = 1;
     optional float total_prizes = 2;
   }
+
+  message Constraint {
+    repeated string allowed_registrants = 1; 
+  }
 }
 
 message ChallengeList {
@@ -160,6 +165,7 @@ message CreateChallengeInput {
   repeated string attachments = 21;
   repeated string groups = 22;
   repeated Challenge.Discussion discussions = 23;
+  optional Challenge.Constraint constraints = 24;
 }
 
 message UpdateChallengeInput {
@@ -191,6 +197,7 @@ message UpdateChallengeInput {
     optional string end_date = 23;
     optional string status = 24;
     optional Challenge.Overview overview = 25;
+    optional Challenge.Constraint constraints = 26;
 
     message WinnerUpdate {
       repeated Challenge.Winner winners = 1;
