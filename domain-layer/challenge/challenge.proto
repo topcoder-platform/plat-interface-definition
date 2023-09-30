@@ -102,18 +102,18 @@ message Challenge {
     }
   }
 
-  message Winner {
-    string handle = 1;
-    int32 placement = 2;
-    int32 user_id = 3;
-    optional string type = 4;
-  }
-
   message Payment {
     string handle = 1;
     double amount = 2;
     int32 user_id = 3;
     string type = 4;
+  }
+
+  message Winner {
+    string handle = 1;
+    int32 placement = 2;
+    int32 user_id = 3;
+    optional string type = 4;
   }
 
   message Task {
@@ -140,7 +140,7 @@ message Challenge {
   }
 
   message Constraint {
-    repeated string allowed_registrants = 1; 
+    repeated string allowed_registrants = 1;
   }
 }
 
