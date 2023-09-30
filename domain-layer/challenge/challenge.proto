@@ -109,6 +109,13 @@ message Challenge {
     optional string type = 4;
   }
 
+  message Payment {
+    string handle = 1;
+    double amount = 2;
+    int32 user_id = 3;
+    string type = 4;
+  }
+
   message Task {
     bool is_task = 1;
     bool is_assigned = 2;
