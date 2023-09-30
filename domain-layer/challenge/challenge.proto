@@ -55,7 +55,7 @@ message Challenge {
 
   message Billing {
     int32 billing_account_id = 1;
-    float markup = 2;
+    double markup = 2;
   }
 
   message Event {
