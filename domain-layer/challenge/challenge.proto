@@ -38,6 +38,7 @@ message Challenge {
   optional int64 updated = 30;
   Overview overview = 31;
   optional Constraint constraints = 32;
+  repeated Payment payments = 33;
 
   message Legacy {
     optional string track = 1;  // Develop, Design, Data Science, QA
