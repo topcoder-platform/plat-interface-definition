@@ -206,9 +206,13 @@ message UpdateChallengeInput {
     optional string status = 24;
     optional Challenge.Overview overview = 25;
     optional Challenge.Constraint constraints = 26;
+    optional PaymentUpdate payment_update = 27;
 
     message WinnerUpdate {
       repeated Challenge.Winner winners = 1;
+    }
+    message PaymentUpdate {
+      repeated Challenge.Payment payments = 1;
     }
     message DiscussionUpdate {
       repeated Challenge.Discussion discussions = 1;
@@ -260,6 +264,7 @@ message UpdateChallengeInputForACL {
     optional Challenge.Overview overview = 13;
     optional WinnersACL winners = 14;
     optional string phase_to_close = 15;
+    optional PaymentsACL payments = 16;
   }
   message PhasesACL {
     repeated Challenge.Phase phases = 1;
@@ -281,6 +286,15 @@ message UpdateChallengeInputForACL {
     string handle = 1;
     int32 placement = 2;
     int32 user_id = 3;
+  }
+  message PaymentsACL {
+    repeated PaymentACL payments = 1;
+  }
+  message PaymentACL {
+    string handle = 1;
+    double amount = 2;
+    int32 user_id = 3;
+    string type = 4;
   }
   repeated topcoder.common.ScanCriteria filter_criteria = 1;
   UpdateInputForACL update_input_for_acl = 2;
