@@ -38,6 +38,7 @@ message Challenge {
   optional int64 updated = 30;
   Overview overview = 31;
   optional Constraint constraints = 32;
+  repeated Skill skills = 33;
 
   message Legacy {
     optional string track = 1;  // Develop, Design, Data Science, QA
@@ -135,6 +136,16 @@ message Challenge {
   message Constraint {
     repeated string allowed_registrants = 1; 
   }
+
+  message Skill {
+    message SkillCategory {
+      string name = 1;
+      string id = 2;
+    }
+    string name = 1;
+    string id = 2;
+    SkillCategory category = 3;
+  }
 }
 
 message ChallengeList {
@@ -166,6 +177,7 @@ message CreateChallengeInput {
   repeated string groups = 22;
   repeated Challenge.Discussion discussions = 23;
   optional Challenge.Constraint constraints = 24;
+  repeated Challenge.Skill skills = 25;
 }
 
 message UpdateChallengeInput {
@@ -198,6 +210,7 @@ message UpdateChallengeInput {
     optional string status = 24;
     optional Challenge.Overview overview = 25;
     optional Challenge.Constraint constraints = 26;
+    optional SkillUpdate skill_update = 27;
 
     message WinnerUpdate {
       repeated Challenge.Winner winners = 1;
@@ -228,6 +241,9 @@ message UpdateChallengeInput {
     }
     message GroupsUpdate {
       repeated string groups = 1;
+    }
+    message SkillUpdate {
+      repeated Challenge.Skill skills = 1;
     }
   }
 
