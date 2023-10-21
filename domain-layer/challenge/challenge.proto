@@ -177,15 +177,15 @@ message CreateChallengeInput {
   repeated Challenge.Term terms = 14;
   repeated Challenge.PrizeSet prize_sets = 15;
   repeated string tags = 16;
-  optional int32 project_id = 17;
-  optional string start_date = 18;
-  optional string end_date = 19;
-  string status = 20;
-  repeated string attachments = 21;
-  repeated string groups = 22;
-  repeated Challenge.Discussion discussions = 23;
-  optional Challenge.Constraint constraints = 24;
-  repeated Challenge.Skill skills = 25;
+  repeated Challenge.Skill skills = 17;
+  optional int32 project_id = 18;
+  optional string start_date = 19;
+  optional string end_date = 20;
+  string status = 21;
+  repeated string attachments = 22;
+  repeated string groups = 23;
+  repeated Challenge.Discussion discussions = 24;
+  optional Challenge.Constraint constraints = 25;
 }
 
 message UpdateChallengeInput {
