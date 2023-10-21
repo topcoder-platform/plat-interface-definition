@@ -1,5 +1,5 @@
 {
-  "name": "topcoder-interface",
+  "name": "topcoder-proto-registry",
   "version": "0.0.59",
   "description": "A collection of interface definitions for the Topcoder Platform. These are used to define the API for the Topcoder Platform, and are used to generate the API documentation, stubs for the API clients, and the API server.",
   "main": "index.js",
