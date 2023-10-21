@@ -218,11 +218,8 @@ message UpdateChallengeInput {
     optional string status = 24;
     optional Challenge.Overview overview = 25;
     optional Challenge.Constraint constraints = 26;
-<<<<<<< HEAD
     optional PaymentUpdate payment_update = 27;
-=======
-    optional SkillUpdate skill_update = 27;
->>>>>>> main
+    optional SkillUpdate skill_update = 28;
 
     message WinnerUpdate {
       repeated Challenge.Winner winners = 1;
