@@ -57,39 +57,79 @@ message Value {
   }
 }
 
+message TypedColumn {
+  string schema = 1;
+  string table_name = 2;
+  string name = 3;
+  optional string alias = 4;
+  ColumnType type = 5;
+}
+
 message Column {
-  optional string table_name = 1;
-  string name = 2;
-  optional ColumnType type = 3;
+  string schema = 1;
+  string table_name = 2;
+  string name = 3;
+}
+
+message ReturningColumn {
+  string name = 1;
+  optional string alias = 2;
+  ColumnType type = 3;
+}
+
+message Condition {
+  Operator operator = 1;
+  Column key = 2;
+  repeated Value value = 3;
+}
+
+message AndWhere {
+  repeated WhereCriteria where = 1;
+}
+
+message OrWhere {
+  repeated WhereCriteria where = 1;
 }
 
 message WhereCriteria {
-  Operator operator = 1;
-  string key = 2;
-  Value value = 3;
+  oneof where_type {
+    Condition condition = 1;
+    AndWhere and = 2;
+    OrWhere or =3;
+  }
 }
 
 message RawQuery {
   string query = 1;
 }
 
+message Table {
+  string schema = 1;
+  string table_name = 2;
+}
+
+message JoinCondition {
+  Operator operator = 1;
+  Column left = 2;
+  oneof right {
+    Value value = 3;
+    Column column = 4;
+  }
+}
+
 message Join {
   JoinType type = 1;
-  optional string from_table_schema = 2;
-  optional string join_table_schema = 3;
-  string from_table = 4;
-  string join_table = 5;
-  string from_column = 6;
-  string join_column = 7;
+  Table table = 2;
+  repeated JoinCondition conditions = 3;
 }
 
 message SelectQuery {
-  optional string schema = 1;
+  string schema = 1;
   string table = 2;
-  repeated Column column = 3;
+  repeated TypedColumn column = 3;
   repeated WhereCriteria where = 4;
-  repeated string group_by = 5;
-  repeated string order_by = 6;
+  repeated Column group_by = 5;
+  repeated Column order_by = 6;
   repeated Join join = 7;
   uint32 limit = 8;
   uint32 offset = 9;
@@ -101,12 +141,13 @@ message ColumnValue {
 }
 
 message InsertQuery {
-  optional string schema = 1;
+  string schema = 1;
   string table = 2;
   repeated ColumnValue column_value = 3;
   optional string id_column = 4;
   optional string id_sequence = 5;
   optional string id_table = 6;
+  repeated ReturningColumn returning_fields = 7;
 }
 
 message BulkInsertQuery {
@@ -114,14 +155,14 @@ message BulkInsertQuery {
 }
 
 message UpdateQuery {
-  optional string schema = 1;
+  string schema = 1;
   string table = 2;
   repeated ColumnValue column_value = 3;
   repeated WhereCriteria where = 4;
 }
 
 message DeleteQuery {
-  optional string schema = 1;
+  string schema = 1;
   string table = 2;
   repeated WhereCriteria where = 3;
 }
@@ -153,7 +194,11 @@ message RawQueryResult {
 }
 
 message InsertQueryResult {
-  uint64 last_insert_id = 1;
+  oneof insert_result_type {
+    uint64 last_insert_id = 1;
+    Row row = 2;
+    uint64 affected_rows = 3;
+  }
 }
 
 message UpdateQueryResult {
