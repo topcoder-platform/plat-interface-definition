@@ -58,7 +58,7 @@ message Challenge {
   message Billing {
     int32 billing_account_id = 1;
     double markup = 2;
-    optional double client_bill_rate = 3;
+    optional double client_biling_rate = 3;
   }
 
   message Event {
