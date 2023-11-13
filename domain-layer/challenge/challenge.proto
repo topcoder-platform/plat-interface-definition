@@ -128,7 +128,7 @@ message Challenge {
   message PrizeSet {
     message Prize {
       optional int64 amount_in_cents = 1;
-      optional float value = 2;
+      optional double value = 2;
       string type = 3;
     }
 
@@ -139,7 +139,8 @@ message Challenge {
 
   message Overview {
     optional int64 total_prizes_in_cents = 1;
-    optional float total_prizes = 2;
+    optional double total_prizes = 2;
+    optional string type = 3; // USD, POINT
   }
 
   message Constraint {
