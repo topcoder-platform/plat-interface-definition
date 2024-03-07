@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package topcoder.domain.review_summation;
+import "common/common.proto";
+
+import "google/protobuf/struct.proto";
+
+message ReviewSummation {
+  string id = 1;
+  optional bool is_final = 2;
+  optional string reviewed_date = 3;
+  string score_card_id = 4;
+  string submission_id = 5;
+  float aggregate_score = 6;
+  bool is_passing = 7;
+  optional google.protobuf.Struct metadata = 8;
+  int64 created = 9;
+  int64 updated = 10;
+  string created_by = 11;
+  string updated_by = 12;
+}
+
+message CreateReviewSummationInput {
+  string score_card_id = 1;
+  string submission_id = 2;
+  float aggregate_score = 3;
+  bool is_passing = 4;
+  optional google.protobuf.Struct metadata = 5;
+  optional bool is_final = 6;
+  optional string reviewed_date = 7;
+}
+
+message UpdateReviewSummationInput {
+  message UpdateInput {
+    optional string score_card_id = 1;
+    optional string submission_id = 2;
+    optional float aggregate_score = 3;
+    optional bool is_passing = 4;
+    optional google.protobuf.Struct metadata = 5;
+    optional bool is_final = 6;
+    optional string reviewed_date = 7;
+  }
+
+  repeated topcoder.common.ScanCriteria filter_criteria = 1;
+  UpdateInput update_input = 3;
+}
+
+message ReviewSummationList {
+  repeated ReviewSummation items = 1;
+}

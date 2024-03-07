@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package topcoder.domain.service.review;
+
+import "common/common.proto";
+import "domain-layer/submission/review.proto";
+
+service Review {
+  rpc Scan(topcoder.common.ScanRequest) returns (topcoder.common.ScanResult);
+
+  rpc Lookup(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.review.Review);
+
+  rpc Create(topcoder.domain.review.CreateReviewInput)
+      returns (topcoder.domain.review.Review);
+
+  rpc Update(topcoder.domain.review.UpdateReviewInput)
+      returns (topcoder.domain.review.ReviewList);
+
+  rpc Delete(topcoder.common.LookupCriteria)
+      returns (topcoder.domain.review.ReviewList);
+}

@@ -15,7 +15,7 @@ service Submission {
       returns (topcoder.domain.submission.Submission);
 
   rpc Update(topcoder.domain.submission.UpdateSubmissionInput)
-      returns (topcoder.domain.submission.Submission);
+      returns (topcoder.domain.submission.SubmissionList);
 
   rpc Delete(topcoder.common.LookupCriteria)
       returns (topcoder.domain.submission.SubmissionList);
